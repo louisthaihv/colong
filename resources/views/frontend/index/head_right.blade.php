@@ -1,5 +1,25 @@
 <div class="col-top-right">
-	<div id="slider2">
+<ul class="tab-menu">
+		<li class="tab1">
+			<a href="{{ route('frontend.category.show', SECRET) }}"></a>
+		</li>
+		<li class="tab2">
+			<a href="{{ route('frontend.category.show', HANDBOOK) }}"></a>
+		</li>
+		<li class="tab3">
+			<a href="{{ route('frontend.category.show', FEATURE) }}"></a>
+		</li>
+		<li class="tab4">
+			<a href="{{ route('frontend.category.show', FEATURE) }}"></a>
+		</li>
+		<li class="tab5">
+			<a href="{{ route('frontend.category.show', FEATURE) }}"></a>
+		</li>
+		<li class="tab6">
+			<a href="{{ route('frontend.category.show', FEATURE) }}"></a>
+		</li>
+	</ul>
+	<!--<div id="slider2">
 		<ul class="bullets">
 			<li><a href="#" class="bullet active" data-slide="0">
 				<span class="moi-nhat">Mới nhất</span>
@@ -39,7 +59,7 @@
 					</div> 
 					<!--End .list-main--> 
 					<!--End .cont-->
-				@endforeach
+				<!--@endforeach
 				</li>
 				<li class="page">
 				<?php 
@@ -61,7 +81,7 @@
 					</div> 
 					<!--End .list-main--> 
 					<!--End .cont-->
-				@endforeach
+				<!--@endforeach
 				</li>
 				<li class="page">
 				<?php 
@@ -83,9 +103,9 @@
 					</div> 
 					<!--End .list-main--> 
 					<!--End .cont-->
-				@endforeach
+				<!--@endforeach
 				</li>
 			</ul>
 		</div>
-	</div>
+	<!--</div>-->
 </div>

@@ -48,23 +48,13 @@ body {background: url(../images/default_bg.jpg);}
 #slider1 .bullets li a:hover {background: #055554;}
 #slider1 .bullets li a.active {background: #ff9b12;}
 .container {width: 986px;margin: 0 auto;}
-.col-top-left {width: 595px;float: left;margin-right: 10px;}
-.col-top-right {float: left;width: 376px;}
-.col-top-left .buttons {height: 178px;width: 100%;position: relative;margin-bottom: 8px;}
-.col-top-left .buttons a {display: block;position: absolute;text-indent: -9999px;bottom: 0px;}
-.col-top-left .buttons a.download {width: 303px;height: 181px;background: url(../images/choi-ngay.png) top left no-repeat;left: -78px;}
-.col-top-left .buttons a.register {width: 120px;height: 91px;background: url(../images/dang-ky.png) top left no-repeat;left: 228px;}
-.col-top-left .buttons a.giftcode {width: 120px;height: 91px;background: url(../images/gift-code.png) top left no-repeat;left: 351px;}
-.col-top-left .buttons a.card {width: 120px;height: 91px;background: url(../images/nap-the.png) top left no-repeat;right: 0px;}
-.col-top-left .buttons a:hover {background-position: bottom left;}
+.col-top-left {width: 252px;}
+.col-top-right {float: left;width: 750px;}
+.col-top-left .buttons {height: 205px;width: 100%}
+.col-top-left .buttons a.download {width: 252px;height: 128px;}
+.col-top-left .buttons a.register {width: 125px;height: 73px}
+.col-top-left .buttons a.giftcode {width: 127px;height: 75px;}
 
-.col-left .buttons {width: 100%;position: relative;margin-bottom: 8px;}
-.col-left .buttons a {display: block;text-indent: -9999px;margin-bottom: 3px;}
-.col-left .buttons a.download {width: 325px;height: 181px;background: url(../images/choi-ngay2.png) top left no-repeat;left: -84px;position: relative;}
-.col-left .buttons a.register {width: 120px;height: 91px;background: url(../images/dang-ky.png) top left no-repeat;float: left;}
-.col-left .buttons a.giftcode {width: 120px;height: 91px;background: url(../images/gift-code.png) top left no-repeat;float: right;}
-.col-left .buttons a.card {width: 325px;height: 91px;background: url(../images/nap-the2.png) top left no-repeat;clear: both;}
-.col-left .buttons a:hover {background-position: bottom left;}
 /* slider2 */
 #slider2 {margin: 0px;position: relative;top: 87px;border: 1px solid #d3dccb;background: #fff;height: 411px;overflow: hidden;margin-bottom: 8px;}
 #slider2 .viewport {width: 100%;height: 408px;overflow: hidden;position: relative;}
@@ -108,7 +98,7 @@ body {background: url(../images/default_bg.jpg);}
 /* slider3 */
 #slider3 {position: relative;margin-top: -4px;background: #fff;}
 #slider3 .viewport {width: 100%;overflow: hidden;position: relative;height: 293px;}
-#slider3 .bullets {overflow:hidden;background: #07614b;list-style: none;clear: both;}
+#slider3 .bullets {overflow:hidden;background: #440304;list-style: none;clear: both;}
 #slider3 .bullets li {float: left;}
 #slider3 .bullet {text-align: center;padding: 5px 0px;color: #57877b;font-size: 16px;font-weight: bold;display: block;font-weight: 400;font-family: 'Roboto Condensed', sans-serif;text-transform: uppercase;width: 33px;}
 #slider3 .bullet.active {color: #fff;}
@@ -118,10 +108,13 @@ body {background: url(../images/default_bg.jpg);}
 .cont-facebook {margin-bottom: 8px;}
 .tab-menu {overflow: hidden;width: 102%;margin-bottom: 8px;}
 .tab-menu li {float: left;margin-right: 3px;}
-.tab-menu li a {display: block;text-indent: -9999px;width: 243px;height: 88px;}
-.tab-menu li.tab1 a {background: url(../images/bi-kiep.png) no-repeat;}
-.tab-menu li.tab2 a {background: url(../images/cam-nang.png) no-repeat;}
-.tab-menu li.tab3 a {background: url(../images/tinh-nang-dac-sac.png) no-repeat;}
+.tab-menu li a {display: block;text-indent: -9999px;width: 110px;height: 140px;}
+.tab-menu li.tab1 a {background: url(../images/giftcode.png) no-repeat;}
+.tab-menu li.tab2 a {background: url(../images/the-vip.png) no-repeat;}
+.tab-menu li.tab3 a {background: url(../images/tro-thu.png) no-repeat;}
+.tab-menu li.tab4 a {background: url(../images/thu-cuoi.png) no-repeat;}
+.tab-menu li.tab5 a {background: url(../images/trang-bi.png) no-repeat;}
+.tab-menu li.tab6 a {background: url(../images/mon-phai.png) no-repeat;}
 .tab-menu li a:hover {background-position: bottom left;}
 #slider4 {position: relative;width: 734px;height: 335px;margin-bottom: 8px;border: 1px solid #d5dac9;}
 #slider4 .viewport {position: relative;overflow: hidden;width: 100%;height: 335px;margin: 0px auto;}
@@ -152,9 +145,22 @@ body {background: url(../images/default_bg.jpg);}
 .bottom-slider-support {clear: both;}
 .col-left .support {width: 100%;float: none;}
 .col-left .support a {width: 100%;background-size: 100%;}
-.support {float: right;width: 232px;height: 175px;margin-bottom: 8px;}
-.support a {width: 232px;height: 175px;display: block;background: url(../images/ho-tro-khach-hang.png) top left no-repeat;}
-.support a:hover {background-position: bottom left;}
+.support {float: right;width: 252px;height: 175px;margin-bottom: 8px;}
+.support a {width: 252px;height: 175px;display: block;background: url(../images/ho-tro-khach-hang.png) top left no-repeat;}
+
+
+/*quan ly tai khoan*/
+
+.quanlytaikhoan {float: left;width: 252px;height: 175px;margin-bottom: 8px;}
+.quanlytaikhoan a {width: 252px;height: 175px;display: block;background: url(../images/quan-ly-tai-khoan.png) top left no-repeat;}
+
+/*end quan li tai khoan*/
+
+/*quan ly khung anh*/
+
+.quanlytaikhoan {float: left;width: 252px;height: 175px;margin-bottom: 8px;}
+.quanlytaikhoan a {width: 252px;height: 175px;display: block;background: url(../images/khung-anh.png) top left no-repeat;}
+/*end quan li khung anh*/
 /* slider5 */
 .slider-bottom {background: #fff url(../images/bg4.jpg) bottom right no-repeat;float: left;width: 492px;height: 173px;border: 1px solid #d5dac9;position: relative;}
 .slider-bottom .title {position: absolute;bottom: 5px;left: 10px;}

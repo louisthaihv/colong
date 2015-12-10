@@ -12,20 +12,6 @@
 <script type="text/javascript" async="" src="{{ asset('frontend/js/loader.js') }}"></script>
 <script type="text/javascript" src="{{ asset('frontend/js/jquery.slide.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('frontend/js/main.js') }}"></script>
-	<!-- Facebook Pixel Code -->
-	<script>
-		!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-				n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-			n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-			t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-				document,'script','//connect.facebook.net/en_US/fbevents.js');
-
-		fbq('init', '1673783799521085');
-		fbq('track', "PageView");</script>
-	<noscript><img height="1" width="1" style="display:none"
-				   src="https://www.facebook.com/tr?id=1673783799521085&ev=PageView&noscript=1"
-				/></noscript>
-	<!-- End Facebook Pixel Code -->
 <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
 <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('frontend/css/Custom.css') }}" rel="stylesheet">
@@ -42,14 +28,6 @@
 <body cz-shortcut-listen="true">
 <!-- facebook js-->
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=1609703232582143";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<!--End facebook js-->
 	<div id="cboxOverlay" style="display: none;"></div>
 	<div id="colorbox" class="" style="padding-bottom: 42px; padding-right: 42px; display: none;">
 		<div id="cboxWrapper">
@@ -81,9 +59,8 @@
 		</div>
 		<div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div>
 	</div>
-	@include('frontend.user.login')
 	<div id="wrapper">
-		<div class="topNav">
+		<!--<div class="topNav">
 			<div class="main-topNav">
 				<ul class="left">
 					<li class="color2">
@@ -116,23 +93,26 @@
 				</ul>
 			</div>
 			<!--End .main-topNav-->
-		</div>
+		<!--</div>
 		<!--End .topNav-->
 
 		<div class="navBar">
 			<div class="main-navBar">
 				<ul>
-					<li><a href="{{ route('frontend.index') }}">Trang chủ</a></li>
-					<li><a href="{{ route('frontend.category.show', NEWS) }}">Tin tức</a></li>
-					<li><a href="{{ route('frontend.category.show', GUID) }}">Hướng dẫn</a></li>
 					<li class="logo-main">
 						<a href="/">
-							<img src="{{ asset('frontend/images/logo-trutien.png') }}">
+							<img src="{{ asset('frontend/images/logo.png') }}">
+						</a>
+						<a href="">
+							<img src="{{ asset('frontend/images/ho-tro.png') }}">
 						</a>
 					</li>
-					<li><a href="{{ route('frontend.category.show', FEATURE) }}">Tính năng</a></li>
-					<li><a href="{{ route('frontend.category.show', LIB) }}">Thư viện</a></li>
-					<li><a href="https://www.facebook.com/groups/kthe2khonghutmau/" target="_blank">Diễn đàn</a></li>
+					<li><a href="{{ route('frontend.index') }}"><img src="{{ asset('frontend/images/navbar/trang-chu.png') }}"></a></li>
+					<li><a href="{{ route('frontend.category.show', NEWS) }}"><img src="{{ asset('frontend/images/navbar/dac-trung.png') }}"></a></li>
+					<li><a href="{{ route('frontend.category.show', GUID) }}"><img src="{{ asset('frontend/images/navbar/huong-dan.png') }}"></a></li>
+					
+					<li><a href="{{ route('frontend.category.show', FEATURE) }}"><img src="{{ asset('frontend/images/navbar/hoat-dong.png') }}"></a></li>
+					<li><a href="{{ route('frontend.category.show', LIB) }}"><img src="{{ asset('frontend/images/navbar/cong-dong.png') }}"></a></li>
 					<div style="clear: both;"></div>
 				</ul>
 			</div>
@@ -140,13 +120,13 @@
 		</div>
 		<!--End .navBar-->
 
-		<div class="header">
+		<!--<div class="header">
 			<div class="main-header">
-				<div class="img">
-					{{-- <img src="{{ asset('frontend/images/title-big.png') }}"> --}}
+				<div>
+					<img src="{{asset('frontend/images/title-big.png')}}">
 				</div>
 			</div>
-		</div>
+		</div>-->
 		<!--End .header-->
 		<div class="container">
 			@yield('content')
