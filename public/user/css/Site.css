@@ -3,13 +3,13 @@ body
 	color: #323232;
 	font-size: 12px;
 	font-family: arial;
-	background-image: url(../images/bg_site.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/bg_site.gif*/;
+	background-image: url(../../images/bg_site.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/bg_site.gif*/;
 	margin: 0;
 }
 /*Top Bar*/
 #top_bar
 {
-	background-image: url(../images/top_bar.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/top_bar.gif*/;
+	background-image: url(../../images/top_bar.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/top_bar.gif*/;
 	width: 100%;
 	height: 30px;
 }
@@ -63,7 +63,7 @@ body
 }
 #top_bar_search
 {
-	background-image: url(../images/top_bar_search.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/top_bar_search.gif*/;
+	background-image: url(../../images/top_bar_search.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/top_bar_search.gif*/;
 	background-repeat: no-repeat;
 	position: relative;
 	width: 172px;
@@ -93,7 +93,7 @@ body
 #main_background
 {
 	background-color: #06212b;
-	background-image: url(../images/background.jpg)/*tpa=http://taikhoan.colongonline.com/Content/images/background.jpg*/;
+	background-image: url(../../images/background.jpg)/*tpa=http://taikhoan.colongonline.com/Content/images/background.jpg*/;
 	background-repeat: no-repeat;
 	background-position: center top;
 	/* width: 100%; */
@@ -135,7 +135,7 @@ body
 }
 .main_menu_item2
 {
-	background-image: url(../images/menu_slice.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/menu_slice.gif*/;
+	background-image: url(../../images/menu_slice.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/menu_slice.gif*/;
 	background-repeat: no-repeat;
 	height: 100%;
 	float: left;
@@ -199,7 +199,7 @@ td.right_col
 }
 #content_news_slide
 {
-	background-image: url(../images/news_slide.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/news_slide.gif*/;
+	background-image: url(../../images/news_slide.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/news_slide.gif*/;
 	background-repeat: no-repeat;
 	width: 655px;
 	height: 180px;
@@ -218,7 +218,7 @@ td.right_col
 	color: #0880be;
 	font-size: 15px;
 	font-weight: bold;
-	background-image: url(../images/li_section.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/li_section.gif*/;
+	background-image: url(../../images/li_section.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/li_section.gif*/;
 	background-repeat: no-repeat;
 	background-position: left 6px;
 	width: 355px;
@@ -250,7 +250,7 @@ td.right_col
 #content_news_item_date
 {
 	color: #ababab;
-	background-image: url(../images/li_01.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/li_01.gif*/;
+	background-image: url(../../images/li_01.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/li_01.gif*/;
 	background-repeat: no-repeat;
 	background-position: left 4px;
 	padding-left: 10px;
@@ -275,7 +275,7 @@ td.right_col
 	color: #0880be;
 	font-size: 15px;
 	font-weight: bold;
-	background-image: url(../images/li_section.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/li_section.gif*/;
+	background-image: url(../../images/li_section.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/li_section.gif*/;
 	background-repeat: no-repeat;
 	background-position: left 1px;
 	padding-left: 25px;
@@ -288,7 +288,7 @@ td.right_col
 	color: #0880be;
 	font-size: 15px;
 	font-weight: bold;
-	background-image: url(../images/li_section.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/li_section.gif*/;
+	background-image: url(../../images/li_section.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/li_section.gif*/;
 	background-repeat: no-repeat;
 	background-position: left 1px;
 	padding-left: 25px;
@@ -322,7 +322,7 @@ td.right_col
 	color: #da4b4b;
 	font-size: 15px;
 	font-weight: bold;
-	background-image: url(../images/news_title.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/news_title.gif*/;
+	background-image: url(../../images/news_title.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/news_title.gif*/;
 	background-repeat: no-repeat;
 	background-position: left 12px;
 	position: relative;
@@ -357,7 +357,7 @@ td.content_form_title
 	color: #13486d;
 	font-weight: bold;
 	font-size: 16px;
-	background-image: url(../images/li_01.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/li_01.gif*/;
+	background-image: url(../../images/li_01.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/li_01.gif*/;
 	background-repeat: no-repeat;
 	background-position: left center;
 	height: 25px;
@@ -371,7 +371,7 @@ td.content_form_title
 }
 #other_item
 {
-	background-image: url(../images/li_01.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/li_01.gif*/;
+	background-image: url(../../images/li_01.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/li_01.gif*/;
 	background-repeat: no-repeat;
 	background-position: left 8px;
 	width: 625px;
@@ -392,7 +392,7 @@ td.content_form_title
 #box_error
 {
 	background-color: #fedfdf;
-	background-image: url(../images/box_error.gif)/*tpa=http://taikhoan.colongonline.com/Content/../images/box_error.gif*/;
+	background-image: url(../../images/box_error.gif)/*tpa=http://taikhoan.colongonline.com/Content/../../images/box_error.gif*/;
 	background-repeat: repeat-x;
 	width: 92%;
 	height: auto;
@@ -418,7 +418,7 @@ td.content_form_title
 #box_warning
 {
 	background-color: #fdf9e8;
-	background-image: url(../images/box_warning.gif)/*tpa=http://taikhoan.colongonline.com/Content/../images/box_warning.gif*/;
+	background-image: url(../../images/box_warning.gif)/*tpa=http://taikhoan.colongonline.com/Content/../../images/box_warning.gif*/;
 	background-repeat: repeat-x;
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -430,7 +430,7 @@ td.content_form_title
 #box_info
 {
 	background-color: #e8f6fd;
-	background-image: url(../images/box_info.gif)/*tpa=http://taikhoan.colongonline.com/Content/../images/box_info.gif*/;
+	background-image: url(../../images/box_info.gif)/*tpa=http://taikhoan.colongonline.com/Content/../../images/box_info.gif*/;
 	background-repeat: repeat-x;
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -444,7 +444,7 @@ td.content_form_title
 .infoPanel
 {
 	background-color: #e8f6fd;
-	background-image: url(../images/box_info.gif)/*tpa=http://taikhoan.colongonline.com/Content/../images/box_info.gif*/;
+	background-image: url(../../images/box_info.gif)/*tpa=http://taikhoan.colongonline.com/Content/../../images/box_info.gif*/;
 	background-repeat: repeat-x;
 	border: 1px solid #73b8da;
 	color: #000000;
@@ -462,7 +462,7 @@ td.content_form_title
 {
 	margin: 5px 0px 5px 0px;
 	background-color: #e8f6fd;
-	background-image: url(../images/box_info.gif)/*tpa=http://taikhoan.colongonline.com/Content/../images/box_info.gif*/;
+	background-image: url(../../images/box_info.gif)/*tpa=http://taikhoan.colongonline.com/Content/../../images/box_info.gif*/;
 	background-repeat: repeat-x;
 	padding: 2px;
 	width: 139px;
@@ -472,7 +472,7 @@ td.content_form_title
 #box_error_status
 {
 	background-color: #fedfdf;
-	background-image: url(../images/box_error.gif)/*tpa=http://taikhoan.colongonline.com/Content/../images/box_error.gif*/;
+	background-image: url(../../images/box_error.gif)/*tpa=http://taikhoan.colongonline.com/Content/../../images/box_error.gif*/;
 	background-repeat: repeat-x;
 	padding: 2px;
 	width: 139px;
@@ -483,7 +483,7 @@ td.content_form_title
 }
 #main_bottom_bar
 {
-	background-image: url(../images/main_bottom.gif)/*tpa=http://taikhoan.colongonline.com/Content/../images/main_bottom.gif*/;
+	background-image: url(../../images/main_bottom.gif)/*tpa=http://taikhoan.colongonline.com/Content/../../images/main_bottom.gif*/;
 	background-repeat: no-repeat;
 	width: 980px;
 	height: 28px;
@@ -492,7 +492,7 @@ td.content_form_title
 /*Footer*/
 #footer_div
 {
-	background-image: url(../images/footer_bar.gif)/*tpa=http://taikhoan.colongonline.com/Content/../images/footer_bar.gif*/;
+	background-image: url(../../images/footer_bar.gif)/*tpa=http://taikhoan.colongonline.com/Content/../../images/footer_bar.gif*/;
 	background-repeat: repeat-x;
 	width: 100%;
 	height: auto;
@@ -534,7 +534,7 @@ td.gray
 	color: #fff;
 	font-size: 13px;
 	font-weight: bold;
-	background-image: url(../images/secur.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/secur.gif*/;
+	background-image: url(../../images/secur.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/secur.gif*/;
 	background-repeat: no-repeat;
 	background-position: left top;
 	height: 92px;
@@ -547,7 +547,7 @@ td.gray
 	color: #175e83;
 	font-size: 18px;
 	font-weight: bold;
-	background-image: url(../images/doimatkhau.jpg)/*tpa=http://taikhoan.colongonline.com/Content/images/info.gif*/;
+	background-image: url(../../images/doimatkhau.jpg)/*tpa=http://taikhoan.colongonline.com/Content/images/info.gif*/;
 	background-repeat: no-repeat;
 	background-position: left top;
 	width: 300px;
@@ -564,7 +564,7 @@ td.gray
 	color: #175e83;
 	font-size: 18px;
 	font-weight: bold;
-	background-image: url(../images/doitaikhoan.jpg)/*tpa=http://taikhoan.colongonline.com/Content/images/info.gif*/;
+	background-image: url(../../images/doitaikhoan.jpg)/*tpa=http://taikhoan.colongonline.com/Content/images/info.gif*/;
 	background-repeat: no-repeat;
 	background-position: left top;
 	width: 300px;
@@ -581,7 +581,7 @@ td.gray
 	color: #175e83;
 	font-size: 18px;
 	font-weight: bold;
-	background-image: url(../images/doinhanvat.jpg)/*tpa=http://taikhoan.colongonline.com/Content/images/info.gif*/;
+	background-image: url(../../images/doinhanvat.jpg)/*tpa=http://taikhoan.colongonline.com/Content/images/info.gif*/;
 	background-repeat: no-repeat;
 	background-position: left top;
 	width: 300px;
@@ -598,7 +598,7 @@ td.gray
 	color: #175e83;
 	font-size: 18px;
 	font-weight: bold;
-	background-image: url(../images/nangcapvip.jpg)/*tpa=http://taikhoan.colongonline.com/Content/images/info.gif*/;
+	background-image: url(../../images/nangcapvip.jpg)/*tpa=http://taikhoan.colongonline.com/Content/images/info.gif*/;
 	background-repeat: no-repeat;
 	background-position: left top;
 	width: 300px;
@@ -615,7 +615,7 @@ td.gray
 	color: #175e83;
 	font-size: 18px;
 	font-weight: bold;
-	background-image: url(../images/nhanthuong.jpg)/*tpa=http://taikhoan.colongonline.com/Content/images/info.gif*/;
+	background-image: url(../../images/nhanthuong.jpg)/*tpa=http://taikhoan.colongonline.com/Content/images/info.gif*/;
 	background-repeat: no-repeat;
 	background-position: left top;
 	width: 300px;
@@ -753,7 +753,7 @@ td.gray
 	left: 140px;
 	width: 23px;
 	height: 22px;
-	background: url('../images/reloadButton.png')/*tpa=http://taikhoan.colongonline.com/Content/images/reloadButton.png*/ no-repeat;
+	background: url('../../images/reloadButton.png')/*tpa=http://taikhoan.colongonline.com/Content/images/reloadButton.png*/ no-repeat;
 }
 .divButton
 {
@@ -805,7 +805,7 @@ td.gray
     color: #c6e8ed;
     font-weight: bold;
     font-size: 16px;
-    background-image: url(../images/li_01.gif)/*tpa=http://taikhoan.colongonline.com/Content/../images/li_01.gif*/;
+    background-image: url(../../images/li_01.gif)/*tpa=http://taikhoan.colongonline.com/Content/../../images/li_01.gif*/;
     background-repeat: no-repeat;
     background-position: left center;
     height: 25px;
@@ -837,7 +837,7 @@ td.gray
         color: #13486d;
         font-weight: bold;
         font-size: 16px;
-        background-image: url(../images/li_01.gif)/*tpa=http://taikhoan.colongonline.com/Content/../images/li_01.gif*/;
+        background-image: url(../../images/li_01.gif)/*tpa=http://taikhoan.colongonline.com/Content/../../images/li_01.gif*/;
         background-repeat: no-repeat;
         background-position: left center;
         height: 25px;
