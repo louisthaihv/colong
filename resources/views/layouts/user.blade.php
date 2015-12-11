@@ -44,8 +44,8 @@
                     <a target="_blank" href="#" title="Tham gia thảo luận cùng các game thủ Cổ Long Online" rel="nofollow">Facebook</a>
                 </div>
                 <div id="top_bar_userdisplay">
-                    <a href="#" tppabs="#" title="Đăng ký tài khoản Cổ Long Online">Đăng ký</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <a href="#" tppabs="#" title="Đăng nhập hệ thống Cổ Long Online">Đăng nhập</a>
+                    <a href="{{ route('user.register') }}" tppabs="#" title="Đăng ký tài khoản Cổ Long Online">Đăng ký</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="{{ route('user.register') }}" tppabs="#" title="Đăng nhập hệ thống Cổ Long Online">Đăng nhập</a>
                 </div>
             </div>
         </div>
@@ -69,19 +69,19 @@
                     <!--Content-->
                     <div class="leftcol">
                         <div class="secur_inf1">
-                            Đổi mật khẩu<br>
+                            <a href="#">Đổi mật khẩu<br></a>
                         </div>
                         <div class="secur_inf2">
-                            Thông tin tài khoản<br>
+                            <a href="{{ route('user.profile') }}">Thông tin tài khoản<br></a>
                         </div>
                         <div class="secur_inf3">
-                            Thông tin nhân vật
+                        <a href="{{ route('user.thongtinnhanvat.get') }}">Thông tin nhân vật</a>                            
                         </div>
                         <div class="secur_inf4">
-                            Nâng cấp vip
+                            <a href="{{ route('user.nangcapvip.get') }}">Nâng cấp vip</a>
                         </div>
                         <div class="secur_inf5">
-                            Nhận thưởng đạt mốc
+                            <a href="{{ route('user.thuongdatmoc.get') }}">Nhận thưởng đạt mốc</a>
                         </div>
                     </div>
 

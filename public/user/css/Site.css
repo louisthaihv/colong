@@ -791,15 +791,20 @@ td.gray
 .tableform1 {
     width: 100%;
     border-spacing: 5px;
-    border: 1px;
+    border-width: 2px;
+    border-collapse: collapse;
 }
 .tableform1 td, table th {
     padding: 1px;
+    border-collapse: collapse; 
+
 }
 
 .tableform1 th{
 	background-color: #4CAF50;
+	text-align: center;
 	height: 36px;
+	border-collapse: collapse; 
 }
 .tableform1 td.title {
     color: #c6e8ed;
@@ -811,15 +816,18 @@ td.gray
     height: 25px;
     padding-left: 12px;
     border-bottom: 1px solid #dbdbdb;
+    border-collapse: collapse; 
 }
 .tableform1 td{
 	text-align: center;
 	padding: 8px;
+	border-collapse: collapse; 
 }
 .tableform1 td label {
         color: #0880be !important;
         font-size: 12px;
         font-weight: 700;
+        border-collapse: collapse; 
 }
 
 
@@ -903,12 +911,17 @@ td.gray
     color: #000000;
 }
 
+div.imgcenter {
+	margin-left: 80px;
+}
 
 div.imgvip {
-    margin: 5px;
+    margin: 30px;
     float: left;
     width: 180px;
     padding-right: 30px;
+   display: block;
+    text-align:middle;
 
 }	
 

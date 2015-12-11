@@ -13,6 +13,7 @@
 <script type="text/javascript" src="{{ asset('frontend/js/jquery.slide.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('frontend/js/main.js') }}"></script>
 <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
+<link href="{{ asset('user/css/Site.css') }}" rel="stylesheet">
 <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('frontend/css/Custom.css') }}" rel="stylesheet">
 <link href="{{ asset('frontend/css/css') }}" rel="stylesheet" type="text/css">

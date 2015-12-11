@@ -24,6 +24,7 @@
                     </tbody>
                 </table>
             </form>
+            <div class="imgcenter">
             <div class="imgvip">
                 <a target="_blank" href="img_fjords.jpg">
                     <img src="{{ asset('images/vip1.jpg')}}" width="300" height="200">
@@ -36,6 +37,7 @@
                     <img src="{{asset('images/vip2.jpg')}}" width="300" height="200">
                 </a>
                 <div class="descimgvip">10000 điểm</div>
+            </div>
             </div>  
         </div>
     </div>

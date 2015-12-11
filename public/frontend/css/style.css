@@ -93,7 +93,7 @@ body {background: url(../images/default_bg.jpg);}
 .daily-features .style-scrollbar::-moz-scrollbar-thumb {width: 23px;height: auto;background: url(../images/icon-scroll.png) center no-repeat;cursor: pointer;}
 .daily-features .scrollbar {height: 270px;overflow-y: scroll;margin-bottom: 0px;width: 100%;margin-top: 10px;}
 .table {padding: 0px 10px;}
-.table tr td {padding: 5px;border-bottom: 1px solid #b59f85;}
+.table  tr td {padding: 5px;border-bottom: 1px solid #b59f85;}
 /* slider3 */
 #slider3 {position: relative;margin-top: -4px;background: #fff;}
 #slider3 .viewport {width: 100%;overflow: hidden;position: relative;height: 293px;}
@@ -157,6 +157,10 @@ body {background: url(../images/default_bg.jpg);}
 .support {float: right;width: 252px;height: 175px;margin-bottom: 8px;}
 .support a {width: 252px;height: 175px;display: block;background: url(../images/ho-tro-khach-hang.png) top left no-repeat;}
 
+.imgcenter {
+	display: block;
+    margin: 0 auto;
+}
 
 /*quan ly tai khoan*/
 
