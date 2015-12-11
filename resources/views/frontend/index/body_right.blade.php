@@ -8,7 +8,162 @@
 	</style>
 @stop
 <div class="col-right">
+	<div id="slider1">
+		<ul class="bullets">
+			
+			<li>
+				<a href="#" class="bullet" data-slide="1">
+					<span class="tin-tuc">Tin tức</span>
+				</a>
+			</li>
+			
+		</ul>
+		<div class="viewport">
+			<ul class="overview" style="width: 1504px; left: 0px;">
+				<li class="page">
+				<?php 
+					$category = App\Category::getCategory($categories, NEWS);
+					$articles = App\Category::getPostAvaiable($category);
+				?>
+				@foreach($articles as $article)
+					<div class="list-main">
+						<h3>
+							<a href="{{ route('frontend.article.show', $article->id) }}">
+								{!! $article->title !!} 
+							</a>
+							<span class="time">[{{ date('d/m', strtotime($article->created_at)) }}]</span>
+						</h3>
+						<a href="{{ route('frontend.article.show', $article->id) }}">
+							<img src="{{ asset($article->image_url) }}">
+						</a>
+						<p>{!! $article->content !!}</p>
+					</div> 
+					<!--End .list-main--> 
+					<!--End .cont-->
+				@endforeach
+				</li>
+				<li class="page">
+				<?php 
+					$category = App\Category::getCategory($categories, NEWS);
+					$articles = App\Category::getPostAvaiable($category);
+				?>
+				@foreach($articles as $article)
+					<div class="list-main">
+						<h3>
+							<a href="{{ route('frontend.article.show', $article->id) }}">
+								{!! $article->title !!} 
+							</a>
+							<span class="time">[{{ date('d/m', strtotime($article->created_at)) }}]</span>
+						</h3>
+						<a href="{{ route('frontend.article.show', $article->id) }}">
+							<img src="{{ asset($article->image_url) }}">
+						</a>
+						<p>{!! $article->content !!}</p>
+					</div> 
+					<!--End .list-main--> 
+					<!--End .cont-->
+				@endforeach
+				</li>
+				<li class="page">
+				<?php 
+					$category = App\Category::getCategory($categories, EVENT);
+					$articles = App\Category::getPostAvaiable($category);
+				?>
+				@foreach($articles as $article)
+					<div class="list-main">
+						<h3>
+							<a href="{{ route('frontend.article.show', $article->id) }}">
+								{!! $article->title !!} 
+							</a>
+							<span class="time">[{{ date('d/m', strtotime($article->created_at)) }}]</span>
+						</h3>
+						<a href="{{ route('frontend.article.show', $article->id) }}">
+							<img src="{{ asset($article->image_url) }}">
+						</a>
+						<p>{!! $article->content !!}</p>
+					</div> 
+					<!--End .list-main--> 
+					<!--End .cont-->
+				@endforeach
+				</li>
+			</ul>
+		</div>
+	</div>
 	
+	<div></div>
+	<div id="slider2">
+		<ul class="bullets">
+			
+			<li>
+				<a href="#" class="bullet" data-slide="1">
+					<span class="tin-tuc">Tin tức</span>
+				</a>
+			</li>
+			
+		</ul>
+		<div class="viewport">
+			<ul class="overview" style="width: 1504px; left: 0px;">
+				<li class="page">
+				
+				@foreach($articles as $article)
+					<div class="list-main">
+						<h3>
+							<a href="{{ route('frontend.article.show', $article->id) }}">
+								{!! $article->title !!} 
+							</a>
+							<span class="time">[{{ date('d/m', strtotime($article->created_at)) }}]</span>
+						</h3>
+						<a href="{{ route('frontend.article.show', $article->id) }}">
+							<img src="{{ asset($article->image_url) }}">
+						</a>
+						<p>{!! $article->content !!}</p>
+					</div> 
+					<!--End .list-main--> 
+					<!--End .cont-->
+				@endforeach
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="daily-features">
+		<div class="title-features">
+			<img src="{{ asset('frontend/images/tinh-nang-hang-ngay.png') }}">
+		</div>
+		<div id="slider3">
+			<ul class="bullets">
+			@foreach($weeks as $key => $week)
+				<li>
+					<a href="#" class="bullet <?php if($key == 0) echo"active"; ?>" data-slide="{{ $key }}">{!! $week->name !!}</a>
+				</li>
+			@endforeach
+			</ul>
+			<div class="viewport">
+				<ul class="overview" style="width: 1928px; left: 0px;">
+				@foreach($weeks as $week)
+				<?php 
+                    $events = $week->dailyEvents()->orderBy('start_time', 'ASC')->orderBy('end_time', 'ASC')->get();
+                ?>
+					<li class="page">
+						<div class="scrollbar style-scrollbar">
+							<div class="table">
+								<table width="100%" cellspacing="0" cellpadding="0">
+									<tbody>
+									@foreach($events as $event)
+										<tr>
+											<td>{!!  $event->start_time .'h -'. $event->end_time .'h' !!}</td>
+											<td>{!! $event->name !!}</td>
+										</tr>
+									@endforeach
+									</tbody>
+								</table>
+							</div>
+						</div>
+				@endforeach
+				</ul>
+			</div>
+		</div>
+	</div>
+	</div>
 	<!--End .tab-menu
 	<div id="slider4">
 		<span class="m-top"></span>

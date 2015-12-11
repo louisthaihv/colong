@@ -36,7 +36,7 @@ body {background: url(../images/default_bg.jpg);}
 .header {padding: 45px 0px;}
 .main-header {padding: 35px 0px;width: 986px;margin: 0 auto;}
 .main-header .img {padding: 0px 80px;}
-#slider1 {position: relative;width: 595px;height: 313px;margin-bottom: 8px;}
+#slider1 {position: relative;width: 700px;height: 335px;margin-bottom: 8px;}
 #slider1 .viewport {position: relative;overflow: hidden;width: 100%;height: 313px;margin: 0px auto;}
 #slider1 .disable { visibility: hidden;}
 #slider1 .overview {list-style: none; position: absolute; padding: 0; margin: 0; width: 595px; left: 0; top: 0;}
@@ -56,7 +56,7 @@ body {background: url(../images/default_bg.jpg);}
 .col-top-left .buttons a.giftcode {width: 127px;height: 75px;}
 
 /* slider2 */
-#slider2 {margin: 0px;position: relative;top: 87px;border: 1px solid #d3dccb;background: #fff;height: 411px;overflow: hidden;margin-bottom: 8px;}
+#slider2 {margin: 0px;position: relative;top: 87px;border: 1px solid #d3dccb;background: #fff;overflow: hidden;margin-bottom: 8px; width: 455px; height: 307px}
 #slider2 .viewport {width: 100%;height: 408px;overflow: hidden;position: relative;}
 #slider2 .bullets {overflow:hidden;list-style: none;clear: both;margin:0px;background: #269478;overflow: hidden;width: 100%;margin-bottom: 6px;}
 #slider2 .bullets li {float: left;}
@@ -75,17 +75,16 @@ body {background: url(../images/default_bg.jpg);}
 #slider2 .bullet.active {background-color: #fff;}
 #slider2 .bullet:hover {background-color: #fff;}
 #slider2 .overview {list-style: none;position: absolute;left: 0;top: 0;}
-#slider2 .overview .page {float: left;padding: 0px;height: 408px;width: 376px;}
-.list-main {padding: 10px 0px;overflow: hidden;border-bottom: 1px solid #b59f85;margin: 1px 12px;}
+.list-main {padding: 10px 0px;overflow: hidden;border-bottom: 1px solid #b59f85;margin: 1px 2px; width: 430px;}
 .list-main h3 {margin-bottom: 10px;overflow: hidden;}
 .list-main h3 a {float: left;color: #317f69;font-weight: bold;font-size: 12px;}
 .list-main h3 a:hover {color: #fb891a;}
 .list-main h3 span.time {float: right;color: #317f69;}
 .list-main img {float: left;width: 98px;height: 68px;border: 3px solid #acdbd1;margin-right: 10px;}
-.col-left {float: left;width: 241px;margin-right: 10px;}
+.col-left {float: left;width: 252px;margin-right: 10px;}
 .col-right {float: left;width: 736px;}
 .daily-features {margin-bottom: 8px;}
-.daily-features .title-features {position: relative;top: 0px;left: -32px;top: -5px;height: 115px;}
+.daily-features .title-features {position: relative;top: 0px;height: 135px;}
 .daily-features .style-scrollbar::-webkit-scrollbar-track {background: url(../images/bg-border.png) top center repeat-y;}
 .daily-features .style-scrollbar::-webkit-scrollbar {width: 23px;background: url(../images/bg-border.png) top center repeat-y;}
 .daily-features .style-scrollbar::-webkit-scrollbar-thumb {width: 23px;height: auto;background: url(../images/icon-scroll.png) center no-repeat;cursor: pointer;}
@@ -104,7 +103,17 @@ body {background: url(../images/default_bg.jpg);}
 #slider3 .bullet.active {color: #fff;}
 #slider3 .bullet:hover {color: #3acda8;}
 #slider3 .overview {list-style: none;position: absolute;left: 0;top: 0;}
-#slider3 .overview .page {float: left;height: 292px;border: 1px solid #d5dac9;width: 239px;border-top: none;}
+#slider3 .overview .page {float: left;height: 292px;border: 1px solid #d5dac9;width: 252px;border-top: none;}
+
+/* slider 4*/
+#slider4 {position: relative;margin-top: -4px;background: #fff;}
+#slider4 .viewport {width: 100%;overflow: hidden;position: relative;height: 293px;}
+#slider4 .bullets {overflow:hidden;background: #440304;list-style: none;clear: both;}
+#slider4 .bullets li {float: left;}
+#slider4 .bullet {text-align: center;padding: 5px 0px;color: #57877b;font-size: 16px;font-weight: bold;display: block;font-weight: 400;font-family: 'Roboto Condensed', sans-serif;text-transform: uppercase;width: 33px;}
+#slider4 .bullet.active {color: #fff;}
+#slider4 .bullet:hover {color: #3acda8;}
+#slider4 .overview {list-style: none;position: absolute;left: 0;top: 0;}
 .cont-facebook {margin-bottom: 8px;}
 .tab-menu {overflow: hidden;width: 102%;margin-bottom: 8px;}
 .tab-menu li {float: left;margin-right: 3px;}
