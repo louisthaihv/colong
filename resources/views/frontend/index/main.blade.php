@@ -1,23 +1,7 @@
 @extends('layouts.frontend.master_frontend')
 
 @section('content')
-    <div class="primary">
-        <div class="top-image">
-            <ul>
-                <li><a href="">
-                <img src="{{asset('frontend/images/button/gift-code.png')}}" alt=""/></a></li>
-                <li><a href="">
-                <img src="{{ asset('frontend/images/button/the-vip.png') }}" alt=""/></a></li>
-                <li><a href="">
-                <img src="{{ asset('frontend/images/button/tro-thu.png') }}" alt=""/></a></li>
-                <li><a href="">
-                <img src="{{ asset('frontend/images/button/thu-cuoi.png') }}" alt=""/></a></li>
-                <li><a href="">
-                <img src="{{ asset('frontend/images/button/trang-bi.png') }}" alt=""/></a></li>
-                <li><a href="">
-                <img src="{{ asset('frontend/images/button/mon-phai.png') }}" alt=""/></a></li>
-            </ul>
-        </div>
+    
         <div class="featured">
             <ul>
                 <li><a href="{{ route('user.napthe.get') }}">
@@ -271,81 +255,28 @@
         <div class="slider-bottom">
             <div id="tabs">
                 <ul>
-                    <li><a href="#tabs-1">
-                    	<img src="{{ asset('frontend/images/images/clip-game.png') }}" alt=""/>
-                    	</a></li>
-                    <li><a href="#tabs-2">
-                    	<img src="{{ asset('frontend/images/images/wallpaper.png') }}" alt=""/>
-                    	</a></li>
-                    <li><a href="#tabs-3">
-                    	<img src="{{ asset('frontend/images/images/screenshot.png') }}" alt=""/>
-                    </a></li>
+                @foreach($bottom_cats as $key => $category)
+                    <li><a href="#tabs-{{ $key }}">
+                    	<img src="{{ asset($category->image_url) }}" alt="{{ $category->name }}"/>
+                    	</a>
+                    </li>
+                @endforeach
                 </ul>
-                <div id="tabs-1" class="tab-slider">
+                @foreach($bottom_cats as $key => $category)
+                <div id="tabs-{{ $key }}" class="tab-slider">
                     <ul class="bxslider1">
+                    @foreach($category->articles as $article)
                         <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom1.png') }}" />
+                        	<a href="{{ route('frontend.article.show', $article->id) }}">
+                                <img src="{{ asset($article->image_url) }}" />
+                            </a>
                         </li>
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom2.png') }}" />
-                        </li>
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom3.png') }}" />
-                        </li>
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom2.png') }}" />
-                        </li>
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom3.png') }}" />
-                        </li>
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom1.png') }}" />
-                        </li>
+                    @endforeach
                     </ul>
                 </div>
-                <div id="tabs-2" class="tab-slider">
-                    <ul class="bxslider2">
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom1.png') }}" />
-                        </li>
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom2.png') }}" />
-                        </li>
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom3.png') }}" />
-                        </li>
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom2.png') }}" />
-                        </li>
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom3.png') }}" />
-                        </li>
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom1.png') }}" />
-                        </li>
-                    </ul>
-                </div>
-                <div id="tabs-3" class="tab-slider">
-                    <ul class="bxslider3">
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom1.png') }}" />
-                        </li>
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom2.png') }}" />
-                        </li>
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom3.png') }}" />
-                        </li>
-                        <li>
-                        	<img src="{{ asset('frontend/images/images/slide-bottom2.png') }}" />
-                        </li>
-                        <li><img src="{{ asset('frontend/images/images/slide-bottom3.png') }}" /></li>
-                        <li><img src="{{ asset('frontend/images/images/slide-bottom1.png') }}" /></li>
-                    </ul>
-                </div>
+                @endforeach
             </div>
         </div>
-    </div>
 @stop
 @section('end_script')
 

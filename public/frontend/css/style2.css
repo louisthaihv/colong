@@ -166,10 +166,106 @@ header ul li {float: left; display: inline-block; text-transform: uppercase; wid
 .content .primary .tintuc-rank .tin-tuc {width: 456px; float: left; background: #142030; margin-right: 10px;}
 .content .primary .tintuc-rank .tin-tuc .news { overflow: hidden; padding: 10px 20px; border-bottom: 2px solid #1c2838}
 .content .news img {float: left; margin-right: 10px;}
-.content .news h6 {color: #ce6839; margin-bottom: 10px;}
+.content .news h6, a.title {color: #ce6839; margin-bottom: 10px;}
 .content .news p {color: #f0c55f}
 .content .primary .slider-bottom {background: #4f160c;  height: 214px; margin-top: 15px;}
 .content .primary .slider-bottom #tabs ul {width: 100%; overflow: hidden; padding: 0px 16px; border-bottom: 3px solid #ffea7b; padding-bottom: 6px; margin-bottom: 38px;}
 .content .primary .slider-bottom #tabs ul li {float: left}
 
 footer {background: url('../images/foot.png') no-repeat; width: 100%; height: 561px; position: absolute; bottom: -200px; z-index: -3}
+
+/**********************************************************
+*********** HAONH ****************************************/
+.bg-category {
+    background-color: #f2e1cd;
+}
+
+.cate-header {
+    background-color: #9e3a3a;
+    color: #d7b8b8;
+    text-transform: uppercase !important;
+    padding: 15px 20px;
+    font-size: 18px;
+}
+
+.bg-category ul.list-cate, .bg-category li {
+    list-style: none;
+    list-style-type: none;
+}
+
+.bg-category ul.list-cate {
+    padding: 20px;
+}
+
+.bg-category ul.list-cate li {
+    position: relative;
+    display: block;
+    clear: both;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #f6f2aa;
+}
+
+.bg-category ul.list-cate li a.link-img {
+    float: left;
+    max-width: 146px;
+    margin-right: 10px;
+}
+
+.bg-category ul.list-cate li a.link-img img {
+    overflow: hidden;
+}
+
+.bg-category ul.list-cate li p {
+}
+
+.bg-category ul.list-cate li .title {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 600;
+    padding-top: 5px;
+}
+
+.bg-category ul.list-cate li .title:hover,
+.bg-category ul.list-cate li .title:focus {
+    text-decoration: underline;
+}
+
+.content-detail {
+    padding: 20px 30px;
+}
+
+.content-detail p {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 1.2em;
+}
+
+.content-detail .cate-header {
+    text-transform: none !important;
+}
+.content-detail ul.other-list {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.content-detail ul.other-list li {
+    list-style: circle;
+    border-bottom: solid 1px #aca092;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.content-detail ul.other-list li a {
+    color: #000;
+}
+
+.clear-fix {
+    font-size: 0;
+    clear: both;
+}
+
+.clear-fix::before {
+    content: ' ';
+}

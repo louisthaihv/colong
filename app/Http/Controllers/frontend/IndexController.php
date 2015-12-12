@@ -18,7 +18,18 @@ class IndexController extends Controller
     public function __construct(){
 
         $popup = Popup::where('status', 1)->first();
+        $top_cats = Category::where('type', TOP_CAT)->where('status', 1)->get();
+        $head_cats = Category::where('type', HEADER_CAT)->where('status', 1)->get();
+        $bottom_cats = Category::where('type', BOTTOM_CAT)->where('status', 1)->get();
+        $top_navs = Category::where('type', TOP_NAV)->where('status', 1)->get();
+        $weeks = Week::all();
         view()->share('popup', $popup);
+        view()->share('weeks', $weeks);
+        view()->share('top_cats', $top_cats);
+        view()->share('head_cats', $head_cats);
+        view()->share('bottom_cats', $bottom_cats);
+        view()->share('top_navs', $top_navs);
+
     }
     /**
      * Display a listing of the resource.
@@ -27,12 +38,8 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $categories = Category::all(['id', 'name']);
-        $clans = Clan::all();
-        $sliders = Slider::where('status', 1)->get();
-        $galaries = Galary::where('status', 1)->get();
-        $weeks = Week::all();
-        return view('frontend.index.main')->with(compact('galaries','categories', 'clans', 'sliders', 'weeks'));
+        
+        return view('frontend.index.main');
     }
 
     /**
@@ -50,7 +57,8 @@ class IndexController extends Controller
 
     public function showArticle($id){
         $article = Article::findOrFail($id);
-        $weeks = Week::all();
-        return view('frontend.articles.main')->with(compact('weeks','article'));
+        $news = Article::where('id', '>', $article->id)->orderBy('id', 'DESC')->take(NEW_OLD_ARTICLE);
+        $olds = Article::where('id', '<', $article->id)->orderBy('id', 'DESC')->take(NEW_OLD_ARTICLE);
+        return view('frontend.articles.main')->with(compact('news','article', 'olds'));
     }
 }

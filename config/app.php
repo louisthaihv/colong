@@ -140,11 +140,12 @@ return [
         /*
          * Application Service Providers...
          */
-        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        //Captcha
+        Mews\Captcha\CaptchaServiceProvider::class,
 
     ],
 
@@ -193,6 +194,9 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+        //captcha
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
         
 
     ],

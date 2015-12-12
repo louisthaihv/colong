@@ -25,6 +25,9 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->string('phone');
             $table->boolean('status')->default(true);
+            $table->integer('vip_level')->unsigned()->default(0);
+            $table->integer('point')->unsigned()->default(0);
+            $table->float('coints')->unsigned()->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

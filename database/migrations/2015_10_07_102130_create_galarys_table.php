@@ -15,6 +15,7 @@ class CreateGalarysTable extends Migration
         Schema::create('galaries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->text('link_galaries');
             $table->boolean('status')->default(0);
             $table->string('image_url');
             $table->timestamps();

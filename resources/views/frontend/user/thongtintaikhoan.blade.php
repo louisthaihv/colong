@@ -95,8 +95,8 @@
                         <tr>
                             <td></td>
                             <td>
-                                <input type="image" id="submitbtn" alt="Xác nhận" src="{{asset('Images/confirm.gif')}}" tppabs="">
-                                <input type="image" id="resetbtn" alt="Nhập lại" src="{{asset('Images/retry.gif')}}" tppabs="" onclick="mainForm.reset();
+                                <input type="image" id="submitbtn" alt="Xác nhận" src="{{asset('images/confirm.gif')}}" tppabs="">
+                                <input type="image" id="resetbtn" alt="Nhập lại" src="{{asset('images/retry.gif')}}" tppabs="" onclick="mainForm.reset();
                                         return false;">
                             </td>
                             <td></td>

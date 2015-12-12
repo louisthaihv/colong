@@ -15,6 +15,7 @@ class CreateTableServers extends Migration
         Schema::create('servers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('image');
             $table->timestamps();
         });
     }

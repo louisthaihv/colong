@@ -6,11 +6,10 @@ define('ENABLE', 1);
 define('DISABLE', 0);
 define('ENABLE_STRING', 'ACTIVED');
 define('DISABLE_STRING', 'BLOOKED');
-define('NEWS', 1);
-define('GUID', 2);
-define('FEATURE', 3);
-define('LIB', 4);
-define('EVENT', 5);
-define('HANDBOOK', 6);
-define('SECRET', 7);
+
 define('EVENT_FEATURE', 8);
+define('NEW_OLD_ARTICLE', 5);
+define('TOP_NAV', 0);
+define('TOP_CAT', 2);
+define('HEADER_CAT', 1);
+define('BOTTOM_CAT', 3);

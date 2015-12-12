@@ -4,7 +4,7 @@
 @stop
 
 @section('content')
-<div id="content_news">ĐỔI MẬT KHẨU
+<div id="content_news">Đăng ký
     <div style="padding: 20px 0px 10px 0px;"></div>
     <div id="content_news_text">
         <form action="" autocomplete="off" id="mainForm" method="post">            
@@ -14,7 +14,7 @@
                     <tr>
                         <td style="width: 150px;"></td>
                             <div class="notice" id="infoText">
-                                - Mật khẩu được lưu trong hệ thống không phân biệt chữ hoa, chữ thường<br><br><br>
+                                - Mật khẩu được lưu trong hệ thống không phân biệt chữ hoa, chữ thường<br>
                                 - Hãy bảo vệ mật khẩu cẩn thận, đề phòng bị hack, đánh cắp tài khoản
                             </div>
                     </tr>
@@ -22,7 +22,7 @@
                     
                     <tr>
                         <td style="text-align: right;">
-                            <label for="username">Mật khẩu hiện tại</label>
+                            <label for="username">Tên đăng nhập</label>
                             <span class="redstar">*</span>
                         </td>
                         <td style="width: 195px;">
@@ -34,11 +34,11 @@
                     </tr>
                     <tr>
                         <td style="text-align: right;">
-                            <label for="email">Mật khẩu mới</label>
+                            <label for="password">Mật khẩu</label>
                             <span class="redstar">*</span>
                         </td>
                         <td colspan="2">
-                            <input data-val="true" data-val-regex="Sai định dạng Email" data-val-regex-pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" data-val-required="Chưa nhập địa chỉ email" id="email" name="email" style="width: 190px;" type="text" value="" />
+                            <input data-val="true" data-val-regex="Sai định dạng password" data-val-regex-pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" data-val-required="Chưa nhập địa chỉ password" id="password" name="password" style="width: 190px;" type="password" value="" />
                         </td>
                         <td>
                             <span class="field-validation-valid" data-valmsg-for="email" data-valmsg-replace="true"></span>
@@ -46,25 +46,26 @@
                     </tr>
                     <tr>
                         <td style="text-align: right;">
-                            <label for="email">Gõ lại mật khẩu mới</label>
+                            <label for="re_password">Gõ lại mật khẩu</label>
                             <span class="redstar">*</span>
                         </td>
                         <td colspan="2">
-                            <input data-val="true" data-val-regex="Sai định dạng Email" data-val-regex-pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" data-val-required="Chưa nhập địa chỉ email" id="email" name="email" style="width: 190px;" type="text" value="" />
+                            <input data-val="true" data-val-regex="Sai định dạng re_password" data-val-regex-pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" data-val-required="Chưa nhập địa chỉ re_password" id="re_password" name="re_password" style="width: 190px;" type="text" value="" />
                         </td>
                         <td>
                             <span class="field-validation-valid" data-valmsg-for="email" data-valmsg-replace="true"></span>
-                            </td>
+                        </td>
                     </tr>
                     <tr>
-                        <td style="text-align: right;"><label for="captcha">Xác nhận</label>
-                            <span class="redstar">*</span>
+                        <td style="text-align: right;">
+                            <label for="captcha">Mã kiểm tra <span style="color:red">*</span></label>
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         </td>
                         <td>
-                            <img alt="Mã xác nhận" src="../RandImg.aspx.gif" tppabs="http://taikhoan.colongonline.com/RandImg.aspx" style="padding-top: 2px; vertical-align: top;">&nbsp;
-                            <input data-val="true" data-val-length="Mã xác nhận chưa chính xác" data-val-length-max="5" data-val-length-min="5" data-val-required="Chưa nhập mã xác nhận" id="captcha" name="captcha" style="text-align: center; width: 96px;" type="text" value="" />
+                            {!! Captcha::img() !!}
+                            <input data-val="true" data-val-required="Chưa nhập mã kiểm tra" id="captcha" name="captcha" onblur="check_username(this);" style="width: 90px;" type="text" value="" required/>
                         </td>
-                        <td><span class="field-validation-valid" data-valmsg-for="captcha" data-valmsg-replace="true"></span></td>
+                            
                     </tr>
                     <tr>
                         <td></td>
@@ -80,6 +81,7 @@
         </form>    
     </div>
 </div>
+
 @stop
 
 @section('end_script')

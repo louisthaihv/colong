@@ -14,9 +14,10 @@ class CardTableSeeder extends Seeder
     {
         Card::truncate();
         $data=[
-        	['name'=>'Viettel'],
-        	['name'=>'Mobiphone'],
-        	['name'=>'Vinaphone'],
+        	['name'=>'Viettel', 'image'=>'images/viettel.jpg'],
+        	['name'=>'Mobiphone', 'image'=>'images/mobi.jpg'],
+            ['name'=>'Vinaphone', 'image'=>'images/vina.jpg'],
+        	['name'=>'FPT', 'image'=>'images/fpt.jpg'],
         ];
         Card::insert($data);
     }

@@ -78,21 +78,24 @@
                 <div id="main_container">
                     <!--Content-->
                     <div class="leftcol">
-                        <div class="secur_inf1">
-                            <a href="#">Đổi mật khẩu<br></a>
+                        
+                        <div class="">
+                            <img src="{{ asset('images/info.gif') }}" alt="">
+                            <a href="#">Thông tin tài khoảnThông</a> tin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoảntài khoảnThông tin tài khoảnThông tin tài khoảntài khoảnThông tin tài khoảnThông tin tài khoản<br>
                         </div>
-                        <div class="secur_inf2">
-                            <a href="{{ route('user.profile') }}">Thông tin tài khoản<br></a>
+<div class="">
+                            <img src="{{ asset('images/info.gif') }}" alt="">
+                            <a href="#">Thông tin tài khoảnThông</a> tin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoảntin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoảntin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoản<br>
                         </div>
-                        <div class="secur_inf3">
-                        <a href="{{ route('user.thongtinnhanvat.get') }}">Thông tin nhân vật</a>                            
+<div class="">
+                            <img src="{{ asset('images/info.gif') }}" alt="">
+                            <a href="#">Thông tin tài khoảnThông</a> tin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoảntin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoảntin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoản<br>
                         </div>
-                        <div class="secur_inf4">
-                            <a href="{{ route('user.nangcapvip.get') }}">Nâng cấp vip</a>
+<div class="">
+                            <img src="{{ asset('images/info.gif') }}" alt="">
+                            <a href="#">Thông tin tài khoảnThông</a> tin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoảntin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoảntin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoản<br>
                         </div>
-                        <div class="secur_inf5">
-                            <a href="{{ route('user.thuongdatmoc.get') }}">Nhận thưởng đạt mốc</a>
-                        </div>
+                        
                     </div>
 
                     <div class="rightcol">

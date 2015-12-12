@@ -29,11 +29,16 @@
 			
 			<!--Sidebar-->
 			@include('layouts/frontend/sidebar')
+            
+        <div class="primary">
+            <div class="top-image">
+               @include('layouts/frontend/top_nav')
+            </div>
 
 			<!-- Content-->
 			@yield('content')
 
-
+            </div>
 		</div>
 		<footer></footer>
 	</div>

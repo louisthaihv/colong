@@ -78,7 +78,7 @@ class AuthController extends Controller
 
     public function getLogin(){
         if(!Auth::check())
-            return view('admin.login');
+            return view('frontend.user.user_login');
         else{
             if(Auth::user()->isAdmin()){
                 return redirect()->route('adminIndex');
@@ -182,16 +182,12 @@ class AuthController extends Controller
     //          end edit user
     //////////////////////////////////
     public function getRegister(){
-        $weeks = Week::all();
-        return view('frontend.user.register')->with(compact('weeks'));
+        return view('frontend.user.user_register');
     }
     public function postRegister(Request $request){
         $data = $request->except('_token');
-            $user1 = User::where('email',$data['email'])->first();
             $user2 = User::where('username',$data['username'])->first();
-            if(!is_null($user1)){
-                return redirect()->route('user.register')->with('error', 'Email đã tồn tại');
-            }
+            
             if(!is_null($user2)){
                 return redirect()->route('user.register')->with('error', 'Username đã tồn tại');
             }
@@ -199,9 +195,15 @@ class AuthController extends Controller
                 return redirect()->route('user.register')->with('error', 'Passwod không giống nhau.');
             }
         $user = new User;
-        $user->email = $data['email'];
+        //$user->email = $data['email'];
         $user->username = $data['username'];
-        $user->phone = $data['phone'];
+        //$user->phone = $data['phone'];
+        
+        $command = public_path().'/hash_pwd/qglpasswd.exe user ' . $data['password'];
+        $command = escapeshellcmd($command);
+        $output = system($command);
+        dump($output);
+        die;
         $user->password = \Hash::make($data['password']);
         $user->save();
 
@@ -213,19 +215,30 @@ class AuthController extends Controller
     }
 
     public function getNapthe(){
-        $weeks = Week::all();
         $cards = Card::all();
-        $servers = Server::all();
-        return view('frontend.user.card')->with(compact('weeks', 'cards', 'servers'));
+        return view('frontend.user.card')->with(compact('cards'));
     } 
-    public function postNapthe(Request $request){
+
+    public function getAcNapthe($id){
+        $card = Card::findOrfail($id);
+        return view('frontend.user.frm_napthe')->with('card', $card);
+    }
+
+    public function postNapthe(Request $request, $id){
         $data = $request->except('_token');
         $card_user = new CardUser;
+
         $card_user->user_id = Auth::user()->id;
-        $card_user->card_code = $data['card_code'];
-        $card_user->card_id = $data['card_id'];
-        $card_user->card_series = $data['card_series'];
-        $card_user->server_id = $data['server_id'];
+        $rules = ['captcha' => 'required|captcha'];
+            $validator = Validator::make($data, $rules);
+            if ($validator->fails())
+            {
+                dd('captcha wrong');
+            }
+            else
+            {
+                dd('captcha ok');
+            }
         $card_user->save();
         return redirect()->route('user.napthe.get')->with('message','Nạp thẻ thành công');
     }

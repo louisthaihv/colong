@@ -3,21 +3,14 @@
             <h1><img src="{{ asset('frontend/images/logo.png') }}" alt="Cổ long online"/></h1>
             <nav>
                 <ul>
-                    <li><a href="#">
+                    <li><a href="{{ route('frontend.index') }}">
                         <img src="{{ asset('frontend/images/navbar/trang-chu.png') }}" alt="Trang chu"/>
                     </a></li>
-                    <li><a href="#">
-                        <img src="{{ asset('frontend/images/navbar/dac-trung.png') }}" alt="dac trung"/>
+                    @foreach($head_cats as $category)
+                    <li><a href="{{ route('frontend.category.show', $category->id) }}">
+                        <img src="{{ asset($category->image_url) }}" alt="{{ $category->name }}"/>
                     </a></li>
-                    <li><a href="#">
-                        <img src="{{ asset('frontend/images/navbar/huong-dan.png') }}" alt="huong dan"/>
-                    </a></li>
-                    <li><a href="#">
-                        <img src="{{ asset('frontend/images/navbar/hoat-dong.png') }}" alt="hoat dong"/>
-                    </a></li>
-                    <li><a href="#">
-                        <img src="{{ asset('frontend/images/navbar/cong-dong.png') }}" alt="cong dong"/>
-                    </a></li>
+                    @endforeach
                 </ul>
             </nav>
 

@@ -15,6 +15,7 @@ class CreatePopupsTable extends Migration
         Schema::create('popups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image_url');
+            $table->text('link_popup');
             $table->boolean('status')->default(0);
             $table->timestamps();
         });
