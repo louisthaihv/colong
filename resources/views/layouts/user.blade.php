@@ -55,10 +55,13 @@
             <div id="main_menu">
                 <div id="main_menu_container">
                     <div class="main_menu_item1">
-                        <a href="Login-ReturnUrl=-.htm" tppabs="" title="">Tài khoản</a>
+                        <a href="{{ route('user.profile',Auth::user()->id) }}" tppabs="" title="">Tài khoản</a>
+                        @if(Auth::user()->isAdmin())
+                                <li tyle="border-right: 0 !important"><a href="{{ route('adminIndex') }}">Giao diện quản lý</a></li>
+                        @endif
                     </div>
                     <div class="main_menu_item2">
-                        <a href="../Payment.htm" tppabs="" title="">Nạp KNB</a></div>
+                        <a href="{{ route('user.napthe.get') }}" tppabs="" title="">Nạp KNB</a></div>
                     <div class="main_menu_item2">
                         <a target="_blank" href="" tppabs="" title="" rel="nofollow">Hỗ trợ</a>
                     </div>

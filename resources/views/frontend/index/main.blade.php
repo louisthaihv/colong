@@ -20,7 +20,7 @@
         </div>
         <div class="featured">
             <ul>
-                <li><a href="">
+                <li><a href="{{ route('user.napthe.get') }}">
                 <img src="{{ asset('frontend/images/button/nap-the.png') }}" alt=""/></a></li>
                 <li><a href="">
                 <img src="{{ asset('frontend/images/button/da-thong-kinh-mach.png') }}" alt=""/></a></li>
@@ -38,28 +38,35 @@
             <div class="tin-tuc">
                 <h5><img src="{{ asset('frontend/images/title-news.png') }}" alt=""/></h5>
                 <div class="news">
+                    <a href="{{ route('frontend.article.show') }}">
                     <img src="{{ asset('frontend/images/image-news.png') }}" alt=""/>
-                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6>
+                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6></a>
                     <p>Thập quốc đã chứng kiến biết bao duyên kỳ ngộ tương phùng cũng như phân ly giữa anh hùng hào...</p>
                 </div>
                 <div class="news">
+                    <a href="{{ route('frontend.article.show') }}">
                     <img src="{{ asset('frontend/images/image-news.png') }}" alt=""/>
-                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6>
+                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6></a>
                     <p>Thập quốc đã chứng kiến biết bao duyên kỳ ngộ tương phùng cũng như phân ly giữa anh hùng hào...</p>
-                </div>
-                <div class="news">
+                </div><div class="news">
+                    <a href="{{ route('frontend.article.show') }}">
                     <img src="{{ asset('frontend/images/image-news.png') }}" alt=""/>
-                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6>
+                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6></a>
                     <p>Thập quốc đã chứng kiến biết bao duyên kỳ ngộ tương phùng cũng như phân ly giữa anh hùng hào...</p>
-                </div>
-                <div class="news">
+                </div><div class="news">
+                    <a href="{{ route('frontend.article.show') }}">
                     <img src="{{ asset('frontend/images/image-news.png') }}" alt=""/>
-                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6>
+                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6></a>
                     <p>Thập quốc đã chứng kiến biết bao duyên kỳ ngộ tương phùng cũng như phân ly giữa anh hùng hào...</p>
-                </div>
-                <div class="news">
+                </div><div class="news">
+                    <a href="{{ route('frontend.article.show') }}">
                     <img src="{{ asset('frontend/images/image-news.png') }}" alt=""/>
-                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6>
+                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6></a>
+                    <p>Thập quốc đã chứng kiến biết bao duyên kỳ ngộ tương phùng cũng như phân ly giữa anh hùng hào...</p>
+                </div><div class="news">
+                    <a href="{{ route('frontend.article.show') }}">
+                    <img src="{{ asset('frontend/images/image-news.png') }}" alt=""/>
+                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6></a>
                     <p>Thập quốc đã chứng kiến biết bao duyên kỳ ngộ tương phùng cũng như phân ly giữa anh hùng hào...</p>
                 </div>
             </div>

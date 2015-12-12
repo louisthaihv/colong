@@ -4,15 +4,15 @@
                     <div class="cat-dat-ngay"><a href="#">
                     <img src="{{ asset('frontend/images/images/cai-dat-ngay.png') }}" alt=""/></a></div>
                     <div>
-                        <div class="nap-the"><a href="#">
+                        <div class="nap-the"><a href="{{ route('user.napthe.get') }}">
                         <img src="{{ asset('frontend/images/images/nap-the.png') }}" alt=""/></a></div>
-                        <div class="dang-ky"><a href="#">
+                        <div class="dang-ky"><a href="{{ route('user.register') }}">
                         <img src="{{ asset('frontend/images/images/dang-ky.png') }}" alt=""/></a></div>
                     </div>
 
                 </div>
                 <div class="quan-ly-tai-khoan">
-                    <a href="#">
+                    <a href="{{ asset('frontend/images/images/dang-ky.png') }}">
                         <img src="{{ asset('frontend/images/quan-ly-tai-khoan.png') }}" alt=""/>
                     </a>
                 </div>

@@ -6,21 +6,20 @@
 @section('content')
 <div id="content_news">THÔNG TIN NHÂN VẬT<br><br><br><br><br>
     <div style="text-align: center; color: #b8b8b8"> SERVER </div>
-    <div class="imgcenter">
-        <div class="imgvip">
-            <a target="_blank" href="img_fjords.jpg">
-                <img src="{{ asset('images/server1.png')}}" width="300" height="200">
-            </a>
-            
-        </div>
+        <div class="imgcenter">
+            <div class="imgvip">
+                <a target="_blank" href="img_fjords.jpg">
+                    <img src="{{ asset('images/server1.png')}}" width="300" height="200">
+                </a>
+                
+            </div>
 
-        <div class="imgvip">
-            <a target="_blank" href="img_forest.jpg">
-                <img src="{{asset('images/server2.png')}}" width="300" height="200">
-            </a>
-            
+            <div class="imgvip">
+                <a target="_blank" href="img_forest.jpg">
+                    <img src="{{asset('images/server2.png')}}" width="300" height="200">
+                </a>
+            </div>
         </div>
-    </div>
 
 
     <!--
