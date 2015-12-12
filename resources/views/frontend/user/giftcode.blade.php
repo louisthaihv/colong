@@ -60,8 +60,7 @@
                                 <span class="redstar">*</span>
                             </td>
                             <td>
-                                <img alt="Mã xác nhận" src="../RandImg.aspx.gif" tppabs="http://taikhoan.colongonline.com/RandImg.aspx" style="padding-top: 2px; vertical-align: top;">&nbsp;
-                                <input data-val="true" data-val-length="Mã xác nhận chưa chính xác" data-val-length-max="5" data-val-length-min="5" data-val-required="Chưa nhập mã xác nhận" id="captcha" name="captcha" style="text-align: center; width: 96px;" type="text" value="" />
+                                {!! app('captcha')->display(); !!}
                             </td>
                             <td><span class="field-validation-valid" data-valmsg-for="captcha" data-valmsg-replace="true"></span></td>
                         </tr>

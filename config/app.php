@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -140,6 +140,7 @@ return [
         /*
          * Application Service Providers...
          */
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
@@ -159,7 +160,6 @@ return [
     */
 
     'aliases' => [
-
         'App'       => Illuminate\Support\Facades\App::class,
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,
         'Auth'      => Illuminate\Support\Facades\Auth::class,
@@ -193,6 +193,7 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        
 
     ],
 
