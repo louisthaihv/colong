@@ -12,6 +12,8 @@
 */
 Route::get('/', ['as'=>'frontend.index', 'uses'=>'frontend\IndexController@index']);
 Route::get('/category/{id}', ['as'=>'frontend.category.show', 'uses'=>'frontend\IndexController@showCategory']);
+Route::get('/clan', ['as'=>'frontend.clan', 'uses'=>'frontend\IndexController@showClan']);
+Route::get('/clan/{id}', ['as'=>'frontend.clan.show', 'uses'=>'frontend\IndexController@detailClan']);
 Route::get('/article/{id}', ['as'=>'frontend.article.show', 'uses'=>'frontend\IndexController@showArticle']);
 Route::get('/auth/login', 		['as'=>'authLogin', 	'uses'=>'Auth\AuthController@getLogin']);
 Route::post('/auth/login', 		['as'=>'authLogin', 	'uses'=>'Auth\AuthController@postLogin']);

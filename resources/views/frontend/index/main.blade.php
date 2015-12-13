@@ -1,250 +1,79 @@
 @extends('layouts.frontend.master_frontend')
+@section('start_css')
+<style type="text/css">
+    .thumb{
+        max-height: 70px;
+        max-width: 70px;
+    }
 
+    .galary{
+        max-height: 320px;
+        overflow: hidden;
+    }
+</style>
+@stop
 @section('content')
     
         <div class="featured">
-            <ul>
-                <li><a href="{{ route('user.napthe.get') }}">
-                <img src="{{ asset('frontend/images/button/nap-the.png') }}" alt=""/></a></li>
-                <li><a href="">
-                <img src="{{ asset('frontend/images/button/da-thong-kinh-mach.png') }}" alt=""/></a></li>
-                <li><a href="">
-                <img src="{{ asset('frontend/images/button/vong-quay-may-man.png') }}" alt=""/></a></li>
-                <li><a href="">
-                <img src="{{ asset('frontend/images/button/tro-thu-dai-hiep.png') }}" alt=""/></a></li>
-                <li><a href="">
-                <img src="{{ asset('frontend/images/button/may-chu-moi.png') }}" alt=""/></a></li>
-                <li><a href="">
-                <img src="{{ asset('frontend/images/button/dua-top-server-moi.png') }}" alt=""/></a></li>
+            <ul class="bxslider">
+            @foreach($galaries as $galary)
+                <li  class="galary" >
+                    <a href="{{ $galary->link_galaries }}" target="_blank"> 
+                        <img src="{{ $galary->image_url }}" />
+                    </a>
+                </li>
+            @endforeach
             </ul>
         </div>
         <div class="tintuc-rank">
             <div class="tin-tuc">
-                <h5><img src="{{ asset('frontend/images/title-news.png') }}" alt=""/></h5>
+                <h5><img src="{{ asset($news->image_url) }}" alt=""/></h5>
+                @foreach($news_articles as $article)
                 <div class="news">
-                    <a href="{{ route('frontend.article.show') }}">
-                    <img src="{{ asset('frontend/images/image-news.png') }}" alt=""/>
-                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6></a>
-                    <p>Thập quốc đã chứng kiến biết bao duyên kỳ ngộ tương phùng cũng như phân ly giữa anh hùng hào...</p>
+                    <a href="{{ route('frontend.article.show', $article->id) }}">
+                    <img class="thumb"  src="{{ asset($article->image_url) }}" alt=""/>
+                    <h6 class="title">[{{ date("m-d", strtotime($article->created_at)) }}] {!! $article->title !!}</h6></a>
+                    <p>
+                        {!! $article->content !!}
+                    </p>
                 </div>
-                <div class="news">
-                    <a href="{{ route('frontend.article.show') }}">
-                    <img src="{{ asset('frontend/images/image-news.png') }}" alt=""/>
-                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6></a>
-                    <p>Thập quốc đã chứng kiến biết bao duyên kỳ ngộ tương phùng cũng như phân ly giữa anh hùng hào...</p>
-                </div><div class="news">
-                    <a href="{{ route('frontend.article.show') }}">
-                    <img src="{{ asset('frontend/images/image-news.png') }}" alt=""/>
-                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6></a>
-                    <p>Thập quốc đã chứng kiến biết bao duyên kỳ ngộ tương phùng cũng như phân ly giữa anh hùng hào...</p>
-                </div><div class="news">
-                    <a href="{{ route('frontend.article.show') }}">
-                    <img src="{{ asset('frontend/images/image-news.png') }}" alt=""/>
-                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6></a>
-                    <p>Thập quốc đã chứng kiến biết bao duyên kỳ ngộ tương phùng cũng như phân ly giữa anh hùng hào...</p>
-                </div><div class="news">
-                    <a href="{{ route('frontend.article.show') }}">
-                    <img src="{{ asset('frontend/images/image-news.png') }}" alt=""/>
-                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6></a>
-                    <p>Thập quốc đã chứng kiến biết bao duyên kỳ ngộ tương phùng cũng như phân ly giữa anh hùng hào...</p>
-                </div><div class="news">
-                    <a href="{{ route('frontend.article.show') }}">
-                    <img src="{{ asset('frontend/images/image-news.png') }}" alt=""/>
-                    <h6 class="title">[22-11] Mở cổng đăng ký chuyển server...</h6></a>
-                    <p>Thập quốc đã chứng kiến biết bao duyên kỳ ngộ tương phùng cũng như phân ly giữa anh hùng hào...</p>
-                </div>
+                @endforeach
             </div>
             <div class="rank">
                 <div class="bang-xep-hang">
                     <h3>Bảng xếp hạng</h3>
                     <div id="bx-tabs">
                         <select>
-                            <option value="#bx-tabs-1">Chuyển thế1</option>
-                            <option value="#bx-tabs-2">Chuyển thế2</option>
-                            <option value="#bx-tabs-3">Chuyển thế3</option>
+                        @foreach($servers as $key => $server)
+                            <option value="#bx-tabs-{{ $key }}">{{ $server->name }}</option>
+                        @endforeach
                         </select>
                         <ul id="list-tab" style="display: none;">
-                            <li><a href="#bx-tabs-1">Chuyển thế</a></li>
-                            <li><a href="#bx-tabs-2">Chuyển thế</a></li>
-                            <li><a href="#bx-tabs-3">Chuyển thế</a></li>
+                        @foreach($servers as $key => $server)
+                            <li><a href="#bx-tabs-{{ $key }}">{{ $server->name }}</a></li>
+                        @endforeach
                         </ul>
-                        <div id="bx-tabs-1">
+                        @foreach($servers as $key =>$server)
+                        <div id="bx-tabs-{{ $key }}">
                             <table>
+                            <?php 
+                                $characters = $server->characters()->orderBy('level', 'DESC')->paginate(PAGINATE);
+                            ?>
                                 <tr>
                                     <th>Tên nhân vật</th>
                                     <th>CS</th>
                                     <th>Cấp</th>
                                 </tr>
+                            @foreach($characters as $character)
                                 <tr>
-                                    <td>1 Bkavpro</td>
-                                    <td>1</td>
-                                    <td>190</td>
+                                    <th>{{ $character->name }}</th>
+                                    <th>{{ $character->cs }}</th>
+                                    <th>{{ $character->level }}</th>
                                 </tr>
-                                <tr>
-                                    <td>2 Bkavpro</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>3 Bkavpro</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>4 Bkavpro</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>5 Bkavpro</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>6 Bkavpro</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>7 Bkavpro</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>8 Bkavpro</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>9 Bkavpro</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>10 Bkavpro</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
+                            @endforeach
                             </table>
                         </div>
-                        <div id="bx-tabs-2">
-                            <table>
-                                <tr>
-                                    <th>Tên nhân vật</th>
-                                    <th>CS</th>
-                                    <th>Cấp</th>
-                                </tr>
-                                <tr>
-                                    <td>1 Chihai</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>2 Chihai</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>3 Chihai</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>4 Chihai</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>5 Chihai</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>6 Chihai</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>7 Chihai</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>8 Chihai</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>9 Chihai</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>10 Chihai</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div id="bx-tabs-3">
-                            <table>
-                                <tr>
-                                    <th>Tên nhân vật</th>
-                                    <th>CS</th>
-                                    <th>Cấp</th>
-                                </tr>
-                                <tr>
-                                    <td>1 zooKieuphong</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>2 zooKieuphong</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>3 zooKieuphong</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>4 zooKieuphong</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>5 zooKieuphong</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>6 zooKieuphong</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>7 zooKieuphong</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>8 zooKieuphong</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>9 zooKieuphong</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                                <tr>
-                                    <td>10 zooKieuphong</td>
-                                    <td>1</td>
-                                    <td>190</td>
-                                </tr>
-                            </table>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="facebook">
@@ -279,5 +108,16 @@
         </div>
 @stop
 @section('end_script')
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+      $('.bxslider').bxSlider(
+           { 
+                auto: true,
+                pager: false
+            }
+        );
 
+    });
+</script>
 @stop

@@ -17,15 +17,15 @@ class GalaryTableSeeder extends Seeder
         	[
                 'title'=>"",
         		'status'=>1,
-        		'image_url'=>'frontend/images/baner1.png',
+        		'image_url'=>'frontend/images/galaries/galary1.jpg',
         	],[
                 'title'=>"",
         		'status'=>1,
-        		'image_url'=>'frontend/images/ABCSD.png',
+        		'image_url'=>'frontend/images/galaries/galary2.jpg',
         	],[
                 'title'=>"",
         		'status'=>1,
-        		'image_url'=>'frontend/images/baner1.png',
+        		'image_url'=>'frontend/images/galaries/galary3.jpg',
         	],
         ];
         Galary::insert($data);

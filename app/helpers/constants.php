@@ -10,6 +10,6 @@ define('DISABLE_STRING', 'BLOOKED');
 define('EVENT_FEATURE', 8);
 define('NEW_OLD_ARTICLE', 5);
 define('TOP_NAV', 0);
-define('TOP_CAT', 2);
+define('NEWS_CAT', 2);
 define('HEADER_CAT', 1);
 define('BOTTOM_CAT', 3);

@@ -16,7 +16,7 @@ class CategoryTableSeeder extends Seeder
             [
                 "name" => "Tin tức",
                 "type"=>2,
-                "image_url"=>""
+                "image_url"=>"frontend/images/title-news.png"
             ],
             [
                 "name" => "Hướng dẫn",
@@ -72,11 +72,7 @@ class CategoryTableSeeder extends Seeder
                 "name" => "trang bi",
                 "type" =>0,
                 "image_url"=>"frontend/images/button/trang-bi.png"
-            ],[
-                "name" => "Mon phai",
-                "type" =>0,
-                "image_url"=>"frontend/images/button/mon-phai.png"
-            ],
+            ]
          ];
 
          Category::insert($data);

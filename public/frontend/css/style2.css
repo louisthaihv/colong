@@ -150,7 +150,7 @@ header ul li {float: left; display: inline-block; text-transform: uppercase; wid
 .content .sidebar .tinh-nang-hang-ngay #tn-tabs .tn-tabs {padding: 0px 20px;}
 .content .sidebar .tinh-nang-hang-ngay #tn-tabs .tn-tabs ul li {padding: 10px 0px; border-bottom: 1px solid #fff;}
 .content .primary {float: left; overflow: hidden; width: 700px;}
-.content .primary .featured {background: url("../images/feature.png") no-repeat; width: 700px; height: 315px; }
+.content .primary .featured {background: url("../images/background.png") no-repeat; width: 700px; height: 315px; }
 .content .primary .featured ul {width: 270px;  height: 304px; padding-top: 5px; padding-left: 6px;}
 .content .primary .featured ul li {line-height: 0px}
 .content .top-image {overflow: hidden; padding-top: 180px;}
