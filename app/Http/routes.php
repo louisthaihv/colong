@@ -72,6 +72,8 @@ Route::group(["prefix" => "admin", "namespace" => "admin", "middleware" => "isSt
 	Route::resource("cards","CardController");
 	Route::resource("server","ServerController");
 	Route::resource("giftUser","GiftUserController");
+	Route::resource("item","ItemController");
+	Route::resource("character","CharacterController");
 		
 });
 Route::group(["prefix" => "admin", "namespace" => "admin", "middleware" => ["auth","isAdmin"]], function(){

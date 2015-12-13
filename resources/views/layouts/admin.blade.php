@@ -14,7 +14,6 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('admins/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('fronts/css/bootstrap-formhelpers.min.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="{{ asset('admins/css/sb-admin.css') }}" rel="stylesheet">
@@ -117,6 +116,14 @@
                         <a href="{{ route('admin.server.index') }}">
                         <i class="fa fa-fw fa-dashboard"></i>Quản lý Server</a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.item.index') }}">
+                        <i class="fa fa-fw fa-dashboard"></i>Quản lý Item</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.character.index') }}">
+                        <i class="fa fa-fw fa-dashboard"></i>Quản lý Character</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -147,7 +154,6 @@
     <script src="{{ asset('admins/js/jquery.js') }}"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('admins/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('fronts/js/bootstrap-formhelpers.min.js') }}"></script>
     @yield('script_close')
 </body>
 </html>
