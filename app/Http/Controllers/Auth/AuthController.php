@@ -199,9 +199,8 @@ class AuthController extends Controller
         $user->username = $data['username'];
         //$user->phone = $data['phone'];
         
-        $command = public_path().'/hash_pwd/qglpasswd.exe user ' . $data['password'];
-        $command = escapeshellcmd($command);
-        $output = system($command);
+        $command = '/usr/bin/wine /var/www/zgame/public/hash_pwd/qglpasswd.exe user 123';
+        $output = shell_exec($command);
         dump($output);
         die;
         $user->password = \Hash::make($data['password']);

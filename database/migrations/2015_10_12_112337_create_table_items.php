@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGiftsTable extends Migration
+class CreateTableItems extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,13 @@ class CreateGiftsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gifts', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('item_id')->unsigned();
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
-            $table->string('code');
-            $table->text('description');
+            $table->string('name');
+            $table->string('image_url');
+            $table->integer('qualtity')->default(1);
+            $table->integer('dis_qualtity')->default(0);
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateGiftsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('gifts');
+        Schema::drop('items');
     }
 }

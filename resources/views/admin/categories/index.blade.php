@@ -45,6 +45,6 @@
             
             <a class="btn btn-success" href="{{ route('admin.categories.create') }}">Tạo mới</a>
         </div>
-        <center>{{ $categories->appends(Request::except('page'))->render() }}</center>
+        <center>{!! $categories->appends(Request::except('page'))->render() !!}</center>
     </div>
 @endsection
