@@ -14,6 +14,8 @@ class CreateTableItems extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('type_id')->unsigned();
+            $table->foreign('type_id')->references('id')->on('item_types')->onDelete('cascade');
             $table->string('name');
             $table->string('image_url');
             $table->integer('qualtity')->default(1);

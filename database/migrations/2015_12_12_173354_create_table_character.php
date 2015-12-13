@@ -21,6 +21,8 @@ class CreateTableCharacter extends Migration
             $table->integer('clan_id')->unsigned();
             $table->foreign('clan_id')->references('id')->on('clans')->onDelete('cascade');
             $table->integer('level')->unsigned();
+            $table->integer('exp')->unsigned();
+            $table->integer('change_count')->unsigned()->default(0);
             $table->integer('cs')->unsigned();
             $table->boolean('status');
             $table->string('name')->unique();

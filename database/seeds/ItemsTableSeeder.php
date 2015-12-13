@@ -16,6 +16,8 @@ class ItemsTableSeeder extends Seeder
         $data=[
 
         	[
+            
+            'type_id'=>1,
         	'name'=>"cánh rồng",
         	'image_url'=>'images/items/canh.jpg'
         	],

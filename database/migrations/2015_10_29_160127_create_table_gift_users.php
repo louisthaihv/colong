@@ -18,6 +18,7 @@ class CreateTableGiftUsers extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('gift_id')->unsigned();
             $table->foreign('gift_id')->references('id')->on('gifts')->onDelete('cascade');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
