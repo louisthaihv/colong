@@ -47,7 +47,8 @@ Route::group(["middleware" => "auth"], function(){
 
 	////Thong tin nhan vat
 	Route::get('/user/thongtinnhanvat',						['as'=>'user.thongtinnhanvat.get', 'uses'=>'Auth\AuthController@getThongtinnhanvat']);
-	Route::post('/user/thongtinnhanvat',					['as'=>'user.thongtinnhanvat.post', 'uses'=>'Auth\AuthController@postThongtinnhanvat']);
+	Route::get('/user/thongtinnhanvat/{server_id}',			['as'=>'user.thongtinnhanvat.show', 'uses'=>'Auth\AuthController@showThongtinnhanvat']);
+	Route::post('/user/thongtinnhanvat/{id}',					['as'=>'user.thongtinnhanvat.post', 'uses'=>'Auth\AuthController@postThongtinnhanvat']);
 
 	/////end thong tin nhan vat
 

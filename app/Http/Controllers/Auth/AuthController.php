@@ -281,21 +281,14 @@ class AuthController extends Controller
     //Thongtinnhanvat-->
 
     public function getThongtinnhanvat(){
-        $weeks = Week::all();
-        return view('frontend.user.thongtinnhanvat')->with(compact('weeks'));
+        $servers = Server::all();
+        return view('frontend.user.thongtinnhanvat')->with(compact('servers'));
+    }    
+    public function showThongtinnhanvat($id){
+        $servers = Server::all();
+        return view('frontend.user.nhanvat')->with(compact('servers'));
     }
-    public function postThongtinnhanvat(Request $request){
-        $data = $request()->except('_token');
-        $gift = Gift::where('gift_code', $data['gift_code'])->first();
-        if(is_null($gift)){
-            return redirect()->route('user.thongtinnhanvat.get')->with('message', 'Gift code sai!');
-        }
-        $user_gift = new GiftUser();
-        $user_gift->gift_id = $gift->id;
-        $user_gift->user_id = Auth::user()->id;
-        $user_gift->save();
-        return redirect()->route('user.thongtinnhanvat.get')->with('message', 'Nhận quà thành công!');
-    }
+    
 
     ///////////////End Thongtin nhan vat
 

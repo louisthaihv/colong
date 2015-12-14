@@ -4,21 +4,7 @@
 @stop
 
 @section('content')
-<div id="content_news">THÔNG TIN NHÂN VẬT<br><br>
-    <div style="text-align: center; color: #b8b8b8"> SERVER </div>
-        <div class="imgcenter">
-        @foreach($servers as $server )
-            <div class="imgvip">
-                <a target="_blank" href="{{ route ('user.thongtinnhanvat.show', $server->id)}}">
-                    <img src="{{ asset($server->image)}}" width="300" height="200">
-                </a>
-            </div>
-        @endforeach
-        </div>
-    </div>
-
-
-    <!--
+<div id="content_news">THÔNG TIN NHÂN VẬT<br>
         <div style="padding: 20px 0px 10px 0px;"></div>
         <div id="content_news_text">
             <form action="" autocomplete="off" id="mainForm" method="post">            
@@ -33,14 +19,6 @@
                                 </div>
                         </tr>
                         &nbsp;&nbsp;
-                        <div>Server: 
-                            <select>
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="opel">Opel</option>
-                                <option value="audi">Audi</option>
-                            </select>
-                        </div>
                         <table class="tableform1">
                             <tr>
                                 <th>STT</th>
@@ -100,7 +78,8 @@
                     </tbody>
                 </table>
             </form>    
-        </div>-->
+        </div>
+</div>
 @stop
 
 @section('end_script')
