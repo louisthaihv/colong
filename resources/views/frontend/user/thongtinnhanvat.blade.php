@@ -104,8 +104,8 @@
                     </tbody>
                 </table>
             </form>    
-        </div>
-    </div>-->
+        </div>-->
+    </div>
 @stop
 
 @section('end_script')
