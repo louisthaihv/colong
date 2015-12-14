@@ -93,7 +93,7 @@ class AuthController extends Controller
         $this->validate($request, [
             'username' => 'required', 'password' => 'required',
         ]);
-        $email_credentials=['email'=>$request->get('username'), 'password'=>$request->get('password')];
+        
         $username_credentials=['username'=>$request->get('username'), 'password'=>$request->get('password')];
         if (Auth::attempt($email_credentials, $request->has('remember')))
         {
@@ -199,10 +199,7 @@ class AuthController extends Controller
         $user->username = $data['username'];
         //$user->phone = $data['phone'];
         
-        $command = '/usr/bin/wine /var/www/zgame/public/hash_pwd/qglpasswd.exe user 123';
-        $output = shell_exec($command);
-        dump($output);
-        die;
+    
         $user->password = \Hash::make($data['password']);
         $user->save();
 

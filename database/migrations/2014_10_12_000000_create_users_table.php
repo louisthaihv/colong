@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('username')->unique();
             $table->string('password', 60)->default(\Hash::make('123456'));
             $table->date('birthday');

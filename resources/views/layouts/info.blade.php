@@ -79,23 +79,30 @@
                     <!--Content-->
                     <div class="leftcol">
                         
-                        <div class="">
-                            <img src="{{ asset('images/info.gif') }}" alt="">
-                            <a href="#">Thông tin tài khoảnThông</a> tin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoảntài khoảnThông tin tài khoảnThông tin tài khoảntài khoảnThông tin tài khoảnThông tin tài khoản<br>
-                        </div>
-<div class="">
-                            <img src="{{ asset('images/info.gif') }}" alt="">
-                            <a href="#">Thông tin tài khoảnThông</a> tin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoảntin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoảntin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoản<br>
-                        </div>
-<div class="">
-                            <img src="{{ asset('images/info.gif') }}" alt="">
-                            <a href="#">Thông tin tài khoảnThông</a> tin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoảntin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoảntin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoản<br>
-                        </div>
-<div class="">
-                            <img src="{{ asset('images/info.gif') }}" alt="">
-                            <a href="#">Thông tin tài khoảnThông</a> tin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoảntin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoảntin tài khoảnThông tin tài khoảnThông tin tài khoảnThông tin tài khoản<br>
-                        </div>
                         
+                        
+
+                        <div class="secur_ind">
+                            Trang tài khoản<br>
+                            <br>
+                            
+                        </div>
+
+                        <div class="secur_inf">
+                            <img src="{{ asset('images/info.gif') }}" alt=""><span class="bold">Tài khoản</span><br>
+                            Đây là hệ thống tài khoản dành riêng cho dịch vụ trò chơi Cổ Long Online.</div>
+                        <div class="secur_inf">
+                            <img src="{{ asset('images/info.gif') }}" alt=""><span class="bold">Đăng ký nhanh chóng</span><br>
+                            Chỉ cần vài bước đơn giản là bạn có ngay một tài khoản và có thể lập tức tham gia Cổ Long Online.
+                        </div>
+                        <div class="secur_inf">
+                            <img src="{{ asset('images/info.gif') }}" alt=""><span class="bold">Bảo vệ tài khoản game</span><br>
+                            Không chia sẻ tài khoản với người khác. Tuyệt đối không dùng các phần mềm Auto,
+                            bot, hack để tránh bị keylog dẫn đến mất tài khoản game.<br>
+                            Tài khoản, vật phẩm trong game bị mất sẽ không thể tìm lại
+                        </div>
+
+
                     </div>
 
                     <div class="rightcol">
