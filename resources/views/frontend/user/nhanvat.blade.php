@@ -14,7 +14,7 @@
                         <tr>
                             <td style="width: 150px;"></td>
                                 <div class="notice" id="infoText">
-                                    - Hệ thống chỉ cho phép đổi tên nhân vật co level < 10 <br><BR>
+                                    - Hệ thống chỉ cho phép đổi tên nhân vật có level < 10 <br><BR>
                                     - Lưu ý: Tên nhân vật chỉ được phép bao gồm kí tự a-z, A-Z, 0-9, -, _,...
                                 </div>
                         </tr>
@@ -29,51 +29,18 @@
                                 <th>EXP</th>
                                 <th>THAO TÁC</th>
                             </tr>
+                            @foreach($characters as $characters )
                             <tr>
-                                <td>1</td>
-                                <td>222</td>
-                                <td>NEWBIE</td>
-                                <td>ngọc lang quân</td>
-                                <td>1</td>
-                                <td>12000</td>
+                                <td> {!! $characters->id !!} </td>
+                                <td> {!! $characters->user_id !!} </td>
+                                <td> {!! $characters->name !!} </td>
+                                <td> {!! $characters->clan_id !!} </td>
+                                <td> {!! $characters->level !!} </td>
+                                <td> {!! $characters->exp !!} </td>
                                 <td>ĐỔI TÊN</td>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>222</td>
-                                <td>NEWBIE</td>
-                                <td>ngọc lang quân</td>
-                                <td>1</td>
-                                <td>12000</td>
-                                <td>ĐỔI TÊN</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>222</td>
-                                <td>NEWBIE</td>
-                                <td>ngọc lang quân</td>
-                                <td>1</td>
-                                <td>12000</td>
-                                <td>ĐỔI TÊN</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>222</td>
-                                <td>NEWBIE</td>
-                                <td>ngọc lang quân</td>
-                                <td>1</td>
-                                <td>12000</td>
-                                <td>ĐỔI TÊN</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>222</td>
-                                <td>NEWBIE</td>
-                                <td>ngọc lang quân</td>
-                                <td>1</td>
-                                <td>12000</td>
-                                <td>ĐỔI TÊN</td>
-                            </tr>
+                            @endforeach
+                            
                         </table>
                     </tbody>
                 </table>

@@ -17,6 +17,7 @@ use App\Card;
 use App\Gift;
 use App\GiftUser;
 use App\Server;
+use App\Character;
 
 class AuthController extends Controller
 {
@@ -285,8 +286,11 @@ class AuthController extends Controller
         return view('frontend.user.thongtinnhanvat')->with(compact('servers'));
     }    
     public function showThongtinnhanvat($id){
-        $servers = Server::all();
-        return view('frontend.user.nhanvat')->with(compact('servers'));
+        //$characters = Character::all();
+        //return view('frontend.user.nhanvat')->with(compact('characters'));
+        $servers = Server::findOrFail($id);
+        $characters = $servers->characters()->paginate(PAGINATE);
+        return view('frontend.user.nhanvat')->with(compact('characters','servers'));
     }
     
 
