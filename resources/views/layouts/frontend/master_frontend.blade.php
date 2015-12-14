@@ -33,10 +33,8 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 <!--End facebook js-->
 	@include("layouts.frontend.header")
-	<div class="content">
+	<div class="content row">
 		<div class="container">
-            <!-- <img src="{{ asset('frontend/images/NhanVatBG/NhanVat.png') }}" alt="" class="img-stick"/>
-            <img src="{{ ('frontend/images/NhanVatBG/NhanVat1.png') }}" alt="" class="img-stick2"/> -->
             <div class="row">
                 <div class="col-sm-3">
                     <!--Sidebar-->

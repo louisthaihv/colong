@@ -1,15 +1,8 @@
 <div class="sidebar">
-    <p><img src="{{ asset('frontend/images/ho-tro.png') }}" alt="ho tro"/></p>
     <div class="register">
-        <div class="cat-dat-ngay"><a href="#">
-        <img src="{{ asset('frontend/images/images/cai-dat-ngay.png') }}" alt=""/></a></div>
-        <div>
-            <div class="nap-the"><a href="{{ route('user.napthe.get') }}">
-            <img src="{{ asset('frontend/images/images/nap-the.png') }}" alt=""/></a></div>
-            <div class="dang-ky"><a href="{{ route('user.register') }}">
-            <img src="{{ asset('frontend/images/images/dang-ky.png') }}" alt=""/></a></div>
-        </div>
-
+        <a class="download-now" href="#"></a>
+        <a class="card" href="{{ route('user.napthe.get') }}"></a>
+        <a class="signup" href="{{ route('user.register') }}"></a>
     </div>
     <div class="quan-ly-tai-khoan">
         <a href="{{ route('user.thongtinnhanvat.get') }}">
