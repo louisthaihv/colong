@@ -8,6 +8,7 @@
 <link type="image/x-icon" src="{{ asset('frontend/images/logo-trutien.png') }}" rel="icon">
 <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/images/logo-trutien.png') }}" />
     <!-- Bootstrap -->
+    <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/jquery.bxslider.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/style2.css') }}" rel="stylesheet">
 
@@ -32,22 +33,22 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 <!--End facebook js-->
 	@include("layouts.frontend.header")
-	<div class="content">
+	<div class="content row">
 		<div class="container">
-            <img src="{{ asset('frontend/images/NhanVatBG/NhanVat.png') }}" alt="" class="img-stick"/>
-            <img src="{{ ('frontend/images/NhanVatBG/NhanVat1.png') }}" alt="" class="img-stick2"/>
-			
-			<!--Sidebar-->
-			@include('layouts/frontend/sidebar')
-            
-        <div class="primary">
-            <div class="top-image">
-               @include('layouts/frontend/top_nav')
-            </div>
-
-			<!-- Content-->
-			@yield('content')
-
+            <div class="row">
+                <div class="col-sm-3">
+                    <!--Sidebar-->
+                    @include('layouts/frontend/sidebar')
+                </div>
+                <div class="col-sm-9 cnt-block">
+                    <div class="primary">
+                        <div class="top-image">
+                           @include('layouts/frontend/top_nav')
+                        </div>
+                        <!-- Content-->
+                        @yield('content')
+                    </div>
+                </div>
             </div>
 		</div>
 		<footer></footer>
@@ -60,7 +61,7 @@
 	</div>
 	<!--End .footer-->
 	@yield('end_script')
-	
+
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ asset('frontend/js/jquery.bxslider.min.js') }}"></script>
 <script src="{{ asset('frontend/js/jquery-ui.js') }}"></script>
