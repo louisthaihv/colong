@@ -79,7 +79,7 @@
                     <!--Content-->
                     <div class="leftcol">
                         <div class="secur_inf1">
-                            <a href="#">Đổi mật khẩu<br></a>
+                            <a href="{{ route('user.get.changePassword')}}">Đổi mật khẩu<br></a>
                         </div>
                         <div class="secur_inf2">
                             <a href="{{ route('user.profile') }}">Thông tin tài khoản<br></a>

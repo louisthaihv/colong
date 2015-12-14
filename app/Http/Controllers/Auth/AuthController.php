@@ -93,7 +93,7 @@ class AuthController extends Controller
         $this->validate($request, [
             'username' => 'required', 'password' => 'required',
         ]);
-        
+        $email_credentials=['email'=>$request->get('username'), 'password'=>$request->get('password')];
         $username_credentials=['username'=>$request->get('username'), 'password'=>$request->get('password')];
         if (Auth::attempt($email_credentials, $request->has('remember')))
         {
@@ -199,7 +199,9 @@ class AuthController extends Controller
         $user->username = $data['username'];
         //$user->phone = $data['phone'];
         
-    
+        $command = '/usr/bin/wine /var/www/zgame/public/hash_pwd/qglpasswd.exe user 123';
+        $output = shell_exec($command);
+
         $user->password = \Hash::make($data['password']);
         $user->save();
 
@@ -370,14 +372,24 @@ class AuthController extends Controller
     }
     public function postChangePassword(Request $request){
         $data = $request->except('_token');
-        if($data['new_password'] != $data['rePass'] || strlen($data['new_password']) < 6 || strlen($data['new_password'])>15){
-            return redirect()->route('user.get.doimatkhau')->with('message', 'Password mới phải trùng nhau và ký tự >6 và <15.');
-        }
-        if(\Hash::check($data['password'], Auth::user()->password)){
-            $user = User::findOrfail(Auth::user()->id);
-            $user->password = \Hash::make($data['new_password']);
-            return redirect()->route('user.get.doimatkhau')->with('message', 'Đổi mật khẩu thành công!');
-        }
-        return redirect()->route('user.get.doimatkhau')->with('message', 'Password cũ không đúng.');
+        $rules = ['captcha' => 'required|captcha'];
+            $validator = Validator::make($data, $rules);
+            if ($validator->fails())
+            {
+                return redirect()->route('user.get.changePassword');
+            }
+            else
+            {
+                if($data['new_password'] != $data['rePass'] || strlen($data['new_password']) < 6 || strlen($data['new_password'])>15){
+                    return redirect()->route('user.get.changePassword')->with('message', 'Password mới phải trùng nhau và ký tự >6 và <15.');
+                }
+                if(\Hash::check($data['password'], Auth::user()->password)){
+                    $user = User::findOrfail(Auth::user()->id);
+                    //dd($data);
+                    $user->password = \Hash::make($data['new_password']);
+                    $user->save();
+                    return redirect()->route('user.profile')->with('message', 'Đổi mật khẩu thành công!');
+                }
+            }
     }
 }
