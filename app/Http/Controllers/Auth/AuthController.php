@@ -147,6 +147,12 @@ class AuthController extends Controller
         $weeks = Week::all();
         return view('frontend.user.profile')->with(compact('weeks'));
     }
+
+    public function confirm(){
+        $weeks = Week::all();
+
+        return view('frontend.user.confirm')->with(compact('weeks'));
+    }
     //////////////////////////////////////
     //       test edit user
     //////////////////////////////////////
@@ -163,7 +169,7 @@ class AuthController extends Controller
         $user = User::findOrFail(Auth::user()->id);
 
         $this->validate($request, [
-            'username' => 'required',
+            //'username' => 'required',
             'phone' => 'required',
             'email' => 'required',
             
@@ -172,7 +178,7 @@ class AuthController extends Controller
         $input = $request->except('_token');
 
         $user->email = $input['email'];
-        $user->username = $input['username'];
+        //$user->username = $input['username'];
         $user->phone = $input['phone'];
         $user->save();
 
@@ -209,8 +215,7 @@ class AuthController extends Controller
         if(!Auth::check()){
             Auth::login($user);
         }
-
-        return redirect()->route('user.profile', $user->id);
+        return redirect()->route('user.confirm');
     }
 
     public function getNapthe(){
