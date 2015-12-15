@@ -1,5 +1,5 @@
-jQuery(function($) {'use strict',
-    
+(function($) {'use strict',
+
 	$("#slider1").tinycarousel({
         bullets  : true,
         axis   : "x",
@@ -31,4 +31,36 @@ jQuery(function($) {'use strict',
         buttons   : false,
         animation : false
     });
+})(jQuery);
+
+serverList = (function($) {
+
+    var checkList = function(elementId, listId) {
+        $(elementId).on('click', function(){
+            var isHidden = $(listId).is(':hidden');
+
+            if(isHidden) {
+                $(listId).show();
+            } else {
+                $(listId).hide();
+            }
+        });
+    };
+
+    var init = function () {
+        var btnOption = '#btnServerList',
+            inputOption = '#inputServerList',
+            optionList = '#optionList';
+
+            checkList(btnOption, optionList);
+            inputOption(btnOption, optionList);
+    };
+
+    return {
+        init: init
+    };
+})(jQuery);
+
+$(function () {
+    serverList.init();
 });

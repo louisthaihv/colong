@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -9,7 +10,7 @@ use App\Article;
 use App\Category;
 use Auth;
 
-class ArticleController extends Controller
+class ArticleController extends BaseController
 {
     /**
      * Display a listing of the resource.

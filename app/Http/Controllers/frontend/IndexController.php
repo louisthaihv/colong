@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Category;
 use App\Clan;
 use App\Slider;
@@ -13,8 +13,9 @@ use App\Article;
 use App\Galary;
 use App\Popup;
 use App\Server;
+use App\Http\Controllers\BaseController;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     public function __construct(){
 

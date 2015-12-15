@@ -1,19 +1,18 @@
 <div class="sidebar">
-    <div class="register">
+    <div class="register clearfix">
         <a class="download-now" href="#"></a>
         <a class="card" href="{{ route('user.napthe.get') }}"></a>
         <a class="signup" href="{{ route('user.register') }}"></a>
     </div>
-    <div class="quan-ly-tai-khoan">
+    <div class="mng-account mt-10 clearfix">
         <a href="{{ route('user.thongtinnhanvat.get') }}">
-            <img src="{{ asset('frontend/images/quan-ly-tai-khoan.png') }}" alt=""/>
+            <img class="img-responsive" src="frontend/images/quanlytk.png" alt="quan ly tai khoan">
         </a>
     </div>
-    <div class="tieu-tien-nu">
-        <img src="{{ asset('frontend/images/KhungAnh/TieuTienNu.png') }}" alt=""/>
+    <div class="slider mt-10 clearfix">
+        <img class="img-responsive" src="{{ asset('frontend/images/khunganh.png') }}" alt=""/>
     </div>
-    <div class="tinh-nang-hang-ngay">
-        <img src="{{ asset('frontend/images/images/tinh-nang-hang-ngay.png') }}" alt=""/>
+    <div class="feature-daily mt-10 clearfix">
         <div id="tn-tabs">
             <ul>
                 @foreach($weeks as $key => $week)
@@ -22,13 +21,13 @@
             </ul>
             @foreach($weeks as $key => $week)
             <div id="tn-tabs-{{ $key }}" class="tn-tabs">
-                <ul>
+                <ul class="daily-list">
                     @foreach($week->dailyEvents as $event)
                         <li>
-                            <a href="#">
-                            {{ $event->start_time }} - {{ $event->end_time }}
-                            {!! $event->name !!}
-                            </a>
+                        <p class="text-left">
+                            <span class="time">{{ $event->start_time }} - {{ $event->end_time }}</span>
+                            <span>{!! $event->name !!}</span>
+                            </p>
                         </li>
                     @endforeach
                 </ul>
@@ -36,7 +35,7 @@
             @endforeach
         </div>
     </div>
-    <div class="hotro">
-        <img src="{{ asset('frontend/images/HoTroKhachHang/ho-tro-khach-hang.png') }}" alt=""/>
+    <div class="support mt-10 clearfix">
+        <img class="img-responsive" src="{{ asset('frontend/images/hotro.png') }}" alt=""/>
     </div>
 </div>

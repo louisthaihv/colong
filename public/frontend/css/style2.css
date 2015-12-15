@@ -122,8 +122,9 @@ input, select {
     font-style: normal;
 }
 
-body {
-    background: #1b141c url('../images/background.png') no-repeat center;
+.homepage {
+    background: #1b141c url('../images/bg2.png') no-repeat top;
+    min-height: 2000px;
 }
 /*.container {width: 962px; margin: auto;}*/
 
@@ -147,7 +148,7 @@ header {
 a.logo {
     position: absolute;
     top: 23px;
-    left: -34px;
+    left: -68px;
 }
 
 #header-menu {
@@ -196,17 +197,21 @@ a.logo {
 }
 
 .cnt-block {
-    margin-left: -15px;
+    /*margin-left: -15px;*/
 }
 
 
 /**************************************************************************
 **********************      SIDEBAR         *******************************
 **************************************************************************/
+
+.register, .mng-account, .slider, .feature-daily, .support {
+    display: block;
+    position: relative;
+}
 .register {
     min-height: 201px;
-    background: url('../images/dangky.png') no-repeat center;
-    position: relative;
+    background: url('../images/dangky.png') no-repeat left;
 }
 
 .register .download-now {
@@ -230,8 +235,275 @@ a.logo {
     right: 0;
 }
 
+.mng-account a {
+    display: block;
+    height: 94px;
+}
+
+.slider {
+    height: 330px;
+}
+
+.feature-daily {
+    height: 438px;
+    background: url('../images/daily.png') no-repeat left;
+}
+
+.feature-daily #tn-tabs {
+    position: absolute;
+    height: 296px;
+    bottom: 7px;
+    left: 7px;
+    width: 91%;
+}
+
+.feature-daily #tn-tabs ul {
+    margin-top: 0; position: relative;
+}
+
+.feature-daily #tn-tabs ul.ui-tabs-nav li {
+    width: 14.28571428571429%;
+    height: 22px;
+    display: inline-block;
+    cursor: pointer;
+    float: left;
+}
+.feature-daily #tn-tabs ul.ui-tabs-nav li a {
+    display: block;
+    text-align: center;
+    line-height: 22px;
+}
+.feature-daily #tn-tabs .tn-tabs {
+    margin-top: 22px;
+    padding: 0px 10px;
+}
+.feature-daily #tn-tabs .tn-tabs ul li {
+    padding: 18px 0 5px 0px;
+    border-bottom: 1px solid #a5787b;
+    box-shadow: 0 1px 0 0 rgba(160, 119, 122, 0.8);
+}
+
+.feature-daily .daily-list {
+    margin-top: 23px !important;
+    color: #fff;
+    font-weight: 500;
+}
+
+.feature-daily .daily-list span.time {
+    padding-right: 20px;
+}
+
+.top-ranks {
+    display: block;
+    position: relative;
+}
+
+.top-ranks {
+    background: url('../images/bxh.png') no-repeat left;
+    height: 355px;
+}
+
+.top-ranks h6 {
+    font-weight: 700;
+    color: #198303;
+    text-align: center;
+    text-transform: uppercase !important;
+    margin-top: 13px;
+
+}
+
+.top-ranks #bx-tabs {
+    margin-top: 5px;
+}
+
+.top-ranks #bx-tabs .server-info {
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+}
+
+.top-ranks #bx-tabs .server-name {
+    color: #fff;
+    width: 40%;
+    display: inline-block;
+    text-align: center;
+    font-size: 11px;
+    float: left;
+}
+
+.top-ranks #bx-tabs .server-list {
+    width: 60%;
+    display: inline-block;
+    color: #fff;
+    float: left;
+    position: relative;
+}
+
+.top-ranks #bx-tabs .server-list .server-text {
+    display: inline-block;
+    background: transparent none;
+    border: none;
+    width: 67%;
+    height: 22px;
+    margin-top: -12px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{
+    .top-ranks #bx-tabs .server-list .server-text {
+        margin-top: -15px;
+    }
+}
+
+.top-ranks #bx-tabs .server-list .btn-select {
+    display: inline-block;
+    padding-top: 4px;
+}
+
+.top-ranks #bx-tabs .server-list .btn-select img {
+    vertical-align: middle;
+}
+
+.top-ranks #bx-tabs .server-list .server-text:focus {
+    border: none !important;
+}
+
+.text-uppercase {
+    text-transform: uppercase !important;
+}
+
+/* ================= index news =============================== */
+
+.idex-news {
+    position: relative;
+    background-color: rgba(20, 32, 48, 1);
+    min-height: 560px;
+}
+
+.idex-news article {
+    display: block;
+    clear: both;
+    border-bottom: solid 1px #1e2a3a;
+    box-shadow: 0 1px 0 0 rgba(17, 29, 45, 0.8);
+    margin: 10px 10px 20px 10px;
+    padding-bottom: 10px;
+}
+
+.idex-news article img {
+    border: solid 1px #89521a;
+}
+
+.idex-news article a.idex-news-title {
+    color: #ce6839;
+    font-weight: 700;
+}
+
+.idex-news article p.text-justify {
+    color: #f0c55f;
+    padding-top: 9px;
+}
+
+/* =================== list top rank ================================= */
+.list-top {
+    position: relative;
+    margin-left: 8px;
+    margin-top: 20px;
+    width: 92%;
+    color: #e8a840;
+    z-index: 1;
+}
+
+.list-top tr.r-f td {
+    padding-bottom: 6px;
+    padding-top: 6px;
+}
+
+.list-top .heading-name,
+.list-top .heading-cs,
+.list-top .heading-level {
+    font-weight: 700;
+    padding-bottom: 18px;
+}
+
+.list-top .heading-name {
+    width: 70%;
+}
+
+.list-top .heading-cs {
+    width: 10%;
+}
+
+.list-top .heading-level {
+    width: 20%;
+}
+
+.list-top .stt {
+    color: #fec5c5 !important;
+}
+
+ul.server-options {
+    background-color: rgba(0, 0, 0, 0.75);
+    width: 52.800%;
+    position: absolute;
+    right: 20px;
+    top: 57px;
+    cursor: pointer !important;
+    z-index: 999;
+}
+
+ul.server-options, ul.server-options li {
+    list-style: none;
+    list-style-type: none;
+}
+
+ul.server-options li a {
+    color: #fff;
+    padding: 4px 10px 4px 10px;
+}
+
+ul.server-options li a:hover,
+ul.server-options li a:focus {
+    text-decoration: none;
+}
+
+/************************************************************************
+*********************       STYLE       *********************************
+************************************************************************/
+.pl-0 {
+    padding-left: 0 !important;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-25 {
+    margin-top: 25px;
+}
+
+@media only screen and (min-width: 1280px) {
+    .container {
+        width: 961px !important;
+    }
+
+    .idex-news article .col-sm-8 {
+        padding-left: 0 !important;
+    }
+
+    .cnt {
+        margin-left: -6px !important;
+    }
+}
+
 /*================================HEADER=================================*/
-header {background: url('../images/head.png') no-repeat; width: 100%; height: 1536px;}
 header h1 {width: 361px; float: left; margin-top: 24px;}
 header ul {font-family: "UTMAkashi", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-size: 30px; padding-top: 10px;}
 header ul li {
@@ -242,20 +514,6 @@ header ul li {
 .content .container {position: relative;}
 .content .container .img-stick{position: absolute; top: -170px; right: -420px; z-index: -1}
 .content .container .img-stick2{position: absolute; top: -200px; right: -500px; z-index: -2}
-.content .sidebar {text-align: right;}
-.content .sidebar .register .cat-dat-ngay{ line-height: 0px; }
-.content .sidebar .register div .nap-the{ float: left;}
-.content .sidebar .quan-ly-tai-khoan {margin: 15px 0px;}
-.content .sidebar .tieu-tien-nu img { margin-bottom: 15px;}
-.content .sidebar .tinh-nang-hang-ngay {margin-bottom: 15px;}
-.content .sidebar .tinh-nang-hang-ngay a {color: #fff;}
-.content .sidebar .tinh-nang-hang-ngay #tn-tabs {background: #510201; width: 245px; height: 284px;}
-.content .sidebar .tinh-nang-hang-ngay #tn-tabs ul {margin-top: -17px; margin-bottom: 20px;}
-.content .sidebar .tinh-nang-hang-ngay #tn-tabs ul.ui-tabs-nav li {display: inline-block;  margin-bottom: 20px;  opacity:  0; cursor: pointer }
-.content .sidebar .tinh-nang-hang-ngay #tn-tabs ul.ui-tabs-nav li a {padding: 5px 10px; margin-left: 3px;}
-.content .sidebar .tinh-nang-hang-ngay #tn-tabs ul.ui-tabs-nav li:last-child {margin-left: 0px;}
-.content .sidebar .tinh-nang-hang-ngay #tn-tabs .tn-tabs {padding: 0px 20px;}
-.content .sidebar .tinh-nang-hang-ngay #tn-tabs .tn-tabs ul li {padding: 10px 0px; border-bottom: 1px solid #fff;}
 .content .primary {float: left; overflow: hidden; width: 700px;}
 .content .primary .featured {background: url("../images/background.png") no-repeat; width: 700px; height: 315px; }
 .content .primary .featured ul {width: 270px;  height: 304px; padding-top: 5px; padding-left: 6px;}
@@ -278,8 +536,6 @@ header ul li {
 .content .primary .slider-bottom {background: #4f160c;  height: 214px; margin-top: 15px;}
 .content .primary .slider-bottom #tabs ul {width: 100%; overflow: hidden; padding: 0px 16px; border-bottom: 3px solid #ffea7b; padding-bottom: 6px; margin-bottom: 38px;}
 .content .primary .slider-bottom #tabs ul li {float: left}
-
-footer {background: url('../images/foot.png') no-repeat; width: 100%; height: 561px; position: absolute; bottom: -200px; z-index: -3}
 
 /**********************************************************
 *********** HAONH ****************************************/
