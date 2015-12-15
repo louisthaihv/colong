@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 <div class="facebook">
-                    <div class="fb-page" data-href="https://www.facebook.com/Ki%E1%BA%BFm-Th%E1%BA%BF-2-Kh%C3%B4ng-h%C3%BAt-m%C3%A1u-kh%C3%B4ng-c%C3%A0y-k%C3%A9o-Ch%E1%BB%89-PK-826930107424123/?fref=ts" data-width="230" data-height="185" data-small-header="false" data-adapt-container-width="true" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/Ki%E1%BA%BFm-Th%E1%BA%BF-2-Kh%C3%B4ng-h%C3%BAt-m%C3%A1u-kh%C3%B4ng-c%C3%A0y-k%C3%A9o-Ch%E1%BB%89-PK-826930107424123/?fref=ts"><a href="https://www.facebook.com/Ki%E1%BA%BFm-Th%E1%BA%BF-2-Kh%C3%B4ng-h%C3%BAt-m%C3%A1u-kh%C3%B4ng-c%C3%A0y-k%C3%A9o-Ch%E1%BB%89-PK-826930107424123/?fref=ts">Kiếm Thế 2 - Không hút máu, không cày kéo, Chỉ PK</a></blockquote></div></div>
+                    <div class="fb-page" data-href="https://www.facebook.com/colong2.vn/?fref=ts" data-width="230" data-height="185" data-small-header="false" data-adapt-container-width="true" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/colong2.vn/?fref=ts"><a href="https://www.facebook.com/colong2.vn/?fref=ts">Cổ Long 2</a></blockquote></div></div>
 
                 </div>
             </div>
