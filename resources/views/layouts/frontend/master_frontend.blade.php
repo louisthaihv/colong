@@ -21,7 +21,7 @@
   @yield('start_css')
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
-<body>
+<body class="homepage">
 <!-- facebook js-->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -41,10 +41,12 @@
                     @include('layouts/frontend/sidebar')
                 </div>
                 <div class="col-sm-9 cnt-block">
-                    <div class="primary">
+                    <div class="row">
                         <div class="top-image">
                            @include('layouts/frontend/top_nav')
                         </div>
+                    </div>
+                    <div class="row">
                         <!-- Content-->
                         @yield('content')
                     </div>
@@ -127,6 +129,7 @@
         });
     });
 </script>
+<script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('frontend/js/zgame.js') }}"></script>
 </body>
 </html>
