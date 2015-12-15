@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CharacterTbaleSeeder::class);
         $this->call(ItemsTableSeeder::class);
         $this->call(ItemTypeTableSeeder::class);
+        $this->call(DatabaseTableSeeder::class);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         Model::reguard();

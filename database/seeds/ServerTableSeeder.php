@@ -14,8 +14,13 @@ class ServerTableSeeder extends Seeder
         Server::truncate();
 
         $data = [
-        	["name"=>"Việt Nam", 'image'=>'images/server1.png'],
-        	["name"=>"Việt Nam 2", 'image'=>'images/server2.png'],
+        	[
+                "name"=>"Việt Nam", 
+                'image'=>'images/server1.png',
+                'driver'=>'sqlsrv',
+                'host'=>'123.31.17.99',
+
+            ],
         ];
 
         Server::insert($data);

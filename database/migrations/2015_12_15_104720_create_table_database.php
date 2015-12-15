@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableServers extends Migration
+class CreateTableDatabase extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,13 @@ class CreateTableServers extends Migration
      */
     public function up()
     {
-        Schema::create('servers', function (Blueprint $table) {
+        Schema::create('databases', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('server_id')->unsigned();
+            $table->foreign('server_id')->references('id')->on('servers')->onDelete('cascade');
             $table->string('name');
-            $table->string('image');
-
-            $table->string('driver');
-            $table->string('host');
-            
+            $table->string('username');
+            $table->string('password');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateTableServers extends Migration
      */
     public function down()
     {
-        Schema::drop('servers');
+        Schema::drop('databases');
     }
 }
