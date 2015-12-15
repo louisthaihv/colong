@@ -396,4 +396,33 @@ class AuthController extends Controller
                 }
             }
     }
+
+    /*Chang Character*/
+        public function getChangeCharacter(){
+        $weeks = Week::all();
+        return view('frontend.user.changeCharacter')->with('weeks', $weeks);
+    }
+    public function postChangeCharacter(Request $request){
+        $data = $request->except('_token');
+        $rules = ['captcha' => 'required|captcha'];
+            $validator = Validator::make($data, $rules);
+            if ($validator->fails())
+            {
+                return redirect()->route('user.get.changeCharacter');
+            }
+            else
+            {
+                if($data['new_name'] != $data['re_name'] || strlen($data['new_name']) < 6 || strlen($data['new_name'])>15){
+                    return redirect()->route('user.get.changeCharacter')->with('message', 'name mới phải trùng nhau và ký tự >6 và <15.');
+                }
+                if(check($data['name'], Auth::Character()->name)){
+                    $Character = Character::findOrfail(Auth::Character()->id);
+                    //dd($data);
+                    $Character->name = $data['new_name'];
+                    $Character->save();
+                    return redirect()->route('user.nhanvat')->with('message', 'Đổi mật khẩu thành công!');
+                }
+            }
+    }
+    /*End Chang Character */
 }

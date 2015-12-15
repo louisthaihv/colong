@@ -38,6 +38,12 @@ Route::group(["middleware" => "auth"], function(){
 	Route::post('/user/thuongdatmoc',					['as'=>'user.thuongdatmoc.post', 'uses'=>'Auth\AuthController@postThuongdatmoc']);
 	Route::get('/user/changePassword', 		['as'=>'user.get.changePassword',	'uses'=>'Auth\AuthController@getChangePassword']);
 	Route::post('/user/changePassword', 	['as'=>'user.post.changePassword',	'uses'=>'Auth\AuthController@postChangePassword']);
+
+	/*	Change character */
+	Route::get('/user/changeCharacter', 		['as'=>'user.get.changeCharacter',	'uses'=>'Auth\AuthController@getChangeCharacter']);
+	Route::post('/user/changeCharacter', 	['as'=>'user.post.changeCharacter',	'uses'=>'Auth\AuthController@postChangeCharacter']);
+
+	/* end change character*/
 	//////////////////////////////////////
 	//Route::get('/user/doimatkhau', 		['as'=>'user.doimatkhau.get',	'uses'=>'Auth\AuthController@getChangePassword']);
 	//Route::post('/user/doimatkhau', 	['as'=>'user.doimatkhau.post',	'uses'=>'Auth\AuthController@postChangePassword']);
