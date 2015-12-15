@@ -44,6 +44,7 @@ Route::group(["middleware" => "auth"], function(){
 	/////////////////////////////////////////
 	Route::get('/auth/logout', 				['as'=>'authLogout',	'uses'=>'Auth\AuthController@getLogout']);
 	Route::get('/auth/profile/{id}', 		['as'=>'user.profile',	'uses'=>'Auth\AuthController@profile']);
+	Route::get('/auth/confirm', 		['as'=>'user.confirm',	'uses'=>'Auth\AuthController@confirm']);
 
 	////Thong tin nhan vat
 	Route::get('/user/thongtinnhanvat',						['as'=>'user.thongtinnhanvat.get', 'uses'=>'Auth\AuthController@getThongtinnhanvat']);

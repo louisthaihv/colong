@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
-use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
@@ -20,8 +19,9 @@ use App\Server;
 use App\Character;
 use App\GAccount;
 use App\Services\ServiceAccount;
+use App\Http\Controllers\BaseController;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
     /*
     |--------------------------------------------------------------------------
@@ -43,6 +43,8 @@ class AuthController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
+        dd(config('database.connections.mysql'));
         $this->middleware('guest', ['except' => 'getLogout']);
         $popup = Popup::where('status', 1)->first();
         view()->share('popup', $popup);
@@ -134,6 +136,12 @@ class AuthController extends Controller
         $weeks = Week::all();
         return view('frontend.user.profile')->with(compact('weeks'));
     }
+
+    public function confirm(){
+        $weeks = Week::all();
+
+        return view('frontend.user.confirm')->with(compact('weeks'));
+    }
     //////////////////////////////////////
     //       test edit user
     //////////////////////////////////////
@@ -148,9 +156,9 @@ class AuthController extends Controller
     public function postEditUser(Request $request)
     {
         $user = User::findOrFail(Auth::user()->id);
-
+        $user->setConnection("as");
         $this->validate($request, [
-            'username' => 'required',
+            //'username' => 'required',
             'phone' => 'required',
             'email' => 'required',
             
@@ -159,7 +167,7 @@ class AuthController extends Controller
         $input = $request->except('_token');
 
         $user->email = $input['email'];
-        $user->username = $input['username'];
+        //$user->username = $input['username'];
         $user->phone = $input['phone'];
         $user->save();
 
@@ -201,14 +209,12 @@ class AuthController extends Controller
                 Auth::login($user);
             }
 
-            dd("redirect to route confirmed");
-            //return redirect()->route('user.profile', $user->id);
+            return redirect()->route('user.confirm');
 
         } else {
 
             return redirect()->route('user.register')->with('error', 'Lỗi Captcha!');
         }
-
     }
 
     public function getNapthe(){
@@ -342,6 +348,7 @@ class AuthController extends Controller
         $weeks = Week::all();
         return view('frontend.user.reset_password')->with(compact('weeks'));
     }
+
     public function getUpdatePassword(Request $request){
         $encode = $request->get('parram');
         $decoded = base64_decode(urldecode( $encode ));
