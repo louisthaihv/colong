@@ -67,7 +67,7 @@
                         <ul id="optionList" class="server-options" style="display: none;">
                             @foreach($servers as $key => $server)
                             <li>
-                                <a id="#bx-tabs-{{ $key }}">{{ $server->name }}</a>
+                                <a id="bx-tabs-{{ $key }}">{{ $server->name }}</a>
                             </li>
                             @endforeach
                         </ul>
@@ -168,6 +168,12 @@
             });
         };
 
+        var getServers = function() {
+            var servers = [];
+            servers = $('a[id^="bx-tabs-"]');
+            return servers;
+        };
+
         var init = function () {
             var btnOption = '#btnServerList',
                 inputOption = '#inputServerList',
@@ -175,6 +181,17 @@
 
                 checkList(btnOption, optionList);
                 checkList(inputOption, optionList);
+
+                var servers = getServers();
+
+                $.each(servers, function(index, element) {
+                    $(servers[index]).on('click', function() {
+                        var $this = $(this);
+                        var text = $this.text();
+                        $(inputOption).val(text);
+                        $(optionList).hide();
+                    });
+                });
         };
 
         return {
