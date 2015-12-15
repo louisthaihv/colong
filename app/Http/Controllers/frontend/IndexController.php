@@ -13,6 +13,7 @@ use App\Article;
 use App\Galary;
 use App\Popup;
 use App\Server;
+use App\Http\Controllers\BaseController;
 
 class IndexController extends BaseController
 {
