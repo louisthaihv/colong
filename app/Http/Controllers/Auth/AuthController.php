@@ -44,7 +44,7 @@ class AuthController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        dd(config('database.connections.mysql'));
+        //dd(config('database.connections.mysql'));
         $this->middleware('guest', ['except' => 'getLogout']);
         $popup = Popup::where('status', 1)->first();
         view()->share('popup', $popup);
@@ -59,7 +59,7 @@ class AuthController extends BaseController
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|unique:characters',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
             'captcha' => 'required|captcha',
@@ -401,8 +401,8 @@ class AuthController extends BaseController
 
     /*Chang Character*/
         public function getChangeCharacter(){
-        $weeks = Week::all();
-        return view('frontend.user.changeCharacter')->with('weeks', $weeks);
+        $characters = Characters::all();
+        return view('frontend.user.changeCharacter')->with(compact('characters'));
     }
     public function postChangeCharacter(Request $request){
         $data = $request->except('_token');
@@ -412,19 +412,17 @@ class AuthController extends BaseController
             {
                 return redirect()->route('user.get.changeCharacter');
             }
-            else
+            elseif ($data['new_name'] != $data['reName'] || strlen($data['new_name']) < 6 || strlen($data['new_name'])>15)
             {
-                if($data['new_name'] != $data['re_name'] || strlen($data['new_name']) < 6 || strlen($data['new_name'])>15){
-                    return redirect()->route('user.get.changeCharacter')->with('message', 'name mới phải trùng nhau và ký tự >6 và <15.');
-                }
-                if(check($data['name'], Auth::Character()->name)){
-                    $Character = Character::findOrfail(Auth::Character()->id);
-                    //dd($data);
-                    $Character->name = $data['new_name'];
-                    $Character->save();
-                    return redirect()->route('user.nhanvat')->with('message', 'Đổi mật khẩu thành công!');
-                }
+                return redirect()->route('user.get.changeCharacter')->with('message', 'name mới phải trùng nhau và ký tự >6 và <15.');
             }
+            else 
+            {
+                $characters->name = $data['new_name'];
+                $characters->save();
+                return redirect()->route('user.nhanvat')->with('message', 'Đổi mật khẩu thành công!');
+            }
+            
     }
     /*End Chang Character */
 }
