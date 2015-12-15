@@ -289,7 +289,7 @@ class AuthController extends Controller
         //$characters = Character::all();
         //return view('frontend.user.nhanvat')->with(compact('characters'));
         $servers = Server::findOrFail($id);
-        $characters = $servers->characters()->paginate(PAGINATE);
+        $characters = $servers->characters()->where('user_id', Auth::user()->id)->paginate(PAGINATE);
         return view('frontend.user.nhanvat')->with(compact('characters','servers'));
     }
     
