@@ -208,7 +208,8 @@ class AuthController extends Controller
         
         $command = '/usr/bin/wine /var/www/zgame/public/hash_pwd/qglpasswd.exe user 123';
         $output = shell_exec($command);
-
+        $user->phone = 'chưa có';
+        $user->email = 'chưa có';
         $user->password = \Hash::make($data['password']);
         $user->save();
 
