@@ -169,6 +169,7 @@ class AuthController extends BaseController
         $user->email = $input['email'];
         //$user->username = $input['username'];
         $user->phone = $input['phone'];
+        $user->status ='0';
         $user->save();
 
         
@@ -198,6 +199,9 @@ class AuthController extends BaseController
 
             $user->username = $data['username'];
             $account->loginName = $data['username'];
+
+            $user->phone = 'chưa có';
+            $user->email = 'chưa có';
 
             //for database of game;
             $user->password = \Hash::make($data['password']);
