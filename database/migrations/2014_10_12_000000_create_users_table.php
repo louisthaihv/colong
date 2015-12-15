@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->date('birthday');
             $table->integer('role_id')->unsigned()->default(3);
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->boolean('change_count')->default(true);
             $table->string('address');
             $table->string('phone');
             $table->boolean('status')->default(true);
