@@ -180,6 +180,7 @@ class AuthController extends Controller
         $user->email = $input['email'];
         //$user->username = $input['username'];
         $user->phone = $input['phone'];
+        $user->status ='0';
         $user->save();
 
         
