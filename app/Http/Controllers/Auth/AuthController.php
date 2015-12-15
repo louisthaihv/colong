@@ -18,6 +18,8 @@ use App\Gift;
 use App\GiftUser;
 use App\Server;
 use App\Character;
+use App\GAccount;
+use App\Services\ServiceAccount;
 
 class AuthController extends Controller
 {
@@ -58,7 +60,7 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-            'g-recaptcha-response' => 'required|captcha',
+            'captcha' => 'required|captcha',
         ]);
     }
 
@@ -94,24 +96,9 @@ class AuthController extends Controller
         $this->validate($request, [
             'username' => 'required', 'password' => 'required',
         ]);
-        $email_credentials=['email'=>$request->get('username'), 'password'=>$request->get('password')];
+        
         $username_credentials=['username'=>$request->get('username'), 'password'=>$request->get('password')];
-        if (Auth::attempt($email_credentials, $request->has('remember')))
-        {
-            if($request->ajax()){
-                $message = ["success"=>"success", "massage"=>"login success"];
-                return response()->json($message);
-            }
-            else
-            {
-                if(Auth::user()->isAdmin()){
-                    return redirect()->route('admin.categories.index');
-                }else{
-                    return redirect()->route('frontend.index');
-                }
-            }
-        }
-        elseif(Auth::attempt($username_credentials, $request->has('remember'))){
+        if(Auth::attempt($username_credentials, $request->has('remember'))){
             if($request->ajax()){
                 $message = ["success"=>"success", "massage"=>"login success"];
                 return response()->json($message);
@@ -187,30 +174,41 @@ class AuthController extends Controller
     }
     public function postRegister(Request $request){
         $data = $request->except('_token');
-            $user2 = User::where('username',$data['username'])->first();
-            
-            if(!is_null($user2)){
+
+        if(!ServiceAccount::checkCaptcha($data)) {
+            $account = GAccount::where('loginName', $data['username'])->first();
+            $user = User::where('username',$data['username'])->first();
+    
+            if(!is_null($user) && !is_null($account)){
                 return redirect()->route('user.register')->with('error', 'Username đã tồn tại');
             }
             if($data['password'] !=$data['re_password']){
-                return redirect()->route('user.register')->with('error', 'Passwod không giống nhau.');
+                return redirect()->route('user.register')->with('error', 'Password không giống nhau.');
             }
-        $user = new User;
-        //$user->email = $data['email'];
-        $user->username = $data['username'];
-        //$user->phone = $data['phone'];
-        
-        $command = '/usr/bin/wine /var/www/zgame/public/hash_pwd/qglpasswd.exe user 123';
-        $output = shell_exec($command);
+            $user = new User;
+            $account = new GAccount;
 
-        $user->password = \Hash::make($data['password']);
-        $user->save();
+            $user->username = $data['username'];
+            $account->loginName = $data['username'];
 
-        if(!Auth::check()){
-            Auth::login($user);
+            //for database of game;
+            $user->password = \Hash::make($data['password']);
+            $account->password_hash = ServiceAccount::getPassword($data['password']);
+            
+            $account->save();
+            $user->save();
+            if(!Auth::check()){
+                Auth::login($user);
+            }
+
+            dd("redirect to route confirmed");
+            //return redirect()->route('user.profile', $user->id);
+
+        } else {
+
+            return redirect()->route('user.register')->with('error', 'Lỗi Captcha!');
         }
 
-        return redirect()->route('user.profile', $user->id);
     }
 
     public function getNapthe(){
