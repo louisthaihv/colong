@@ -37,7 +37,7 @@
                                 <td> {!! $characters->clan_id !!} </td>
                                 <td> {!! $characters->level !!} </td>
                                 <td> {!! $characters->exp !!} </td>
-                                <td>ĐỔI TÊN</td>
+                                <td> <a href="{{ route('user.get.changeCharacter')}}">Đổi tên</a></td>
                             </tr>
                             @endforeach
                             
