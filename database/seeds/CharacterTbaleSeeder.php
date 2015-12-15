@@ -18,7 +18,7 @@ class CharacterTbaleSeeder extends Seeder
             [
 
                 'user_id'=>3,
-                'database_id'=>1,
+                'server_id'=>1,
                 'clan_id'=>1,
                 'level'=>100,
                 'status'=>1,
@@ -28,7 +28,7 @@ class CharacterTbaleSeeder extends Seeder
             [
 
                 'user_id'=>3,
-                'database_id'=>1,
+                'server_id'=>1,
                 'clan_id'=>1,
                 'level'=>16,
                 'status'=>1,
@@ -37,16 +37,7 @@ class CharacterTbaleSeeder extends Seeder
             ],[
 
                 'user_id'=>3,
-                'database_id'=>1,
-                'clan_id'=>1,
-                'level'=>16,
-                'status'=>1,
-                'cs'=>5,
-                'name'=>'louis2'
-            ],[
-
-                'user_id'=>3,
-                'database_id'=>1,
+                'server_id'=>1,
                 'clan_id'=>1,
                 'level'=>16,
                 'status'=>1,
@@ -55,7 +46,7 @@ class CharacterTbaleSeeder extends Seeder
             ],[
 
                 'user_id'=>3,
-                'database_id'=>1,
+                'server_id'=>1,
                 'clan_id'=>1,
                 'level'=>16,
                 'status'=>1,
@@ -64,7 +55,7 @@ class CharacterTbaleSeeder extends Seeder
             ],[
 
                 'user_id'=>3,
-                'database_id'=>1,
+                'server_id'=>1,
                 'clan_id'=>1,
                 'level'=>16,
                 'status'=>1,
@@ -73,7 +64,7 @@ class CharacterTbaleSeeder extends Seeder
             ],[
 
                 'user_id'=>3,
-                'database_id'=>1,
+                'server_id'=>1,
                 'clan_id'=>1,
                 'level'=>16,
                 'status'=>1,
@@ -82,7 +73,7 @@ class CharacterTbaleSeeder extends Seeder
             ],[
 
                 'user_id'=>3,
-                'database_id'=>1,
+                'server_id'=>1,
                 'clan_id'=>1,
                 'level'=>16,
                 'status'=>1,
@@ -91,42 +82,13 @@ class CharacterTbaleSeeder extends Seeder
             ],[
 
                 'user_id'=>3,
-                'database_id'=>1,
+                'server_id'=>1,
                 'clan_id'=>1,
                 'level'=>16,
                 'status'=>1,
                 'cs'=>5,
                 'name'=>'louis8'
-            ],[
-
-                'user_id'=>3,
-                'database_id'=>1,
-                'clan_id'=>1,
-                'level'=>16,
-                'status'=>1,
-                'cs'=>5,
-                'name'=>'louis9'
             ],
-            [
-
-                'user_id'=>3,
-                'database_id'=>2,
-                'clan_id'=>1,
-                'level'=>15,
-                'status'=>1,
-                'cs'=>5,
-                'name'=>'moncha'
-            ],
-        	[
-
-        		'user_id'=>3,
-        		'database_id'=>2,
-        		'clan_id'=>1,
-        		'level'=>10,
-        		'status'=>1,
-        		'cs'=>5,
-        		'name'=>'moco'
-        	],
 
         ];
 

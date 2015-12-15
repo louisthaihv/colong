@@ -75,25 +75,25 @@ return [
             'schema'   => 'public',
         ],
 
-        'sqlsrv' => [
-            'driver'   => 'sqlsrv',
-            'host'     => env('GDB1_HOST', 'localhost'),
-            'database' => env('GDB1_DATABASE', 'forge'),
-            'username' => env('GDB1_USERNAME', 'forge'),
-            'password' => env('GDB1_PASSWORD', ''),
-            'charset'  => 'utf8',
-            'prefix'   => '',
-        ],
+        // 'sqlsrv' => [
+        //     'driver'   => 'sqlsrv',
+        //     'host'     => env('GDB1_HOST', 'localhost'),
+        //     'database' => env('GDB1_DATABASE', 'forge'),
+        //     'username' => env('GDB1_USERNAME', 'forge'),
+        //     'password' => env('GDB1_PASSWORD', ''),
+        //     'charset'  => 'utf8',
+        //     'prefix'   => '',
+        // ],
 
-        'sqlsrv2' => [
-            'driver'   => 'sqlsrv',
-            'host'     => env('GDB2_HOST', 'localhost'),
-            'database' => env('GDB2_DATABASE', 'forge'),
-            'username' => env('GDB2_USERNAME', 'forge'),
-            'password' => env('GDB2_PASSWORD', ''),
-            'charset'  => 'utf8',
-            'prefix'   => '',
-        ],
+        // 'sqlsrv2' => [
+        //     'driver'   => 'sqlsrv',
+        //     'host'     => env('GDB2_HOST', 'localhost'),
+        //     'database' => env('GDB2_DATABASE', 'forge'),
+        //     'username' => env('GDB2_USERNAME', 'forge'),
+        //     'password' => env('GDB2_PASSWORD', ''),
+        //     'charset'  => 'utf8',
+        //     'prefix'   => '',
+        // ],
 
     ],
 

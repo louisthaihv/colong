@@ -18,7 +18,6 @@ use App\Http\Controllers\BaseController;
 class IndexController extends BaseController
 {
     public function __construct(){
-
         $popup = Popup::where('status', 1)->first();
         
         $head_cats = Category::where('type', HEADER_CAT)->where('status', 1)->get();

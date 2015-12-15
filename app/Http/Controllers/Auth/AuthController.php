@@ -44,7 +44,6 @@ class AuthController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        dd(config('database.connections.mysql'));
         $this->middleware('guest', ['except' => 'getLogout']);
         $popup = Popup::where('status', 1)->first();
         view()->share('popup', $popup);
@@ -183,37 +182,51 @@ class AuthController extends BaseController
     }
     public function postRegister(Request $request){
         $data = $request->except('_token');
-
         if(!ServiceAccount::checkCaptcha($data)) {
-            $account = GAccount::where('loginName', $data['username'])->first();
-            $user = User::where('username',$data['username'])->first();
-    
-            if(!is_null($user) && !is_null($account)){
-                return redirect()->route('user.register')->with('error', 'Username đã tồn tại');
-            }
             if($data['password'] !=$data['re_password']){
+                dd('trung password');
                 return redirect()->route('user.register')->with('error', 'Password không giống nhau.');
             }
-            $user = new User;
-            $account = new GAccount;
 
-            $user->username = $data['username'];
-            $account->loginName = $data['username'];
-
-            $user->phone = 'chưa có';
-            $user->email = 'chưa có';
-
-            //for database of game;
-            $user->password = \Hash::make($data['password']);
-            $account->password_hash = ServiceAccount::getPassword($data['password']);
+            $user = User::where('username',$data['username'])->first();
+            if(is_null($user)) {
+                $account = new GAccount;
+                //check all user if exsit on all server game
+                $servers = Server::all();
+                foreach ($servers as $server) {
+                    $account->setConnection($server->user_db);
+                    try{
+                        $model = $account->where('loginName', $data['username'])->first();
+                    } catch(\Exception $e){
+                        
+                        return redirect()->route('user.register')->with('error', 'có lỗi!');
+                    }
+                    if(!is_null($model)){
+                        dd('Username đã tồn tại');
+                        return redirect()->route('user.register')->with('error', 'Username đã tồn tại');
+                    }
+                    $account->loginName = $data['username'];
+                    $account->password_hash = ServiceAccount::getPassword($data['password']);
+                    $account->save();
+                }
             
-            $account->save();
-            $user->save();
-            if(!Auth::check()){
-                Auth::login($user);
-            }
+                //insert user into database web
+                $user = new User;
+                $user->username = $data['username'];
+                $user->password = \Hash::make($data['password']);
+                $user->email = "chưa có";
+                $user->phone = "chưa có";
+                $user->save();
 
-            return redirect()->route('user.confirm');
+                if(!Auth::check()){
+                    Auth::login($user);
+                }
+
+                return redirect()->route('user.confirm');
+            } else{
+                dd('user da ton tai');
+                return redirect()->route('user.register')->with('error', 'Lỗi user đã tồn tại!');
+            }
 
         } else {
 
@@ -367,6 +380,21 @@ class AuthController extends BaseController
             else{
                 $user->password = \Hash::make($data->password);
                 $user->save();
+                //update vao game
+                $model = new GAccount;
+                //check all user if exsit on all server game
+                $servers = Server::all();
+                foreach ($servers as $server) {
+                    $model->setConnection($server->user_db);
+                    try{
+                        $account = $model->where('useremail', $data->email)->first();
+                    } catch(\Exception $e){
+                        
+                        return redirect()->route('user.register')->with('error', 'có lỗi!');
+                    }
+                    $account->password_hash = ServiceAccount::getPassword($data->password);
+                    $account->save();
+                }
             }
         }
         return redirect()->route('frontend.index')->with('update_pass', 'Đổi mật khẩu thành công, mời đăng nhập!');
@@ -394,6 +422,20 @@ class AuthController extends BaseController
                     //dd($data);
                     $user->password = \Hash::make($data['new_password']);
                     $user->save();
+                    $model = new GAccount;
+                    //check all user if exsit on all server game
+                    $servers = Server::all();
+                    foreach ($servers as $server) {
+                        $model->setConnection($server->user_db);
+                        try{
+                            $account = $model->where('loginName', $user->username)->first();
+                        } catch(\Exception $e){
+                            
+                            return redirect()->route('user.register')->with('error', 'có lỗi!');
+                        }
+                        $account->password_hash = ServiceAccount::getPassword($data['new_password']);
+                        $account->save();
+                    }
                     return redirect()->route('user.profile')->with('message', 'Đổi mật khẩu thành công!');
                 }
             }
