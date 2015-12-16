@@ -41,7 +41,7 @@ Route::group(["middleware" => "auth"], function(){
 	Route::post('/user/changePassword', 	['as'=>'user.post.changePassword',	'uses'=>'Auth\AuthController@postChangePassword']);
 
 	/*	Change character */
-	Route::get('/user/changeCharacter', 		['as'=>'user.get.changeCharacter',	'uses'=>'Auth\AuthController@getChangeCharacter']);
+	Route::get('/user/changeCharacter/{server_name}/{user_id}/{char_id}', 		['as'=>'user.get.changeCharacter',	'uses'=>'Auth\AuthController@getChangeCharacter']);
 	Route::post('/user/changeCharacter', 	['as'=>'user.post.changeCharacter',	'uses'=>'Auth\AuthController@postChangeCharacter']);
 
 	/* end change character*/
@@ -51,7 +51,7 @@ Route::group(["middleware" => "auth"], function(){
 	/////////////////////////////////////////
 	Route::get('/auth/logout', 				['as'=>'authLogout',	'uses'=>'Auth\AuthController@getLogout']);
 	Route::get('/auth/profile', 		['as'=>'user.profile',	'uses'=>'Auth\AuthController@profile']);
-	Route::get('/auth/confirm', 		['as'=>'user.confirm',	'uses'=>'Auth\AuthController@confirm']);
+	Route::get('/auth/confirm/{id}', 		['as'=>'user.confirm',	'uses'=>'Auth\AuthController@confirm']);
 
 	////Thong tin nhan vat
 	Route::get('/user/thongtinnhanvat',						['as'=>'user.thongtinnhanvat.get', 'uses'=>'Auth\AuthController@getThongtinnhanvat']);

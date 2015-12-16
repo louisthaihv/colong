@@ -30,15 +30,21 @@
                                         <th>EXP</th>
                                         <th>THAO TÁC</th>
                                     </tr>
-                                    @foreach($characters as $characters )
+                                    @foreach($characters as $character )
                                     <tr>
-                                        <td> {!! $characters->id !!} </td>
-                                        <td> {!! $characters->user_id !!} </td>
-                                        <td> {!! $characters->name !!} </td>
-                                        <td> {!! $characters->clan_id !!} </td>
-                                        <td> {!! $characters->level !!} </td>
-                                        <td> {!! $characters->exp !!} </td>
-                                        <td> <a href="{{ route('user.get.changeCharacter')}}">Đổi tên</a></td>
+                                        <td> {!! $character->char_id !!} </td>
+                                        <td> {!! $character->acct_id !!} </td>
+                                        <td> {!! $character->nickName !!} </td>
+                                        <td> {!! $character->faction !!} </td>
+                                        <td> {!! $character->level !!} </td>
+                                        <td> {!! $character->exp !!} </td>
+                                        <td> 
+                                            @if(is_null($character->Changed) && $character->level <10)
+                                            <a href="{{ route('user.get.changeCharacter',[$server->game_db, $account->acct_id, $character->char_id])}}">Đổi tên</a>
+                                            @else
+                                                {{"Đổi tên"}}
+                                            @endif
+                                        </td>
                                     </tr>
                                     @endforeach
                                     

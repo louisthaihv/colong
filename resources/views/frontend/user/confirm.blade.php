@@ -16,7 +16,7 @@
                                 <div class="notice" id="infoText">
                                     CHÀO MỪNG <b>{{ Auth::user()->username }}</b> ĐÃ GIA NHẬP THẾ GIỚI CỔ LONG ONLINE<BR>
                                     ĐỂ AN TOAN BẢO MẬT VÀ NHẬN HỖ TRỢ TỪ BQT<BR>
-                                    BẠN VUI LONG CẬP NHÂT THÔNG TIN TÀI KHOẢN TẠI <a href="{{route('user.profile', Auth::user()->id)}}">ĐÂY</a>  
+                                    BẠN VUI LONG CẬP NHÂT THÔNG TIN TÀI KHOẢN TẠI <a href="{{route('user.profile')}}">ĐÂY</a>  
                                 </div>
                         </tr>
                         &nbsp;&nbsp;&nbsp;&nbsp;

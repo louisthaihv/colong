@@ -69,12 +69,16 @@
                     </div>
                     <div class="main_menu_item2">
                         <a href="{{ route('user.napthe.get') }}" tppabs="" title="">Nạp KNB</a></div>
+                    @if(isset($show_gift))
                     <div class="main_menu_item2">
-                        <a href="{{ route('user.gift.get') }}" tppabs="" title="" rel="nofollow">Gift code</a>
+                        <a href="{{ route('user.gift.get') }}" tppabs="" title="">Gift code</a>
                     </div>
+                    @endif
+                    @if(isset($download))
                     <div class="main_menu_item2">
-                        <a href="#" tppabs="" title="" rel="nofollow">Download Game</a>
+                        <a href="#" tppabs="" title="">Dowload</a>
                     </div>
+                    @endif
                     <div class="main_menu_item2">
                         <a href="#" tppabs="" title="" rel="nofollow">Hỗ trợ</a>
                     </div>

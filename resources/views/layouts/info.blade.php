@@ -54,7 +54,18 @@
                         <a tppabs="" title="">Tài khoản</a>
                     </div>
                     <div class="main_menu_item2">
-                        <a href="{{ route('user.napthe.get') }}" tppabs="" title="">Nạp KNB</a></div>
+                        <a href="{{ route('user.napthe.get') }}" tppabs="" title="">Nạp KNB</a>
+                    </div>
+                    @if(isset($show_gift))
+                    <div class="main_menu_item2">
+                        <a href="{{ route('user.gift.get') }}" tppabs="" title="">Gift code</a>
+                    </div>
+                    @endif
+                    @if(isset($download))
+                    <div class="main_menu_item2">
+                        <a href="#" tppabs="" title="">Dowload</a>
+                    </div>
+                    @endif
                     <div class="main_menu_item2">
                         <a target="_blank" href="" tppabs="" title="" rel="nofollow">Hỗ trợ</a>
                     </div>
@@ -62,12 +73,12 @@
             </div>
             <div class="main_content">
                 <div id="main_container">
-                    <!--Content-->
+                    <!--Content
                     
                     <script src="{{ asset('user/js/jquery-1.7.1.js')}}" tppabs=""></script>
                     <script src="{{ asset('user/js/jquery.validate.min.js')}}" tppabs=""></script>
                     <script src="{{ asset('user/js/jquery.validate.unobtrusive.min.js')}}" tppabs=""></script>
-
+                    -->
                     <div class="leftcol">
                         <div class="secur_ind">
                             Trang tài khoản<br>

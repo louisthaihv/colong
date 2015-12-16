@@ -20,6 +20,7 @@ use App\Character;
 use App\GAccount;
 use App\Services\ServiceAccount;
 use App\Http\Controllers\BaseController;
+use App\GiftBox;
 
 class AuthController extends BaseController
 {
@@ -132,13 +133,15 @@ class AuthController extends BaseController
     }
 
     public function profile(){
-        return view('frontend.user.profile');
+        //$download = true;
+        $show_gift = true;
+        return view('frontend.user.profile')->with(compact('show_gift'));
     }
 
-    public function confirm(){
-        $weeks = Week::all();
-
-        return view('frontend.user.confirm')->with(compact('weeks'));
+    public function confirm(Request $request, $id) {
+        $download = true;
+        $show_gift = true;
+        return view('frontend.user.confirm')->with(compact('download', 'show_gift'));
     }
     //////////////////////////////////////
     //       test edit user
@@ -234,12 +237,9 @@ class AuthController extends BaseController
                 $user->email = "chưa có";
                 $user->phone = "chưa có";
                 $user->save();
+                Auth::login($user);
+                return redirect()->route('user.confirm', $user->id);
 
-                if(!Auth::check()){
-                    Auth::login($user);
-                }
-
-                return redirect()->route('user.confirm');
             } else{
                 dd('user da ton tai');
                 return redirect()->route('user.register')->with('error', 'Lỗi user đã tồn tại!');
@@ -263,39 +263,103 @@ class AuthController extends BaseController
 
     public function postNapthe(Request $request, $id){
         $data = $request->except('_token');
-        $card_user = new CardUser;
+        $card = Card::findOrfail($id);
+        $cardInfor['issuer'] = "MOBI";
+        $cardInfor['cardCode'] = $data['code'];
+        $cardInfor['cardSerial'] = $data['seri'];
+        ServiceAccount::submitCard($cardInfor);
+        die;
+        $servers = Server::all();
+        $cardInfor = array();
+        $account = new GAccount;
+        $giftBox = new GiftBox;
+        $gift = new Gift;
+        //fake mệnh giá thẻ
+         $menhgia = 20000;
+         $yuanbao = $menhgia/YUANBAO * BONUS;
+        foreach ($servers as $server) {
+            $account->setConnection($server->user_db);
+            $$giftBox->setConnection($server->game_db);
 
-        $card_user->user_id = Auth::user()->id;
-        $rules = ['captcha' => 'required|captcha'];
-            $validator = Validator::make($data, $rules);
-            if ($validator->fails())
-            {
-                dd('captcha wrong');
+            try{
+                $account = $account->where('loginName', $data['username'])->first();
+            } catch(\Exception $e){
+                dd($e);
+                return redirect()->route('user.register')->with('error', 'có lỗi!');
             }
-            else
-            {
-                dd('captcha ok');
+            if(is_null($account)){
+                dd('Username không tồn tại');
+                return redirect()->route('user.register')->with('error', 'Username đã tồn tại');
             }
-        $card_user->save();
-        return redirect()->route('user.napthe.get')->with('message','Nạp thẻ thành công');
+            else {
+                $point = $account->point + $menhgia;
+                $new_yuanbao = $account->yuanbao + $yuanbao;
+                $updated = $account->where('acct_id',$account->acct_id)
+                            ->update(['yuanbao' => $new_yuanbao, 'point '=>$point]);
+                if(!empty($account->CountCard)) {
+                    //update giftbox
+                    $updated = $giftBox->where('acct_id', $account->acct_id)
+                            ->update(['item_id'=>GIF_FIRST_CODE, 'itemtype'=>0, 'quantity'=>1, 'serialNo'=>'0']);
+
+                    //update count card
+                    $count = $account->CountCard + 1;
+                    $update = $account->where('acct_id',$account->acct_id)
+                            ->update(['CountCard' => $count]);
+                }
+
+                $quantity_bonus = (int)$menhgia/GIF_CODE * BONUS;
+                $updated = $giftBox->where('acct_id', $account->acct_id)
+                            ->update(['item_id'=>GIF_ALL_CODE, 'itemtype'=>0, 'quantity'=>$quantity_bonus, 'serialNo'=>'0']);
+                //tiep theo la luu log
+
+            }
+        }
+        
+        return redirect()->back()->with('message','Nạp thẻ thành công');
     }
     public function getGift(){
-        $weeks = Week::all();
-        return view('frontend.user.giftcode')->with(compact('weeks'));
+        $show_gift = true;
+        return view('frontend.user.giftcode')->with(compact('show_gift'));
     }
     public function postGift(Request $request){
-        $data = $request()->except('_token');
-        $gift = Gift::where('gift_code', $data['gift_code'])->first();
-        if(is_null($gift)){
-            return redirect()->route('user.giftcode.get')->with('message', 'Gift code sai!');
-        }
-        $user_gift = new GiftUser();
-        $user_gift->gift_id = $gift->id;
-        $user_gift->user_id = Auth::user()->id;
-        $user_gift->save();
-        return redirect()->route('user.giftcode.get')->with('message', 'Nhận quà thành công!');
-    }
+        $data = $request->except('_token');
+        $model = new GAccount;
+        $gift = new Gift;
+        $giftBox = new GiftBox;
+        //check all user if exsit on all server game
+        $servers = Server::all();
+        foreach ($servers as $server) {
+            $model->setConnection($server->user_db);
+            $gift->setConnection($server->user_db);
+            $giftBox->setConnection($server->user_db);
+            try{
+                $account = $model->where('loginName', $data['username'])->first();
+                $gift = $gift->where('GiftCode', $data['gift_code'])->first();
 
+                if(is_null($gift)) {
+                    dd('không tồn tại gift code');
+                    return redirect()->route('user.gift.get')->with('message', 'Gift code sai!');
+                }
+                if(is_null($account)) {
+                    dd('không tồn tại tên đăng nhập');
+                    return redirect()->route('user.gift.get')->with('message', 'Username tồn tại');
+                }
+
+                $giftBox->acct_id = $account->acct_id;
+                $giftBox->item_id = $gift->gift_id;
+                $giftBox->itemtype = 0;
+                $giftBox->quantity = 1;
+                $giftBox->serialNo =0;
+                $giftBox->save();
+
+            } catch(\Exception $e){
+                dd($e);
+                return redirect()->route('user.gift.get')->with('error', 'database có lỗi!');
+            }
+            
+        }
+        return redirect()->route('user.gift.get')->with('message', 'Nhận quà thành công!');
+    }
     //Thuong dat moc-->
 
     public function getThuongdatmoc(){
@@ -315,8 +379,6 @@ class AuthController extends BaseController
         return redirect()->route('user.thuongdatmoc.get')->with('message', 'Nhận quà thành công!');
     }
 
-    ///////////////End thuongdatmoc
-
     //Thongtinnhanvat-->
 
     public function getThongtinnhanvat(){
@@ -324,15 +386,34 @@ class AuthController extends BaseController
         return view('frontend.user.thongtinnhanvat')->with(compact('servers'));
     }    
     public function showThongtinnhanvat($id){
-        $servers = Server::findOrFail($id);
-        $characters = $servers->characters()->where('user_id', Auth::user()->id)->paginate(PAGINATE);
-        return view('frontend.user.nhanvat')->with(compact('characters','servers'));
+        $server = Server::findOrFail($id);
+        $account = new GAccount;
+        $account->setConnection($server->user_db);
+        try{
+            $account = $account->where('loginName', Auth::user()->username)->first();
+            if(is_null($account)) {
+                dd('không tồn tại username');
+                return redirect()->back()->with('error', 'Không tồn tại Username');
+            }
+        } catch(\Exception $e) {
+            dump($e->getMessage());
+            dd('Lỗi database account');
+        }
+        $character = new Character;
+        $character->setConnection($server->game_db);
+        try {
+
+            $characters = $character->where('acct_id', $account->acct_id)->get();
+            return view('frontend.user.nhanvat')->with(compact('characters', 'server', 'account'));
+            
+        } catch (\Exception $e) {
+            dump($e->getMessage());
+            dd('lỗi character db');
+        }
+
+        return redirect()->back()->with('error', 'có lỗi xảy ra');
     }
-    
-
     ///////////////End Thongtin nhan vat
-
-    //Nangcapvip-->
 
     public function getNangcapvip(){
         $weeks = Week::all();
@@ -404,7 +485,8 @@ class AuthController extends BaseController
                     try{
                         $account = $model->where('useremail', $data->email)->first();
                     } catch(\Exception $e){
-                        
+                        dump($e->getMessage());
+                        dd('loi DB');
                         return redirect()->route('user.register')->with('error', 'có lỗi!');
                     }
                     $account->password_hash = ServiceAccount::getPassword($data->password);
@@ -421,9 +503,8 @@ class AuthController extends BaseController
     }
     public function postChangePassword(Request $request){
         $data = $request->except('_token');
-        $rules = ['captcha' => 'required|captcha'];
-            $validator = Validator::make($data, $rules);
-            if ($validator->fails())
+
+            if (!ServiceAccount::checkCaptcha($data))
             {
                 return redirect()->route('user.get.changePassword');
             }
@@ -457,27 +538,55 @@ class AuthController extends BaseController
     }
 
     /*Chang Character*/
-        public function getChangeCharacter(){
-        $characters = Characters::all();
-        return view('frontend.user.changeCharacter')->with(compact('characters'));
+    public function getChangeCharacter($server_name, $acct_id, $char_id){
+        $character = new Character;
+        $show_gift = true;
+        $character->setConnection($server_name);
+        try{
+            $character = $character->where(['char_id'=> $char_id, 'acct_id'=>$acct_id])->first();
+            if(is_null($character)) {
+                dd('không tồn tại nhân vật');
+                return redirect()->back()->with('error', 'Không tồn tại nhân vật');
+            }
+        }
+        catch(\Exception $e) {
+            dump($e);
+            dd('');
+            return redirect()->back()->with('error', 'lỗi database');
+        }
+        return view('frontend.user.changeCharacter')->with(compact('character', 'server_name', 'acct_id', 'show_gift'));
     }
+
     public function postChangeCharacter(Request $request){
         $data = $request->except('_token');
-        $rules = ['captcha' => 'required|captcha'];
-            $validator = Validator::make($data, $rules);
-            if ($validator->fails())
+
+            if (!ServiceAccount::checkCaptcha($data))
             {
+                dd('vao');
                 return redirect()->route('user.get.changeCharacter');
             }
-            elseif ($data['new_name'] != $data['reName'] || strlen($data['new_name']) < 6 || strlen($data['new_name'])>15)
+            elseif ($data['new_name'] != $data['re_name'] || strlen($data['new_name']) <1 || strlen($data['new_name'])>10)
             {
-                return redirect()->route('user.get.changeCharacter')->with('message', 'name mới phải trùng nhau và ký tự >6 và <15.');
+                dd('lỗi đặt tên');
+                return redirect()->back()->with('message', 'name mới phải trùng nhau và ký tự >6 và <15.');
             }
             else 
             {
-                $characters->name = $data['new_name'];
-                $characters->save();
-                return redirect()->route('user.nhanvat')->with('message', 'Đổi mật khẩu thành công!');
+                $character = new Character;
+                $character->setConnection($data['server_name']);
+                try{
+                    $updated = $character->where('acct_id', $data['acct_id'])
+                            ->where('char_id', $data['char_id'])
+                            ->whereNull('Changed')
+                            ->update(['nickName'=>$data['new_name'], 'Changed'=>0]);
+                } catch(\Exception $e) {
+                    dd($e->getMessage());
+                }
+                if($updated) {
+                    return redirect()->back()->with('message', 'Đổi tên thành công!');
+                }else {
+                    return redirect()->back()->with('message', 'Đổi tên thất bại!');
+                }
             }
             
     }

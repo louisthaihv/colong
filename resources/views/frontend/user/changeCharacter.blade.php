@@ -7,6 +7,7 @@
 <div id="content_news">ĐỔI TÊN NHÂN VẬT
     <div style="padding: 20px 0px 10px 0px;"></div>
     <div id="content_news_text">
+    @if(is_null($character->Changed))
         <form action="{{ route('user.post.changeCharacter') }}" method="post" id="frm_reset">           
             <table class="tableform">
                 <tbody>
@@ -25,7 +26,7 @@
                             <span class="redstar">*</span>
                         </td>
                         <td colspan="2">
-                            <input data-val="true" data-val-regex="Sai định dạng tên nhân vật" data-val-regex-pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" data-val-required="Chưa nhập name" id="name" name="name" style="width: 190px;" type="name" value="" />
+                            <input data-val="true" data-val-regex="Sai định dạng tên nhân vật" data-val-regex-pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" data-val-required="Chưa nhập name" id="name" name="name" style="width: 190px;" type="name" value="{{$character->nickName}}" />
                         </td>
                         <td>
                             <span class="field-validation-valid" data-valmsg-for="name" data-valmsg-replace="true" required name="name"></span>
@@ -37,7 +38,11 @@
                             
                         </td>
                         <td colspan="2">
-                            <input data-val="true" data-val-regex="Sai định dạng name" required name="new_password" data-val-regex-pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" data-val-required="Chưa nhập name" id="new_name" name="new_name" style="width: 190px;" type="name" />
+                            <input data-val="true" data-val-regex="Sai định dạng name" required  data-val-regex-pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" data-val-required="Chưa nhập name" id="new_name" name="new_name" style="width: 190px;" type="name" />
+
+                            <input type="hidden" value="{{$character->char_id}}" name="char_id" />
+                            <input type="hidden" value="{{$server_name}}" name="server_name" />
+                            <input type="hidden" value="{{$acct_id}}" name="acct_id" />
                         </td>
                         
                     </tr>
@@ -47,7 +52,7 @@
                             
                         </td>
                         <td colspan="2">
-                            <input data-val="true" data-val-regex="Sai định dạng re_name" required name="rePass" data-val-regex-pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" data-val-required="Chưa nhập re_name" id="rePass" name="reName" style="width: 190px;" type="name" />
+                            <input data-val="true" data-val-regex="Sai định dạng re_name" required name="re_name" data-val-regex-pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" data-val-required="Chưa nhập re_name" id="rePass" style="width: 190px;" type="name" />
                         </td>
                         
                     </tr>
@@ -73,7 +78,20 @@
                     </tr>
                 </tbody>
             </table>
-        </form>    
+        </form>
+    @else
+        <table class="tableform">
+            <tbody>
+                
+                <tr>
+                    <td style="width: 150px;"></td>
+                        <div class="notice" id="infoText" style="color:red">
+                            - CHỈ ĐƯỢC ĐỔI TÊN NHÂN VẬT MỘT LẦN<br><br>
+                        </div>
+                </tr>
+            </tbody>
+        </table>
+    @endif 
     </div>
 </div>
 @stop
