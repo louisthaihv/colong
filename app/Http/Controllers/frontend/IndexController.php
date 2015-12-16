@@ -18,9 +18,8 @@ use App\Http\Controllers\BaseController;
 class IndexController extends BaseController
 {
     public function __construct(){
-
         $popup = Popup::where('status', 1)->first();
-        
+
         $head_cats = Category::where('type', HEADER_CAT)->where('status', 1)->get();
         $bottom_cats = Category::where('type', BOTTOM_CAT)->where('status', 1)->get();
         $top_navs = Category::where('type', TOP_NAV)->where('status', 1)->get();
@@ -39,8 +38,8 @@ class IndexController extends BaseController
      */
     public function index()
     {
-        $servers = Server::all();
-        
+        $servers = Server::paginate(1);
+
         $news = Category::where('type', NEWS_CAT)->where('status', 1)->first();
         $galaries = Galary::where('status', 1)->get();
         $articles = Category::getPostAvaiable($news);

@@ -7,13 +7,19 @@
 
 <div id="content_news">ĐĂNG KÝ
     <div style="padding: 20px 0px 10px 0px;"></div>
+    if (Session::has('$error'))
+        {
+            //
+        }
     <div id="content_news_text">
-        <form action="{{ route('user.register') }}" autocomplete="off" id="mainForm" method="post">            
+        <form action="{{ route('user.register') }}" autocomplete="off" id="mainForm" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" />      
             <table class="tableform">
                 <tbody>
 
                     <tr>
                         <td style="width: 150px;"></td>
+
                     </tr>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <tr>
@@ -22,9 +28,12 @@
                     <tr>
                         <td style="text-align: right;">
                             <label for="username">Tên đăng nhập <span style="color:red">*</span> </label>    
-                        </td>
-                        <td style="width: 195px;">
-                            <input data-val="true" data-val-regex="Tên đăng nhập chỉ chứa ký tự: a -> z, 0 -> 9 và dấu gạch dưới _" data-val-regex-pattern="^([A-Za-z0-9_]+)" data-val-required="Chưa nhập tên đăng nhập" id="username" name="username" onblur="check_username(this);" required name="username" style="width: 190px;" type="text" value="" />
+                        </td>               
+                        <td style="width: 1%;">
+                            <input data-val="true" data-val-length="Tên đăng nhập quá ngắn" data-val-length-max="50" data-val-length-min="5" 
+                                   data-val-regex="Tên đăng nhập chỉ chứa ký tự: a -> z, 0 -> 9 và dấu gạch dưới _" data-val-regex-pattern="^([A-Za-z0-9_]+)" 
+                                   data-val-required="Chưa nhập tên đăng nhập" id="username" name="username" onblur="check_reguser(this);" style="width: 190px;" type="text" value="" /></td>
+                        <td><span class="field-validation-valid" data-valmsg-for="username" data-valmsg-replace="true"></span></td>
                         </td>
 
                     </tr>
@@ -33,8 +42,11 @@
                             <label for="password">Mật khầu <span style="color:red">*</span></label>
 
                         </td>
-                        <td colspan="2">
-                            <input data-val="true" data-val-regex="Sai định dạng password" data-val-regex-pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" data-val-required="Chưa nhập địa chỉ password" id="password" name="password" style="width: 190px;" type="password" value="" />
+                        <td>
+                            <input data-val="true" data-val-required="Chưa nhập mật khẩu" id="password" name="password" style="width: 190px;" type="password" />
+                        </td>
+                        <td>
+                            <span class="field-validation-valid" data-valmsg-for="password" data-valmsg-replace="true"></span>
                         </td>
 
                     </tr>
@@ -43,10 +55,10 @@
                             <label for="re_pasword">Nhập lại mật khầu <span style="color:red">*</span></label>
 
                         </td>
-                        <td colspan="2">
-                            <input data-val="true" data-val-regex="Sai định dạng re_password" data-val-regex-pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" data-val-required="Chưa nhập  re_password" id="re_password" name="re_password" style="width: 190px;" type="password" value="" />
-                        </td>
-
+                        <td>
+                            <input data-val="true" data-val-equalto="Nhập lại mật khẩu không chính xác!" id="re_password" name="re_password" style="width: 190px;" type="password" /></td>
+                        <td>
+                            <span class="field-validation-valid" data-valmsg-for="re_password" data-valmsg-replace="true"></span></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;">
@@ -64,7 +76,7 @@
                         <td>
                             <input type="image" id="submitbtn" alt="Xác nhận" src="{{asset('images/confirm.gif')}}" tppabs="">
                             <input type="image" id="resetbtn" alt="Nhập lại" src="{{asset('images/retry.gif')}}" tppabs="" onclick="mainForm.reset();
-                                        return false;">
+                                    return false;">
                         </td>
                         <td></td>
                     </tr>
@@ -73,7 +85,9 @@
         </form>    
     </div>
 </div>
+@endif
 @stop
 
 @section('end_script')
+
 @stop

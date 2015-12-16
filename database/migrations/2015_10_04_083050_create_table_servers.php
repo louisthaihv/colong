@@ -17,8 +17,13 @@ class CreateTableServers extends Migration
             $table->string('name');
             $table->string('image');
 
+            $table->string('username');
+            $table->string('password');
+
             $table->string('driver');
             $table->string('host');
+            $table->string('user_db');
+            $table->string('game_db');
             
             $table->timestamps();
         });

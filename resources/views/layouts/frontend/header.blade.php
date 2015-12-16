@@ -9,16 +9,16 @@
                             <a href="{{ route('frontend.index') }}" class="background-menu home"></a>
                         </li>
                         <li>
-                            <a href="#" class="background-menu feature"></a>
+                            <a href="{{ route('frontend.category.show', DAC_TRUNG) }}" class="background-menu feature"></a>
                         </li>
                         <li>
-                            <a href="#" class="background-menu guide"></a>
+                            <a href="{{ route('frontend.category.show', HUONG_DAN) }}" class="background-menu guide"></a>
                         </li>
                         <li>
-                            <a href="#" class="background-menu activity"></a>
+                            <a href="{{ route('frontend.category.show', HOAT_DONG) }}" class="background-menu activity"></a>
                         </li>
                         <li>
-                            <a href="#" class="background-menu public"></a>
+                            <a href="{{ route('frontend.category.show', CONG_DONG) }}" class="background-menu public"></a>
                         </li>
                         <!-- @foreach($head_cats as $category)
                         <li><a href="{{ route('frontend.category.show', $category->id) }}">
@@ -27,12 +27,6 @@
                         @endforeach -->
                     </ul>
                 </nav>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <img src="{{ asset('frontend/images/ho-tro.png') }}" alt="ho tro"/>
-                <div class="clearfix"></div>
             </div>
         </div>
     </div>

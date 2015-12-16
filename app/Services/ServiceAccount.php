@@ -16,15 +16,7 @@ class ServiceAccount {
 
 		$rules = ['captcha' => 'required|captcha'];
         $validator = Validator::make($data, $rules);
-        
-        if ($validator->fails())
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return ($validator->fails());
 	}
 
 	public static function getPassword($input) {

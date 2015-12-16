@@ -23,19 +23,20 @@ Route:: post('user/edit', ['as'=>'user.postEdit',	'uses'=>'Auth\AuthController@p
 Route::get('/user/register', 		['as'=>'user.register',	'uses'=>'Auth\AuthController@getRegister']);
 Route::post('/user/register', 		['as'=>'user.register',	'uses'=>'Auth\AuthController@postRegister']);
 
-Route::get('/user/update_password', 		['as'=>'user.update.password',	'uses'=>'Auth\AuthController@getUpdatePassword']);
-Route::get('/user/resetPassword', 		['as'=>'user.get.resetPassword',	'uses'=>'Auth\AuthController@getResetPassword']);
-Route::post('/user/resetPassword', 		['as'=>'user.post.resetPassword',	'uses'=>'Auth\AuthController@postResetPassword']);
+Route::get('/user/update_password', ['as'=>'user.update.password',	'uses'=>'Auth\AuthController@getUpdatePassword']);
+Route::get('/user/resetPassword', 	['as'=>'user.get.resetPassword',	'uses'=>'Auth\AuthController@getResetPassword']);
+Route::post('/user/resetPassword', 	['as'=>'user.post.resetPassword',	'uses'=>'Auth\AuthController@postResetPassword']);
+Route::get('/user/giftcode',	['as'=>'user.gift.get', 'uses'=>'Auth\AuthController@getGift']);
+Route::post('/user/giftcode',	['as'=>'user.gift.post', 'uses'=>'Auth\AuthController@postGift']);
 
 Route::group(["middleware" => "auth"], function(){
 
 	Route::get('/napthe',					['as'=>'user.napthe.get', 'uses'=>'Auth\AuthController@getNapthe']);
-	Route::get('/ac_napthe/{id}',					['as'=>'user.ac_napthe.get', 'uses'=>'Auth\AuthController@getAcNapthe']);
-	Route::post('/napthe/{id}',					['as'=>'user.napthe.post', 'uses'=>'Auth\AuthController@postNapthe']);
-	Route::get('/user/giftcode',						['as'=>'user.gift.get', 'uses'=>'Auth\AuthController@getGift']);
-	Route::post('/user/giftcode',					['as'=>'user.gift.post', 'uses'=>'Auth\AuthController@postGift']);
-	Route::get('/user/thuongdatmoc',						['as'=>'user.thuongdatmoc.get', 'uses'=>'Auth\AuthController@getThuongdatmoc']);
-	Route::post('/user/thuongdatmoc',					['as'=>'user.thuongdatmoc.post', 'uses'=>'Auth\AuthController@postThuongdatmoc']);
+	Route::get('/ac_napthe/{id}',			['as'=>'user.ac_napthe.get', 'uses'=>'Auth\AuthController@getAcNapthe']);
+	Route::post('/napthe/{id}',				['as'=>'user.napthe.post', 'uses'=>'Auth\AuthController@postNapthe']);
+
+	Route::get('/user/thuongdatmoc',		['as'=>'user.thuongdatmoc.get', 'uses'=>'Auth\AuthController@getThuongdatmoc']);
+	Route::post('/user/thuongdatmoc',		['as'=>'user.thuongdatmoc.post', 'uses'=>'Auth\AuthController@postThuongdatmoc']);
 	Route::get('/user/changePassword', 		['as'=>'user.get.changePassword',	'uses'=>'Auth\AuthController@getChangePassword']);
 	Route::post('/user/changePassword', 	['as'=>'user.post.changePassword',	'uses'=>'Auth\AuthController@postChangePassword']);
 
@@ -49,7 +50,7 @@ Route::group(["middleware" => "auth"], function(){
 	//Route::post('/user/doimatkhau', 	['as'=>'user.doimatkhau.post',	'uses'=>'Auth\AuthController@postChangePassword']);
 	/////////////////////////////////////////
 	Route::get('/auth/logout', 				['as'=>'authLogout',	'uses'=>'Auth\AuthController@getLogout']);
-	Route::get('/auth/profile/{id}', 		['as'=>'user.profile',	'uses'=>'Auth\AuthController@profile']);
+	Route::get('/auth/profile', 		['as'=>'user.profile',	'uses'=>'Auth\AuthController@profile']);
 	Route::get('/auth/confirm', 		['as'=>'user.confirm',	'uses'=>'Auth\AuthController@confirm']);
 
 	////Thong tin nhan vat
@@ -61,7 +62,7 @@ Route::group(["middleware" => "auth"], function(){
 
 	////Nang cap vip
 	Route::get('/user/nangcapvip',						['as'=>'user.nangcapvip.get', 'uses'=>'Auth\AuthController@getNangcapvip']);
-	Route::post('/user/nangcapvip',					['as'=>'user.nangcapvip.post', 'uses'=>'Auth\AuthController@postNangcapvip']);
+	Route::post('/user/nangcapvip',						['as'=>'user.nangcapvip.post', 'uses'=>'Auth\AuthController@postNangcapvip']);
 
 	/////end Nang cap vip
 });
