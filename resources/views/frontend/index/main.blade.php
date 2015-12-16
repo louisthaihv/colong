@@ -18,15 +18,18 @@
         <div id="menu">
             <div class="mnu">
                 <ul>
-                    <li><a href="#">Nạp thẻ lần đầu</a></li>
-                    <li><a href="#">Đả thông kinh mạch</a></li>
-                    <li><a href="#">Vòng quay may mắn</a></li>
-                    <li><a href="#">Trợ thủ đại hiệp</a></li>
-                    <li><a href="#">Máy chủ mới thần kiếm</a></li>
-                    <li><a class="last" href="#">Đua top server mới</a></li>
+                @foreach($galaries as $key => $galary)
+                    <li><a href="#" 
+                    <?php 
+                        if(max(array_keys($galaries->toArray())) == $key) {
+                            echo "class='last'";
+                        }
+                    ?>>{{$galary->title}}</a></li>
+                @endforeach
                 </ul>
             </div>
             <div class="mnu-image">
+
                 <img id="menuImage" class="img-responsiv" src="frontend/images/img/default.png">
             </div>
         </div>
@@ -144,6 +147,9 @@
 <script type="text/javascript">
 
     $(document).ready(function(){
+
+
+
       $('.bxslider').bxSlider(
            {
                 auto: true,

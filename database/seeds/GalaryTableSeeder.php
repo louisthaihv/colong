@@ -15,15 +15,32 @@ class GalaryTableSeeder extends Seeder
         Galary::truncate();
         $data=[
         	[
-                'title'=>"",
+                'title'=>"NẠP THẺ LẦN ĐẦU",
+                'status'=>1,
+                'image_url'=>'frontend/images/galaries/galary1.jpg',
+            ],
+            [
+                'title'=>"ĐẢ THÔNG KINH MẠCH",
+                'status'=>1,
+                'image_url'=>'frontend/images/galaries/galary2.jpg',
+            ],
+            [
+                'title'=>"VÒNG QUAY MAY MẮN",
+                'status'=>1,
+                'image_url'=>'frontend/images/galaries/galary3.jpg',
+            ],
+            [
+                'title'=>"TRỢ THỦ ĐẠI HIỆP",
         		'status'=>1,
         		'image_url'=>'frontend/images/galaries/galary1.jpg',
-        	],[
-                'title'=>"",
+        	],
+            [
+                'title'=>"MÁY CHỦ MỚI THẦN KIẾM",
         		'status'=>1,
         		'image_url'=>'frontend/images/galaries/galary2.jpg',
-        	],[
-                'title'=>"",
+        	],
+            [
+                'title'=>"ĐUA TOP SERVER MỚI",
         		'status'=>1,
         		'image_url'=>'frontend/images/galaries/galary3.jpg',
         	],

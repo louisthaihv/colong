@@ -9,7 +9,7 @@
     </div>
     <div class="mng-account mt-10 clearfix">
         <a href="{{ route('user.thongtinnhanvat.get') }}">
-            <img class="img-responsive" src="frontend/images/quanlytk.png" alt="quan ly tai khoan">
+            <img class="img-responsive" src="{{asset('frontend/images/quanlytk.png')}}" alt="quan ly tai khoan">
         </a>
     </div>
     <div class="slider mt-10 clearfix">

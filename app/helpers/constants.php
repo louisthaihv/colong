@@ -13,3 +13,8 @@ define('TOP_NAV', 0);
 define('NEWS_CAT', 2);
 define('HEADER_CAT', 1);
 define('BOTTOM_CAT', 3);
+
+define('DAC_TRUNG', 3);
+define('HOAT_DONG', 4);
+define('CONG_DONG', 5);
+define('HUONG_DAN', 2);
