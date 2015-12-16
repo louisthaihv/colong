@@ -542,6 +542,21 @@ td.gray
 	padding-right: 100px;
 	padding-left: 20px;
 }
+
+.secur_inf {
+    font-size: 12px;
+    font-weight: bold;
+    background-image: url(../../images/info.gif)/*tpa=http://taikhoan.colongonline.com/Content/images/info.gif*/;
+    background-repeat: no-repeat;
+    background-position: left top;
+    width: 220px;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 5px;
+    padding-left: 40px;
+}
+
 .secur_inf1
 {
 	color: #175e83;
@@ -906,7 +921,7 @@ td.gray
     padding-top:30px;
     padding-left: 110px;
     border: 1px;
-    width: 625px;
+    width: 500px;
     height: 92px;
     color: #000000;
 }
