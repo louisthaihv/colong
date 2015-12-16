@@ -70,7 +70,13 @@
                     <div class="main_menu_item2">
                         <a href="{{ route('user.napthe.get') }}" tppabs="" title="">Nạp KNB</a></div>
                     <div class="main_menu_item2">
-                        <a target="_blank" href="" tppabs="" title="" rel="nofollow">Hỗ trợ</a>
+                        <a href="{{ route('user.gift.get') }}" tppabs="" title="" rel="nofollow">Gift code</a>
+                    </div>
+                    <div class="main_menu_item2">
+                        <a href="#" tppabs="" title="" rel="nofollow">Download Game</a>
+                    </div>
+                    <div class="main_menu_item2">
+                        <a href="#" tppabs="" title="" rel="nofollow">Hỗ trợ</a>
                     </div>
                 </div>
             </div>
