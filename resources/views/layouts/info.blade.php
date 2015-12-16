@@ -63,7 +63,7 @@
             <div class="main_content">
                 <div id="main_container">
                     <!--Content-->
-                    <div class="leftcol">
+                    
                     <script src="{{ asset('user/js/jquery-1.7.1.js')}}" tppabs=""></script>
                     <script src="{{ asset('user/js/jquery.validate.min.js')}}" tppabs=""></script>
                     <script src="{{ asset('user/js/jquery.validate.unobtrusive.min.js')}}" tppabs=""></script>
