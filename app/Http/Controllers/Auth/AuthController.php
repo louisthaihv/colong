@@ -219,7 +219,7 @@ class AuthController extends BaseController
                         return redirect()->route('user.register')->with('error', 'có lỗi!');
                     }
                     if(!is_null($model)){
-                        dd('Username đã tồn tại');
+                        //dd('Username đã tồn tại');
                         return redirect()->route('user.register')->with('error', 'Username đã tồn tại');
                     }
                     $account->loginName = $data['username'];

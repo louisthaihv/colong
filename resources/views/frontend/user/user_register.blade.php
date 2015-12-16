@@ -7,13 +7,19 @@
 
 <div id="content_news">ĐĂNG KÝ
     <div style="padding: 20px 0px 10px 0px;"></div>
+    if (Session::has('$error'))
+        {
+            //
+        }
     <div id="content_news_text">
-        <form action="{{ route('user.register') }}" autocomplete="off" id="mainForm" method="post">            
+        <form action="{{ route('user.register') }}" autocomplete="off" id="mainForm" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" />      
             <table class="tableform">
                 <tbody>
 
                     <tr>
                         <td style="width: 150px;"></td>
+
                     </tr>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <tr>
@@ -79,7 +85,9 @@
         </form>    
     </div>
 </div>
+@endif
 @stop
 
 @section('end_script')
+
 @stop

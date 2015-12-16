@@ -5,6 +5,7 @@
 
 @section('content')
 <div id="content_news">Đăng nhập
+@include('admin.error-message')
     <div style="padding: 20px 0px 10px 0px;"></div>
     <div id="content_news_text">
         <form action="{{ route('authLogin') }}" autocomplete="off" id="mainForm" method="post">            
@@ -68,5 +69,6 @@
 @stop
 
 @section('end_script')
+
 
 @stop
