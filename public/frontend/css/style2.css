@@ -205,18 +205,27 @@ a.logo {
 **********************      SIDEBAR         *******************************
 **************************************************************************/
 
-.register, .mng-account, .slider, .feature-daily, .support {
+.hotline, .register, .mng-account, .slider, .feature-daily, .support {
     display: block;
     position: relative;
 }
 .register {
     min-height: 201px;
-    background: url('../images/dangky.png') no-repeat left;
+    background: url('../images/bg-register.png') no-repeat left;
+}
+
+.register .bg-text {
+    background-image: url('../images/text-register.png');
+    background-repeat: no-repeat;
+    position: 0 0;
 }
 
 .register .download-now {
     display: block;
-    height: 110px;
+    height: 120px;
+    line-height: 120px;
+    width: 100%;
+    background-position: 0 0;
 }
 
 .register .card, .register .signup {
@@ -229,10 +238,12 @@ a.logo {
 
 .register .card {
     left: 0;
+    background-position: 0 -129px;
 }
 
 .register .signup {
     right: 0;
+    background-position: -122px -129px;
 }
 
 .mng-account a {
@@ -246,12 +257,45 @@ a.logo {
 
 .feature-daily {
     height: 438px;
-    background: url('../images/daily.png') no-repeat left;
+    background: url('../images/bg-daily.png') no-repeat left;
+}
+
+.feature-daily .bg-number {
+    background-image: url('../images/daily-number.png');
+    background-repeat: no-repeat;
+}
+
+.feature-daily .daily-tab-1 {
+    background-position: 10px 4px;
+}
+
+.feature-daily .daily-tab-2 {
+    background-position: -20px 4px;
+}
+
+.feature-daily .daily-tab-3 {
+    background-position: -47px 4px;
+}
+
+.feature-daily .daily-tab-4 {
+    background-position: -78px 4px;
+}
+
+.feature-daily .daily-tab-5 {
+    background-position: -111px 4px;
+}
+
+.feature-daily .daily-tab-6 {
+    background-position: -140px 4px;
+}
+
+.feature-daily .daily-tab-7 {
+    background-position: -173px 4px;
 }
 
 .feature-daily #tn-tabs {
     position: absolute;
-    height: 296px;
+    height: 287px;
     bottom: 7px;
     left: 7px;
     width: 91%;
@@ -271,7 +315,9 @@ a.logo {
 .feature-daily #tn-tabs ul.ui-tabs-nav li a {
     display: block;
     text-align: center;
-    line-height: 22px;
+    height: 22px;
+    width: 30px;
+    float: left;
 }
 .feature-daily #tn-tabs .tn-tabs {
     margin-top: 22px;
@@ -292,6 +338,186 @@ a.logo {
 .feature-daily .daily-list span.time {
     padding-right: 20px;
 }
+
+/* ================== support ====================== */
+
+.support a {
+    width: 100%;
+    height: 102px;
+    margin-top: 52px;
+    background-image: url('../images/text-support.png');
+    background-repeat: no-repeat;
+    background-position: -3px -45px;
+    float: right;
+}
+
+.support {
+    width: 100%;
+    height: 218px;
+    line-height: 218px;
+    background: transparent url('../images/bg_support.png') no-repeat top center;
+}
+
+/* ===================== gallery =====================================*/
+
+#lib-game {
+    position: relative;
+    width: 100%;
+    height: 212px;
+    background: transparent url('../images/bg-thuvien.png') no-repeat top center;
+}
+
+#lib-game #tabs ul.tab-lib {
+    display: block;
+    min-height: 44px;
+    height: 44px;
+    border-bottom: solid 2px #ffe078;
+    margin: 0 30px;
+}
+
+#lib-game .text-lib {
+    background-image: url('../images/text-lib.png');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+#lib-game #tabs ul li {
+    display: inline-block;
+}
+
+#lib-game #tabs ul li a.tab-1,
+#lib-game #tabs ul li a.tab-2,
+#lib-game #tabs ul li a.tab-3 {
+    display: block;
+    width: 100px;
+    height: 44px;
+    line-height: 44px;
+}
+
+#lib-game #tabs ul li a.tab-3 {
+    width: 120px !important;
+}
+
+#lib-game #tabs ul li a.tab-1 {
+    background-position: 0 12px;
+}
+
+#lib-game #tabs ul li a.tab-2 {
+    background-position: -134px 12px;
+}
+
+#lib-game #tabs ul li a.tab-3 {
+    background-position: -271PX 12px;
+}
+
+#lib-game .tab-content {
+    width: 100%;
+    position: relative;
+    height: auto;
+    margin-top: 20px;
+}
+
+#lib-game .bx-wrapper .bx-controls-direction a {
+    width: 28px !important;
+    height: 50px !important;
+    margin-top: 30px !important;
+}
+
+#lib-game .bx-wrapper .bx-prev {
+    background: url('../images/btn-slider.png') no-repeat 0 0 !important;
+}
+
+#lib-game .bx-wrapper .bx-next {
+    background: url('../images/btn-slider.png') no-repeat -32px 0 !important;
+}
+
+#lib-game #tab-0,
+#lib-game #tab-1,
+#lib-game #tab-2 {
+    position: relative;
+}
+
+#lib-game .bx-controls-direction {
+    position: relative;
+}
+
+/**************************************************************************
+**********************      CONTENT         *******************************
+**************************************************************************/
+
+#menu {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 315px;
+    background: transparent url('../images/bg-menu.png') no-repeat left center;
+    padding: 0 0 0 5px;
+}
+
+#menu .mnu {
+    display: inline-block;
+    min-width: 269px;
+    width: 269px;
+    height: auto;
+    overflow: hidden;
+}
+
+#menu .mnu ul {
+    margin-top: 6px;
+}
+
+#menu .mnu ul, #menu .mnu li {
+    list-style: none;
+    list-style-type: none;
+}
+
+#menu .mnu ul li {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+#menu .mnu ul li a {
+    display: block;
+    width: inherit;
+    height: 52px;
+    line-height: 52px;
+    background: url('../images/bg-mnu.png') no-repeat top center;
+    color: #f3f490;
+    text-transform: uppercase !important;
+    font-family: Arial;
+    font-size: 19px;
+}
+
+#menu .mnu ul li a.last {
+    background: url('../images/bg-mnu-small.png') no-repeat top center;
+
+}
+
+#menu .mnu ul li a:hover,
+#menu .mnu ul li a:focus,
+#menu .mnu ul li a.active {
+    text-decoration: none;
+    background: url('../images/bg-mnu-active.png') no-repeat top center;
+}
+
+#menu .mnu ul li a.last:hover,
+#menu .mnu ul li a.last:focus,
+#menu .mnu ul li a.last.active {
+    text-decoration: none;
+    background: url('../images/bg-mnu-active-small.png') no-repeat top center;
+}
+
+#menu .mnu-image {
+    display: inline-block;
+    min-width: 417px;
+    width: 417px;
+    overflow: hidden;
+}
+
+/********************************************************
+*********       RIGHT COLUMN        *********************
+********************************************************/
 
 .top-ranks {
     display: block;
@@ -343,7 +569,7 @@ a.logo {
     display: inline-block;
     background: transparent none;
     border: none;
-    width: 67%;
+    width: 71%;
     height: 22px;
     margin-top: -12px;
 }
@@ -372,12 +598,33 @@ a.logo {
     text-transform: uppercase !important;
 }
 
+/* ================= categories =============================== */
+
+#categories {
+    margin-top: 164px;
+}
+
+.categories {
+    overflow: hidden;
+    display: block;
+    position: relative;
+}
+
+.categories ul, .categories ul li {
+    list-style: none;
+    list-style-type: none;
+}
+
+.categories ul li {
+    display: inline-block;
+}
+
 /* ================= index news =============================== */
 
 .idex-news {
     position: relative;
     background-color: rgba(20, 32, 48, 1);
-    min-height: 560px;
+    min-height: 548px;
 }
 
 .idex-news article {
@@ -443,9 +690,9 @@ a.logo {
 
 ul.server-options {
     background-color: rgba(0, 0, 0, 0.75);
-    width: 52.800%;
+    width: 54.500%;
     position: absolute;
-    right: 20px;
+    right: 14px;
     top: 57px;
     cursor: pointer !important;
     z-index: 999;
@@ -491,17 +738,28 @@ ul.server-options li a:focus {
 
 @media only screen and (min-width: 1280px) {
     .container {
-        width: 961px !important;
+        width: 962px !important;
     }
 
     .idex-news article .col-sm-8 {
         padding-left: 0 !important;
     }
 
-    .cnt {
-        margin-left: -6px !important;
+    #sidebar.col-sm-3 {
+        width: 252px !important;
+        padding-left: 0;
+        padding-right: 0;
+        margin-right: 10px;
+    }
+
+    #cnt.col-sm-9 {
+        width: 700px !important;
+        padding-left: 0;
+        padding-right: 0;
+        margin: 0;
     }
 }
+
 
 /*================================HEADER=================================*/
 header h1 {width: 361px; float: left; margin-top: 24px;}
@@ -510,7 +768,7 @@ header ul li {
     display: inline-block;
 }
 
-.content{position: absolute; top: 310px; width: 100%; z-index: 999999999999999;}
+.content {position: relative; width: 100%; clear: both;}
 .content .container {position: relative;}
 .content .container .img-stick{position: absolute; top: -170px; right: -420px; z-index: -1}
 .content .container .img-stick2{position: absolute; top: -200px; right: -500px; z-index: -2}

@@ -1,8 +1,11 @@
 <div class="sidebar">
+    <div class="hotline clearfix">
+        <img class="img-responsive" src="{{ asset('frontend/images/ho-tro.png') }}" alt="ho tro"/>
+    </div>
     <div class="register clearfix">
-        <a class="download-now" href="#"></a>
-        <a class="card" href="{{ route('user.napthe.get') }}"></a>
-        <a class="signup" href="{{ route('user.register') }}"></a>
+        <a class="bg-text download-now" href="#"></a>
+        <a class="bg-text card" href="{{ route('user.napthe.get') }}"></a>
+        <a class="bg-text signup" href="{{ route('user.register') }}"></a>
     </div>
     <div class="mng-account mt-10 clearfix">
         <a href="{{ route('user.thongtinnhanvat.get') }}">
@@ -16,7 +19,7 @@
         <div id="tn-tabs">
             <ul>
                 @foreach($weeks as $key => $week)
-                    <li><a href="#tn-tabs-{{ $key }}">{{ $week->name }}</a></li>
+                    <li><a class="bg-number daily-tab-{{ $key + 1}}" href="#tn-tabs-{{ $key }}"></a></li>
                 @endforeach
             </ul>
             @foreach($weeks as $key => $week)
@@ -36,6 +39,6 @@
         </div>
     </div>
     <div class="support mt-10 clearfix">
-        <img class="img-responsive" src="{{ asset('frontend/images/hotro.png') }}" alt=""/>
+        <a href="#"></a>
     </div>
 </div>
