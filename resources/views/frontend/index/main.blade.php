@@ -19,8 +19,8 @@
             <div class="mnu">
                 <ul>
                 @foreach($galaries as $key => $galary)
-                    <li><a href="#" 
-                    <?php 
+                    <li><a id="menu_image_{{ $key }}" class="" data-img="{{ $galary->image_url }}"
+                    <?php
                         if(max(array_keys($galaries->toArray())) == $key) {
                             echo "class='last'";
                         }
@@ -30,7 +30,7 @@
             </div>
             <div class="mnu-image">
 
-                <img id="menuImage" class="img-responsiv" src="frontend/images/img/default.png">
+                <img id="menuImage" class="img-responsiv" src="{{ asset('frontend/images/img/default.png') }}">
             </div>
         </div>
     </div>
@@ -144,6 +144,7 @@
 </div>
 @stop
 @section('end_script')
+<script src="{{ asset('frontend/js/menuImageModule.js') }}"></script>
 <script type="text/javascript">
 
     $(document).ready(function(){
@@ -204,6 +205,7 @@
     })(jQuery);
 
     $(function () {
+        menuImageModule.init();
         serverList.init();
     });
 

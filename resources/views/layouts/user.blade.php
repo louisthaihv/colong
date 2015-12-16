@@ -47,7 +47,7 @@
                 <div id="top_bar_userdisplay">
                         <a href="{{ route('user.register') }}" tppabs="#" title="Đăng ký tài khoản Cổ Long Online">Đăng ký</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                         <a href="{{ route('authLogin') }}">Đăng nhập</a>
-                </div>       
+                </div>
                     @else
                 <div id="top_bar_menu" style="float:right">
                         <a title="Trang chủ Cổ Long Online hiện đang được xây dựng!">Xin chào: <b>{{ Auth::user()->username }}</b> </a>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -91,7 +91,7 @@
                             <a href="{{ route('user.profile') }}">Thông tin tài khoản<br></a>
                         </div>
                         <div class="secur_inf3">
-                        <a href="{{ route('user.thongtinnhanvat.get') }}">Thông tin nhân vật</a>                            
+                        <a href="{{ route('user.thongtinnhanvat.get') }}">Thông tin nhân vật</a>
                         </div>
                         <div class="secur_inf4">
                             <a href="{{ route('user.nangcapvip.get') }}">Nâng cấp vip</a>

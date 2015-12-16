@@ -13,15 +13,6 @@
 
         <!-- Custom CSS -->
         <link href="{{ asset('user/css/Site.css') }}" rel="stylesheet">
-
-        <!-- Morris Charts CSS -->
-        <link href="{{ asset('user/css/plugins/morris.css') }}" rel="stylesheet">
-
-        <!-- Custom Fonts -->
-        <link href="{{ asset('user/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-
-        <link href="{{ asset('user/css/main.css') }}" rel="stylesheet">
-
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -42,7 +33,7 @@
                 <div id="top_bar_userdisplay">
                     <a href="{{ route('user.register') }}" tppabs="#" title="Đăng ký tài khoản Cổ Long Online">Đăng ký</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                     <a href="{{ route('authLogin') }}">Đăng nhập</a>
-                </div>       
+                </div>
                 @else
                 <div id="top_bar_menu" style="float:right">
                     <a title="Trang chủ Cổ Long Online hiện đang được xây dựng!">Xin chào: <b>{{ Auth::user()->username }}</b> </a>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -72,8 +63,7 @@
             <div class="main_content">
                 <div id="main_container">
                     <!--Content-->
-
-
+                    <div class="leftcol">
                     <script src="{{ asset('user/js/jquery-1.7.1.js')}}" tppabs=""></script>
                     <script src="{{ asset('user/js/jquery.validate.min.js')}}" tppabs=""></script>
                     <script src="{{ asset('user/js/jquery.validate.unobtrusive.min.js')}}" tppabs=""></script>
@@ -138,4 +128,6 @@
     ga('send', 'pageview');
         </script>
     </body>
+    <!-- jQuery -->
+    @yield('script_close')
 </html>

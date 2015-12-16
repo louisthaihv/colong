@@ -455,15 +455,16 @@ a.logo {
 }
 
 #menu .mnu {
-    display: inline-block;
+    display: block;
     min-width: 269px;
     width: 269px;
     height: auto;
     overflow: hidden;
+    float: left;
 }
 
 #menu .mnu ul {
-    margin-top: 6px;
+    margin-top: 3px;
 }
 
 #menu .mnu ul, #menu .mnu li {
@@ -487,6 +488,7 @@ a.logo {
     text-transform: uppercase !important;
     font-family: Arial;
     font-size: 19px;
+    cursor: pointer;
 }
 
 #menu .mnu ul li a.last {
@@ -509,10 +511,13 @@ a.logo {
 }
 
 #menu .mnu-image {
-    display: inline-block;
-    min-width: 417px;
-    width: 417px;
+    display: block;
+    min-width: 421px;
+    width: 421px;
+    height: 308px;
     overflow: hidden;
+    float: left;
+    margin-top: 3px;
 }
 
 /********************************************************
