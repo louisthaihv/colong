@@ -56,16 +56,16 @@ class UserTableSeeder extends Seeder
 
 
         // Fake data
-        $faker = Faker\Factory::create();
-        foreach (range(10,30) as $index) {
-            User::create([
-                'first_name'=>$faker->name,
-                'last_name'=>$faker->name,
-                'username'=>$faker->name,
-                'password'=>Hash::make('123456'),
-                'email'=>$faker->email,
-                'role_id'=>3, 
-                ]);
-        }
+        // $faker = Faker\Factory::create();
+        // foreach (range(10,30) as $index) {
+        //     User::create([
+        //         'first_name'=>$faker->name,
+        //         'last_name'=>$faker->name,
+        //         'username'=>$faker->name,
+        //         'password'=>Hash::make('123456'),
+        //         'email'=>$faker->email,
+        //         'role_id'=>3, 
+        //         ]);
+        // }
     }
 }

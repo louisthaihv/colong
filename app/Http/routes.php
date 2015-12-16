@@ -49,7 +49,7 @@ Route::group(["middleware" => "auth"], function(){
 	//Route::post('/user/doimatkhau', 	['as'=>'user.doimatkhau.post',	'uses'=>'Auth\AuthController@postChangePassword']);
 	/////////////////////////////////////////
 	Route::get('/auth/logout', 				['as'=>'authLogout',	'uses'=>'Auth\AuthController@getLogout']);
-	Route::get('/auth/profile/{id}', 		['as'=>'user.profile',	'uses'=>'Auth\AuthController@profile']);
+	Route::get('/auth/profile', 		['as'=>'user.profile',	'uses'=>'Auth\AuthController@profile']);
 	Route::get('/auth/confirm', 		['as'=>'user.confirm',	'uses'=>'Auth\AuthController@confirm']);
 
 	////Thong tin nhan vat
@@ -61,7 +61,7 @@ Route::group(["middleware" => "auth"], function(){
 
 	////Nang cap vip
 	Route::get('/user/nangcapvip',						['as'=>'user.nangcapvip.get', 'uses'=>'Auth\AuthController@getNangcapvip']);
-	Route::post('/user/nangcapvip',					['as'=>'user.nangcapvip.post', 'uses'=>'Auth\AuthController@postNangcapvip']);
+	Route::post('/user/nangcapvip',						['as'=>'user.nangcapvip.post', 'uses'=>'Auth\AuthController@postNangcapvip']);
 
 	/////end Nang cap vip
 });

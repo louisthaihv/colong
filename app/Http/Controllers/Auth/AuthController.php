@@ -131,9 +131,8 @@ class AuthController extends BaseController
         return redirect()->route('frontend.index');
     }
 
-    public function profile($id){
-        $weeks = Week::all();
-        return view('frontend.user.profile')->with(compact('weeks'));
+    public function profile(){
+        return view('frontend.user.profile');
     }
 
     public function confirm(){
@@ -155,24 +154,42 @@ class AuthController extends BaseController
     public function postEditUser(Request $request)
     {
         $user = User::findOrFail(Auth::user()->id);
-        $user->setConnection("as");
+        $servers = Server::all();
         $this->validate($request, [
             //'username' => 'required',
             'phone' => 'required',
             'email' => 'required',
             
         ]);
-
         $input = $request->except('_token');
-
         $user->email = $input['email'];
         //$user->username = $input['username'];
         $user->phone = $input['phone'];
-        $user->status ='0';
+        $user->change_count = 0;
         $user->save();
 
-        
-        return redirect()->back();
+        $model = new GAccount;
+        //check all user if exsit on all server game
+        $servers = Server::all();
+        foreach ($servers as $server) {
+            $model->setConnection($server->user_db);
+            try{
+                $account = $model->where('loginName', Auth::user()->username)->first();
+                dump($account);
+                if(is_null($account)){
+                    dd('Username không có');
+                    return redirect()->back()->with('error', 'yêu cầu không hợp lệ!');
+                } else {
+                    
+                    $model->where('acct_id',$account->acct_id)
+                            ->update(['phone' => $input['phone'], 'useremail'=>$input['email']]);
+                }
+            } catch(\Exception $e){
+                dd($e);
+                return redirect()->route('user.register')->with('error', 'có lỗi!');
+            }
+        }
+        return redirect()->back()->with('message', 'update thành công!');
     }
     //////////////////////////////////
     //          end edit user
@@ -307,8 +324,6 @@ class AuthController extends BaseController
         return view('frontend.user.thongtinnhanvat')->with(compact('servers'));
     }    
     public function showThongtinnhanvat($id){
-        //$characters = Character::all();
-        //return view('frontend.user.nhanvat')->with(compact('characters'));
         $servers = Server::findOrFail($id);
         $characters = $servers->characters()->where('user_id', Auth::user()->id)->paginate(PAGINATE);
         return view('frontend.user.nhanvat')->with(compact('characters','servers'));
