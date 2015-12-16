@@ -10,13 +10,8 @@
             <form action="" autocomplete="off" id="mainForm" method="post">            
                 <table class="tableform">
                     <tbody>
-                        
                         <tr>
                             <td style="width: 150px;"></td>
-                                <div class="notice" id="infoText">
-                                    - Hệ thống chỉ cho phép đổi tên nhân vật co level < 10 <br>
-                                    - Lưu ý: Tên nhân vật chỉ được phép bao gồm kí tự a-z, A-Z, 0-9, -, _,...
-                                </div>
                         </tr>
                         &nbsp;&nbsp;
                         <tr>
@@ -45,7 +40,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                <label for="email">Gõ lại tên đăng nhập game</label>
+                                <label for="email">Nhập lại</label>
                                 <span class="redstar">*</span>
                             </td>
                             <td colspan="2">
@@ -60,15 +55,15 @@
                                 <span class="redstar">*</span>
                             </td>
                             <td>
-                                {!! app('captcha')->display(); !!}
+                                captcha
                             </td>
                             <td><span class="field-validation-valid" data-valmsg-for="captcha" data-valmsg-replace="true"></span></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
-                                <input type="image" id="submitbtn" alt="Xác nhận" src="{{asset('Images/confirm.gif')}}" tppabs="">
-                                <input type="image" id="resetbtn" alt="Nhập lại" src="{{asset('Images/retry.gif')}}" tppabs="" onclick="mainForm.reset();
+                                <input type="image" id="submitbtn" alt="Xác nhận" src="{{asset('images/confirm.gif')}}" tppabs="">
+                                <input type="image" id="resetbtn" alt="Nhập lại" src="{{asset('images/retry.gif')}}" tppabs="" onclick="mainForm.reset();
                                         return false;">
                             </td>
                             <td></td>
