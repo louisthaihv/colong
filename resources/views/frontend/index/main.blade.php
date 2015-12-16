@@ -15,16 +15,20 @@
 @section('content')
 <div class="row">
     <div class="col-sm-12">
-        <div class="featured">
-            <ul class="bxslider">
-            @foreach($galaries as $galary)
-                <li  class="galary" >
-                    <a href="{{ $galary->link_galaries }}" target="_blank">
-                        <img src="{{ $galary->image_url }}" />
-                    </a>
-                </li>
-            @endforeach
-            </ul>
+        <div id="menu">
+            <div class="mnu">
+                <ul>
+                    <li><a href="#">Nạp thẻ lần đầu</a></li>
+                    <li><a href="#">Đả thông kinh mạch</a></li>
+                    <li><a href="#">Vòng quay may mắn</a></li>
+                    <li><a href="#">Trợ thủ đại hiệp</a></li>
+                    <li><a href="#">Máy chủ mới thần kiếm</a></li>
+                    <li><a class="last" href="#">Đua top server mới</a></li>
+                </ul>
+            </div>
+            <div class="mnu-image">
+                <img id="menuImage" class="img-responsiv" src="frontend/images/img/default.png">
+            </div>
         </div>
     </div>
 </div>
@@ -71,11 +75,6 @@
                             </li>
                             @endforeach
                         </ul>
-                    <!-- <select>
-                        @foreach($servers as $key => $server)
-                            <option value="#bx-tabs-{{ $key }}">{{ $server->name }}</option>
-                        @endforeach
-                        </select> -->
                     </div>
                     <ul id="list-tab" style="display: none;">
                     @foreach($servers as $key => $server)
@@ -105,27 +104,24 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="facebook">
-                    <div class="fb-page" data-href="https://www.facebook.com/colong2.vn/?fref=ts" data-width="230" data-height="185" data-small-header="false" data-adapt-container-width="true" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/colong2.vn/?fref=ts"><a href="https://www.facebook.com/colong2.vn/?fref=ts">Cổ Long 2</a></blockquote></div></div>
-
-                </div>
             </div>
-            
+            <div class="facebook clearfix mt-10">
+                <div class="fb-page" data-href="https://www.facebook.com/colong2.vn/?fref=ts" data-width="230" data-height="185" data-small-header="false" data-adapt-container-width="true" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/colong2.vn/?fref=ts"><a href="https://www.facebook.com/colong2.vn/?fref=ts">Cổ Long 2</a></blockquote></div></div>
+            </div>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
-        <div class="slider-bottom">
-            <div id="tabs">
-                <ul>
-                @foreach($bottom_cats as $key => $category)
-                    <li><a href="#tabs-{{ $key }}">
-                        <img src="{{ asset($category->image_url) }}" alt="{{ $category->name }}"/>
-                        </a>
-                    </li>
-                @endforeach
-                </ul>
+    <div id="lib-game" class="col-sm-12">
+        <div id="tabs">
+            <ul class="tab-lib">
+            @foreach($bottom_cats as $key => $category)
+                <li><a class="text-lib tab-{{ $key + 1 }}" href="#tabs-{{ $key }}">
+                    </a>
+                </li>
+            @endforeach
+            </ul>
+            <div class="tab-content clearfix">
                 @foreach($bottom_cats as $key => $category)
                 <div id="tabs-{{ $key }}" class="tab-slider">
                     <ul class="bxslider1">

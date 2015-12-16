@@ -33,22 +33,26 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 <!--End facebook js-->
 	@include("layouts.frontend.header")
-	<div class="content row">
+	<div class="content row mt-15">
 		<div class="container">
             <div class="row">
-                <div class="col-sm-3">
+                <div id="sidebar" class="col-sm-3">
                     <!--Sidebar-->
                     @include('layouts/frontend/sidebar')
                 </div>
-                <div class="col-sm-9 cnt-block">
-                    <div class="row">
-                        <div class="top-image">
-                           @include('layouts/frontend/top_nav')
+                <div id="cnt" class="col-sm-9 cnt-block">
+                    <div id="categories" class="row">
+                        <div class="col-sm-12">
+                            <div class="categories">
+                               @include('layouts/frontend/top_nav')
+                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <!-- Content-->
-                        @yield('content')
+                        <div class="col-sm-12">
+                            <!-- Content-->
+                            @yield('content')
+                        </div>
                     </div>
                 </div>
             </div>
@@ -76,10 +80,7 @@
         var slider3_initialized = false;
         $( "#tabs").tabs({
             activate: function( event, ui ) {
-                //console.log("ui = ");console.log(ui);
                 var tab_id = $(ui.newPanel).attr('id');//alert(tab_id);
-                console.log(tab_id)
-                console.log("============")
                 if(tab_id == "tabs-2" && slider2_initialized == false)
                 {
                     $('.bxslider2').bxSlider({

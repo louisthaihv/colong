@@ -29,11 +29,5 @@
                 </nav>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <img src="{{ asset('frontend/images/ho-tro.png') }}" alt="ho tro"/>
-                <div class="clearfix"></div>
-            </div>
-        </div>
     </div>
 </header>
