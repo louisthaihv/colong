@@ -87,7 +87,6 @@ var menuImageModule = (function() {
         var image = '#menuImage';
 
         setInterval(function() {
-
             setTimeout(function() {
                 autoRun('menu_image_0', menuList, image);
             }, 2000);
@@ -105,14 +104,15 @@ var menuImageModule = (function() {
             }, 8000);
 
             setTimeout(function() {
-                autoRun('#menu_image_4', menuList, image);
+                autoRun('menu_image_4', menuList, image);
             }, 10000);
 
             setTimeout(function() {
                 autoRun('menu_image_5', menuList, image);
             }, 12000);
 
-        }, 13000);
+        }, 2*6*1000);
+
 
         $.each(menuList, function(index, element) {
 
