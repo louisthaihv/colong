@@ -54,15 +54,16 @@ Route::group(["middleware" => "auth"], function(){
 	Route::get('/auth/confirm/{id}', 		['as'=>'user.confirm',	'uses'=>'Auth\AuthController@confirm']);
 
 	////Thong tin nhan vat
-	Route::get('/user/thongtinnhanvat',						['as'=>'user.thongtinnhanvat.get', 'uses'=>'Auth\AuthController@getThongtinnhanvat']);
 	Route::get('/user/thongtinnhanvat/{server_id}',			['as'=>'user.thongtinnhanvat.show', 'uses'=>'Auth\AuthController@showThongtinnhanvat']);
-	Route::post('/user/thongtinnhanvat/{id}',					['as'=>'user.thongtinnhanvat.post', 'uses'=>'Auth\AuthController@postThongtinnhanvat']);
+	Route::get('/user/thongtinnhanvat',						['as'=>'user.thongtinnhanvat', 'uses'=>'Auth\AuthController@selectServer']);
+	Route::post('/user/thongtinnhanvat/{id}',				['as'=>'user.thongtinnhanvat.post', 'uses'=>'Auth\AuthController@postThongtinnhanvat']);
 
 	/////end thong tin nhan vat
 
 	////Goi tan thu
-	Route::get('/user/goitanthu',						['as'=>'user.goitanthu.get', 'uses'=>'Auth\AuthController@getGoitanthu']);
-	Route::post('/user/goitanthu',						['as'=>'user.goitanthu.post', 'uses'=>'Auth\AuthController@postGoitanthu']);
+	Route::get('/user/goitanthu/{server_id}/{gift_type}',			['as'=>'user.goitanthu.update', 'uses'=>'Auth\AuthController@getAcGoitanthu']);
+	Route::get('/user/goiquatanthu/{server_id}',					['as'=>'user.goitanthu.select', 'uses'=>'Auth\AuthController@getGoitanthu']);
+	Route::get('/user/goiquatanthu',								['as'=>'user.goitanthu', 'uses'=>'Auth\AuthController@selectServer']);
 
 	/////end Goi tan thu
 });
