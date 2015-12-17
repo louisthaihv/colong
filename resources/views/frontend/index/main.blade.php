@@ -19,12 +19,12 @@
             <div class="mnu">
                 <ul>
                 @foreach($galaries as $key => $galary)
-                    <li><a id="menu_image_{{ $key }}" class="" data-img="{{ $galary->image_url }}"
+                    <li><a href="{{$galary->link_galaries}}" id="menu_image_{{ $key }}" class="" data-img="{{ $galary->image_url }}"
                     <?php
                         if(max(array_keys($galaries->toArray())) == $key) {
                             echo "class='last'";
                         }
-                    ?>>{{$galary->title}}</a></li>
+                    ?> target="_blank">{{$galary->title}}</a></li>
                 @endforeach
                 </ul>
             </div>
