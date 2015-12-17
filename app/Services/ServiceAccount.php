@@ -16,7 +16,6 @@ class ServiceAccount {
 
 		$rules = ['captcha' => 'required|captcha'];
         $validator = Validator::make($data, $rules);
-        
         return ($validator->fails());
 	}
 

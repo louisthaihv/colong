@@ -199,7 +199,7 @@ class AuthController extends BaseController
     }
     public function postRegister(Request $request){
         $data = $request->except('_token');
-        if(!ServiceAccount::checkCaptcha($data)) {
+        if(ServiceAccount::checkCaptcha($data)) {
             if($data['password'] !=$data['re_password']){
                 dd('trung password');
                 return redirect()->route('user.register')->with('error', 'Password không giống nhau.');
@@ -215,7 +215,7 @@ class AuthController extends BaseController
                     try{
                         $model = $account->where('loginName', $data['username'])->first();
                     } catch(\Exception $e){
-                        
+                        dd($e);
                         return redirect()->route('user.register')->with('error', 'có lỗi!');
                     }
                     if(!is_null($model)){
@@ -226,7 +226,7 @@ class AuthController extends BaseController
                     $account->password_hash = ServiceAccount::getPassword($data['password']);
                     $account->save();
                 }
-            
+                
                 //insert user into database web
                 $user = new User;
                 $user->username = $data['username'];
