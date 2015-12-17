@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
 
+<html>
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,10 +10,6 @@
         <link rel="shortcut icon" href="#" type="image/x-icon" />
         <link rel="icon" href="#" type="image/x-icon" />
         <title>Kiếm thế 2</title>
-
-        <!-- Bootstrap Core CSS -->
-        <link href="{{ asset('user/css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('fronts/css/bootstrap-formhelpers.min.css') }}" rel="stylesheet">
 
         <!-- Custom CSS -->
         <link href="{{ asset('user/css/Site.css') }}" rel="stylesheet">
@@ -43,20 +38,20 @@
                     <a href="{{ route('frontend.index') }}" title="Trang chủ Cổ Long Online hiện đang được xây dựng!">Trang chủ</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                     <a target="_blank" href="#" title="Tham gia thảo luận cùng các game thủ Cổ Long Online" rel="nofollow">Facebook</a>
                 </div>
-                    @if(!Auth::check())
+                @if(!Auth::check())
                 <div id="top_bar_userdisplay">
-                        <a href="{{ route('user.register') }}" tppabs="#" title="Đăng ký tài khoản Cổ Long Online">Đăng ký</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                        <a href="{{ route('authLogin') }}">Đăng nhập</a>
+                    <a href="{{ route('user.register') }}" tppabs="#" title="Đăng ký tài khoản Cổ Long Online">Đăng ký</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="{{ route('authLogin') }}">Đăng nhập</a>
                 </div>       
-                    @else
+                @else
                 <div id="top_bar_menu" style="float:right">
-                        <a title="Trang chủ Cổ Long Online hiện đang được xây dựng!">Xin chào: <b>{{ Auth::user()->username }}</b> </a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                        <a href="{{ route('authLogout') }}">Đăng xuất</a>
-                        @if(Auth::user()->isAdmin())
-                            &nbsp;&nbsp;|&nbsp;&nbsp;<a href="{{ route('adminIndex') }}">Giao diện quản lý</a>
-                        @endif
-                </div>
+                    <a title="Trang chủ Cổ Long Online hiện đang được xây dựng!">Xin chào: <b>{{ Auth::user()->username }}</b> </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="{{ route('authLogout') }}">Đăng xuất</a>
+                    @if(Auth::user()->isAdmin())
+                    &nbsp;&nbsp;|&nbsp;&nbsp;<a href="{{ route('adminIndex') }}">Giao diện quản lý</a>
                     @endif
+                </div>
+                @endif
             </div>
         </div>
         <!--End Top Bar-->
@@ -77,38 +72,43 @@
             <div class="main_content">
                 <div id="main_container">
                     <!--Content-->
-                    <div class="leftcol">
-                        
-                        
-                        
 
+
+                    <script src="{{ asset('user/js/jquery-1.7.1.js')}}" tppabs=""></script>
+                    <script src="{{ asset('user/js/jquery.validate.min.js')}}" tppabs=""></script>
+                    <script src="{{ asset('user/js/jquery.validate.unobtrusive.min.js')}}" tppabs=""></script>
+
+                    <div class="leftcol">
                         <div class="secur_ind">
                             Trang tài khoản<br>
                             <br>
-                            
+                            CỔ LONG ONLINE<br>
+                            <br>
                         </div>
-
                         <div class="secur_inf">
-                            <img src="{{ asset('images/info.gif') }}" alt=""><span class="bold">Tài khoản</span><br>
+                            <span class="bold">Tài khoản</span><br>
                             Đây là hệ thống tài khoản dành riêng cho dịch vụ trò chơi Cổ Long Online.</div>
                         <div class="secur_inf">
-                            <img src="{{ asset('images/info.gif') }}" alt=""><span class="bold">Đăng ký nhanh chóng</span><br>
+                            <span class="bold">Đăng ký nhanh chóng</span><br>
                             Chỉ cần vài bước đơn giản là bạn có ngay một tài khoản và có thể lập tức tham gia Cổ Long Online.
                         </div>
                         <div class="secur_inf">
-                            <img src="{{ asset('images/info.gif') }}" alt=""><span class="bold">Bảo vệ tài khoản game</span><br>
+                            <span class="bold">Bảo vệ tài khoản game</span><br>
                             Không chia sẻ tài khoản với người khác. Tuyệt đối không dùng các phần mềm Auto,
                             bot, hack để tránh bị keylog dẫn đến mất tài khoản game.<br>
                             Tài khoản, vật phẩm trong game bị mất sẽ không thể tìm lại
                         </div>
 
-
                     </div>
 
                     <div class="rightcol">
-                        <!---Content-->
+
+
+                        <script src="{{ asset('user/js/MyApp.js')}}" tppabs=""></script>
+
                         @yield('content')
                     </div>
+                    <!--End Content-->
                 </div>
                 <div id="main_bottom_bar"></div>
                 <div style="clear:both;"></div>
@@ -121,11 +121,21 @@
             </div>
         </div>
         <!--End Footer-->
+        <script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '../../www.google-analytics.com/analytics.js'/*tpa=http://www.google-analytics.com/analytics.js*/, 'ga');
+
+    ga('create', 'UA-42635616-1', 'http://taikhoan.colongonline.com/Account/volamtieu.com');
+    ga('send', 'pageview');
+        </script>
     </body>
-    <!-- jQuery -->
-    <script src="{{ asset('user/js/jquery.js') }}"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('fronts/js/bootstrap-formhelpers.min.js') }}"></script>
-    @yield('script_close')
 </html>

@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.info')
 
 @section('start_css')
 @stop
@@ -14,7 +14,7 @@
                     <tr>
                         <td style="width: 150px;"></td>
                             <div class="notice" id="infoText">
-                                - Mật khẩu được lưu trong hệ thống không phân biệt chữ hoa, chữ thường<br>
+                                - Mật khẩu được lưu trong hệ thống không phân biệt chữ hoa, chữ thường<br><br>
                                 - Hãy bảo vệ mật khẩu cẩn thận, đề phòng bị hack, đánh cắp tài khoản
                             </div>
                     </tr>
@@ -26,7 +26,7 @@
                             <span class="redstar">*</span>
                         </td>
                         <td style="width: 195px;">
-                            <input data-val="true" data-val-regex="Tên đăng nhập chỉ chứa ký tự: a -> z, 0 -> 9 và dấu gạch dưới _" data-val-regex-pattern="^([A-Za-z0-9_]+)" data-val-required="Chưa nhập tên đăng nhập" id="username" name="username" onblur="check_username(this);" style="width: 190px;" type="text" value="" />
+                            <input data-val="true" data-val-required="Chưa nhập tên đăng nhập" id="username" name="username" style="width: 190px;" type="text" value="" />
                         </td>
                         <td>
                             <span class="field-validation-valid" data-valmsg-for="username" data-valmsg-replace="true"></span>
