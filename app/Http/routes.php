@@ -35,8 +35,10 @@ Route::group(["middleware" => "auth"], function(){
 	Route::get('/ac_napthe/{id}',			['as'=>'user.ac_napthe.get', 'uses'=>'Auth\AuthController@getAcNapthe']);
 	Route::post('/napthe/{id}',				['as'=>'user.napthe.post', 'uses'=>'Auth\AuthController@postNapthe']);
 
-	Route::get('/user/thuongdatmoc',		['as'=>'user.thuongdatmoc.get', 'uses'=>'Auth\AuthController@getThuongdatmoc']);
-	Route::post('/user/thuongdatmoc',		['as'=>'user.thuongdatmoc.post', 'uses'=>'Auth\AuthController@postThuongdatmoc']);
+	Route::get('/user/thuongdatmoc/{server_id}/{gift_id}',		['as'=>'user.thuongdatmoc.do', 'uses'=>'Auth\AuthController@getAcThuongdatmoc']);
+	Route::get('/user/thuongdatmoc/{server_id}',		['as'=>'user.thuongdatmoc.show', 'uses'=>'Auth\AuthController@showThuongdatmoc']);
+	Route::get('/user/thuongdatmoc',		['as'=>'user.thuongdatmoc.get', 'uses'=>'Auth\AuthController@selectServer']);
+
 	Route::get('/user/changePassword', 		['as'=>'user.get.changePassword',	'uses'=>'Auth\AuthController@getChangePassword']);
 	Route::post('/user/changePassword', 	['as'=>'user.post.changePassword',	'uses'=>'Auth\AuthController@postChangePassword']);
 
@@ -55,7 +57,7 @@ Route::group(["middleware" => "auth"], function(){
 
 	////Thong tin nhan vat
 	Route::get('/user/thongtinnhanvat/{server_id}',			['as'=>'user.thongtinnhanvat.show', 'uses'=>'Auth\AuthController@showThongtinnhanvat']);
-	Route::get('/user/thongtinnhanvat',						['as'=>'user.thongtinnhanvat', 'uses'=>'Auth\AuthController@selectServer']);
+	Route::get('/user/thongtinnhanvat',						['as'=>'user.thongtinnhanvat.get', 'uses'=>'Auth\AuthController@selectServer']);
 	Route::post('/user/thongtinnhanvat/{id}',				['as'=>'user.thongtinnhanvat.post', 'uses'=>'Auth\AuthController@postThongtinnhanvat']);
 
 	/////end thong tin nhan vat

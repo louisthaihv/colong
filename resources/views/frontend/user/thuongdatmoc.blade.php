@@ -10,32 +10,38 @@
             <form action="" autocomplete="off" id="mainForm" method="post">            
                 <table class="tableform">
                     <tbody>
-                        
                         <tr>
                             <td style="width: 150px;"></td>
                                 <div class="notice" id="infoText">
-                                    - Bạn đã tích lũy được: {{ Auth::user()->point }} điểm
+                                    - Bạn đã tích lũy được: 
+                                    {{ $account->point }} điểm<br/>
+                                    @if(Session::has('message'))
+                                    <br /> {{Session::get('message')}}
+                                    @endif
+                                    @if(Session::has('error'))
+                                        <span style="color:red">
+                                        {{Session::get('error')}}
+                                        </span>
+                                    @endif
                                 </div>
                         </tr>
                         &nbsp;&nbsp;
-                        
                         <table class="tableform1">
                             <tr>
                                 <th>MỐC VNĐ</th>
                                 <th>VẬT PHẨM</th>
                                 <th>THAO TÁC</th>
                             </tr>
-                            @foreach($GiftBoxs as $GiftBox )
+                            @foreach($gifts as $gift )
                             <tr>
-                                <td> {!! $GiftBox->Point !!} </td>
-                                <td> {!! $GiftBox->GiftName !!} </td>
+                                <td> {!! $gift->point !!} </td>
+                                <td> {!! $gift->name !!} </td>
                                 <td> 
-                                    <!--@if(is_null($character->Changed) && $character->level <10)
-                                    {{ route('user.get.changeCharacter',[$server->game_db, $account->acct_id, $character->char_id])}}-->
-                                        <a href="#">Nhận thưởng</a>
-                                    <!--@else
-                                        {{"Đổi tên"}}
-                                    @endif-->
+                                @if($account->point >= $gift->point)
+                                    <a href="{{route('user.thuongdatmoc.do', ['server_id'=>$server_id, 'gift_id'=>$gift->id])}}">Nhận thưởng</a>
+                                @else
+                                    Nhận thưởng
+                                @endif
                                 </td>
                             </tr>
                             @endforeach

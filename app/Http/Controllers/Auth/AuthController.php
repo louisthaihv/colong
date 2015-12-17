@@ -23,6 +23,7 @@ use App\Http\Controllers\BaseController;
 use App\GiftBox;
 use Session;
 use App\GiftFresher;
+use App\QuaDatMoc;
 class AuthController extends BaseController
 {
     /*
@@ -276,8 +277,8 @@ class AuthController extends BaseController
         }
         else {
               Session::put('key', Session::get('count')+1);
-              if(Session::get('count') > 5) {
-                return redirect()->back()->with('error', "Nạp thẻ sai 5 lần");
+              if(Session::get('count') == 5) {
+                    return redirect()->back()->with('error', "Nạp thẻ sai 5 lần");
               }
         }
         $data = $request->except('_token');
@@ -403,25 +404,59 @@ class AuthController extends BaseController
     }
     
     //Thuong dat moc-->
-
-    public function getThuongdatmoc(){
-        $GiftBoxs =GiftBox::all();
-        return view('frontend.user.thuongdatmoc')->with(compact('sGiftBoxs'));
-    }
-    public function postThuongdatmoc(Request $request){
-        $GiftBox = new GiftBox;
-        $GiftBox->setConnection($server->game_db);
-        try {
-
-            $GiftBoxs = $GiftBox->where('gift_id', $GiftBox->gift_id)->get();
-            return view('frontend.user.nhanvat')->with(compact('GiftBoxs', 'server', 'GiftBox'));
-            
-        } catch (\Exception $e) {
-            dump($e->getMessage());
-            dd('lỗi giftbox db');
+    public function showThuongdatmoc($server_id){
+        $show_gift = true;
+        $gifts =QuaDatMoc::all();
+        $server_key = 'server'.$server_id;
+        if(!Session::has($server_key)) {
+            $server = Server::findOrfail($server_id);
+            Session::put($server_key, $server);
         }
+        $account = new GAccount;
+        $account->setConnection(session($server_key)->user_db);
+        $account = $account->where('acct_id', session('account')->acct_id)->first();
+        Session::forget('account');
+        Session::put('account', $account);
+        return view('frontend.user.thuongdatmoc')->with(compact('gifts', 'server_id', 'account','show_gift'));
+    }
 
-        return redirect()->back()->with('error', 'có lỗi xảy ra');
+    public function getAcThuongdatmoc($server_id, $gift_id){
+        $user = session('user');
+            $server_key = 'server'.$server_id;
+            $server = session($server_key);
+            $gift = QuaDatMoc::findOrfail($gift_id);
+            $account = new GAccount;
+            $account->setConnection($server->user_db);
+            $account = $account->findOrfail(session('account')->acct_id);
+            $oldPoint = $account->point;
+            if($oldPoint >= $gift->point){
+                $giftBox = new GiftBox;
+                $giftBox->setConnection($server->user_db);
+                $giftBox->acct_id = session('account')->acct_id;
+                $giftBox->item_id = $gift->item_id;
+                $giftBox->itemtype = 0;
+                $giftBox->quantity = 1;
+                $giftBox->serialNo = 0;
+                try{
+                    $update = $giftBox->save();
+                }catch(\Exception $e) {
+                    return redirect()->back()->with('error', 'Thao tác xảy ra lỗi');
+                }
+                if($update) {
+                    try{
+                        $newPoint = $oldPoint - $gift->point;
+                        $account->point=$newPoint;
+                        $account->save();
+                        Session::forget('account');
+                        Session::put('account', $account);
+                        return redirect()->back()->with('message', 'Nhận quà thành công!');
+                    } catch (\Exception $e) {
+                        return redirect()->back()->with('error', 'Thao tác xảy ra lỗi');
+                    }
+                }
+            } else {
+                return redirect()->back()->with('error', 'Không đủ điểm tích lũy');
+            }
     }
 
     //Thongtinnhanvat-->
@@ -429,13 +464,17 @@ class AuthController extends BaseController
     public function selectServer(){
         $servers = Server::all();
         $curent_route = \Request::route()->getName();
-        if( $curent_route == 'user.thongtinnhanvat'){
+        if( $curent_route == 'user.thongtinnhanvat.get'){
             $title = "THÔNG TIN NHÂN VẬT";
             $next = 'user.thongtinnhanvat.show';
         }
         if( $curent_route  == 'user.goitanthu'){
             $title = "GÓI QUÀ TÂN THỦ";
             $next = 'user.goitanthu.select';
+        }
+        if( $curent_route  == 'user.thuongdatmoc.get'){
+            $title = "NHẬN THƯỞNG ĐẠT MỐC";
+            $next = 'user.thuongdatmoc.show';
         }
         $show_gift=true;
         return view('frontend.user.select_server')->with(compact('servers', 'title', 'next', 'show_gift'));
@@ -486,7 +525,8 @@ class AuthController extends BaseController
         Session::forget('account');
         Session::put('account', $account);
         return view('frontend.user.goitanthu')->with(compact('server_id', 'gift_freshers', 'user'));
-    }
+    }   
+    
     public function getAcGoitanthu($server_id, $gift_type){
         $user = session('user');
         if(User::findOrfail(Auth::user()->id)->fresher) {

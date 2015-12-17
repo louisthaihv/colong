@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Kiếm Thế 2</title>
+<title>Cổ Long</title>
 
 <link type="image/x-icon" src="{{ asset('frontend/images/logo-trutien.png') }}" rel="icon">
 <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/images/logo-trutien.png') }}" />

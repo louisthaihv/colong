@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ItemsTableSeeder::class);
         $this->call(ItemTypeTableSeeder::class);
         $this->call(GiftFresherTableSeeder::class);
+        $this->call(QuaDatMocTableSeeder::class);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         Model::reguard();
