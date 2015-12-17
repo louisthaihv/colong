@@ -22,34 +22,50 @@ class ClanTableSeeder extends Seeder
 							diệt trừ tà đạo và phục vụ hết mình cho chính nghĩa. Họ có
 							năng lực phép thuật tiềm năng rất mạnh cũng như khả năng dịch
 							chuyển mọi thứ.',
-                'title_url'=>'frontend/images/phap-ton.png',
-                'slide_url'=>'frontend/images/phap-ton.png',
-        		'back_ground_image_url'=>'frontend/images/s11.png',
+                'image_url'=>'frontend/images/clans/1.jpg',
         	],[
         		'name'=>"Kiếm Tông",
         		'description'=>'Vận dụng ngũ hành tạo nên những pháp thuật gây sát
 							thương chấn động trời đất, với thần kiếm trên tay hệ tu luyện
 							này có thể càn quét cả 1 ngôi làng trong nháy mắt!',
-        		'title_url'=>'frontend/images/kiem-tong.png',
-                'slide_url'=>'frontend/images/kiem-tong.png',
-                'back_ground_image_url'=>'frontend/images/kiemtong.png',
+        		'image_url'=>'frontend/images/clans/2.jpg',
         	],[
         		'name'=>"Thích Khách",
         		'description'=>'Là hệ tu luyện với vũ khí sắc bén, khinh công thoắt ẩn
 							thoắt hiện trong đêm. Được biết đến với năng lực ẩn thân độc
 							nhất vô nhị và tốc độ công kích nhanh, gây sát thương gần cực
 							mạnh.',
-        		'title_url'=>'frontend/images/thich-khach.png',
-                'slide_url'=>'frontend/images/thich-khach.png',
-                'back_ground_image_url'=>'frontend/images/thichkhach.png',
+        		'image_url'=>'frontend/images/clans/3.jpg',
         	],[
+                'name'=>"Bút Phái",
+                'description'=>'Hệ tu phái bí ẩn nhất với vũ khí là 1 cây bút lớn, mỗi
+                            nét vẽ của Bút Phái là 1 chiêu thức khiến đối thủ lâm vào
+                            trạng thái hư ảo không thể tẩu thoát!',
+                'image_url'=>'frontend/images/clans/4.jpg',
+            ],[
+                'name'=>"Bút Phái",
+                'description'=>'Hệ tu phái bí ẩn nhất với vũ khí là 1 cây bút lớn, mỗi
+                            nét vẽ của Bút Phái là 1 chiêu thức khiến đối thủ lâm vào
+                            trạng thái hư ảo không thể tẩu thoát!',
+                'image_url'=>'frontend/images/clans/5.jpg',
+            ],[
+                'name'=>"Bút Phái",
+                'description'=>'Hệ tu phái bí ẩn nhất với vũ khí là 1 cây bút lớn, mỗi
+                            nét vẽ của Bút Phái là 1 chiêu thức khiến đối thủ lâm vào
+                            trạng thái hư ảo không thể tẩu thoát!',
+                'image_url'=>'frontend/images/clans/6.jpg',
+            ],[
+                'name'=>"Bút Phái",
+                'description'=>'Hệ tu phái bí ẩn nhất với vũ khí là 1 cây bút lớn, mỗi
+                            nét vẽ của Bút Phái là 1 chiêu thức khiến đối thủ lâm vào
+                            trạng thái hư ảo không thể tẩu thoát!',
+                'image_url'=>'frontend/images/clans/7.jpg',
+            ],[
         		'name'=>"Bút Phái",
         		'description'=>'Hệ tu phái bí ẩn nhất với vũ khí là 1 cây bút lớn, mỗi
 							nét vẽ của Bút Phái là 1 chiêu thức khiến đối thủ lâm vào
 							trạng thái hư ảo không thể tẩu thoát!',
-        		'title_url'=>'frontend/images/but-phai.png',
-                'slide_url'=>'frontend/images/but-phai.png',
-                'back_ground_image_url'=>'frontend/images/butphai.png',
+        		'image_url'=>'frontend/images/clans/8.jpg',
         	],
 
         ];

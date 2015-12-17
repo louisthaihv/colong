@@ -51,6 +51,6 @@
                 </tbody>
             </table>
         </div>
-        <center>{{ $chars->appends(Request::except('page'))->render() }}</center>
+        <center>{!! $chars->appends(Request::except('page'))->render() !!}</center>
     </div>
 @endsection

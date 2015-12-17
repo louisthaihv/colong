@@ -24,11 +24,13 @@ class IndexController extends BaseController
         $bottom_cats = Category::where('type', BOTTOM_CAT)->where('status', 1)->get();
         $top_navs = Category::where('type', TOP_NAV)->where('status', 1)->get();
         $weeks = Week::all();
+        $clans = Clan::all();
         view()->share('popup', $popup);
         view()->share('weeks', $weeks);
         view()->share('head_cats', $head_cats);
         view()->share('bottom_cats', $bottom_cats);
         view()->share('top_navs', $top_navs);
+        view()->share('clans', $clans);
 
     }
     /**
@@ -39,7 +41,7 @@ class IndexController extends BaseController
     public function index()
     {
         $servers = Server::paginate(1);
-
+        
         $news = Category::where('type', NEWS_CAT)->where('status', 1)->first();
         $galaries = Galary::where('status', 1)->get();
         $articles = Category::getPostAvaiable($news);

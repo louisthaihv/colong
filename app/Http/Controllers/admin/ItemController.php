@@ -5,10 +5,14 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BaseController;
 use App\Item;
-class ItemController extends Controller
+
+class ItemController extends BaseController
 {
+    public function __construct() {
+        parent::__construct();
+    }
     /**
      * Display a listing of the resource.
      *

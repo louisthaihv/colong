@@ -69,6 +69,6 @@
 
         <a class="btn btn-success" href="{{ route('admin.popups.create') }}">Tạo mới</a>
     </div>
-    <center>{{ $popups->appends(Request::except('page'))->render() }}</center>
+    <center>{!! $popups->appends(Request::except('page'))->render() !!}</center>
 </div>
 @endsection

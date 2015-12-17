@@ -16,21 +16,17 @@
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <img src="{{ asset('frontend/images/khunganh.png') }}" alt="Chania">
+        @foreach($clans as $key => $clan)
+            <div <?php 
+                if($key == 0 ) {
+                    echo " class='item active'";
+                } else {
+                    echo " class='item'";
+                }
+            ?>>
+              <img src="{{ asset($clan->image_url) }}" alt="{{$clan->name}}">
             </div>
-
-            <div class="item">
-              <img src="{{ asset('frontend/images/khunganh.png') }}" alt="Chania">
-            </div>
-
-            <div class="item">
-              <img src="{{ asset('frontend/images/khunganh.png') }}" alt="Flower">
-            </div>
-
-            <div class="item">
-              <img src="{{ asset('frontend/images/khunganh.png') }}" alt="Flower">
-            </div>
+        @endforeach
           </div>
         </div>
     </div>
@@ -47,7 +43,7 @@
                     @foreach($week->dailyEvents as $event)
                         <li>
                         <p class="text-left">
-                            <span class="time">{{ $event->start_time }} - {{ $event->end_time }}</span>
+                            <span class="time">{{ $event->start_time }} : {{ $event->end_time }}</span>
                             <span>{!! $event->name !!}</span>
                             </p>
                         </li>

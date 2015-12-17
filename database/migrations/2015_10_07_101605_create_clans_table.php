@@ -16,9 +16,7 @@ class CreateClansTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
-            $table->string('title_url');//title_image
-            $table->string('slide_url');
-            $table->string('back_ground_image_url');
+            $table->string('image_url');//title_image
             $table->timestamps();
         });
     }

@@ -17,8 +17,8 @@ class CreateDailyEventsTable extends Migration
             $table->integer('weekly_id')->unsigned();
             $table->foreign('weekly_id')->references('id')->on('weekly')->onDelete('cascade');
             $table->string('name');
-            $table->integer('start_time')->unsigned();
-            $table->integer('end_time')->unsigned();
+            $table->string('start_time')->default('00');
+            $table->string('end_time')->default('24');
             $table->timestamps();
         });
     }

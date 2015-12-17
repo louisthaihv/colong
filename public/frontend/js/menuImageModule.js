@@ -46,9 +46,6 @@ var menuImageModule = (function() {
 
     var autoNext = function(currentId, menuList, imageId) {
 
-        /*console.log('==================================');
-        console.log(currentId);*/
-
         // remove all active class
         removeActiveClass(menuList);
 

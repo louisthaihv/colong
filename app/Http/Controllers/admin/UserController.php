@@ -4,13 +4,16 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BaseController;
 use App\User;
 use App\Role;
 use Auth;
 
-class UserController extends Controller
+class UserController extends BaseController
 {
+    public function __construct() {
+        parent::__construct();
+    }
     /**
      * Display a listing of the resource.
      *
