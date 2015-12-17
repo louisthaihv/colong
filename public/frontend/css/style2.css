@@ -420,24 +420,21 @@ a.logo {
 #lib-game .bx-wrapper .bx-controls-direction a {
     width: 28px !important;
     height: 50px !important;
-    margin-top: 30px !important;
 }
 
 #lib-game .bx-wrapper .bx-prev {
+    left: -70px;
     background: url('../images/btn-slider.png') no-repeat 0 0 !important;
 }
 
 #lib-game .bx-wrapper .bx-next {
+    right: -70px;
     background: url('../images/btn-slider.png') no-repeat -32px 0 !important;
 }
 
 #lib-game #tab-0,
 #lib-game #tab-1,
 #lib-game #tab-2 {
-    position: relative;
-}
-
-#lib-game .bx-controls-direction {
     position: relative;
 }
 
