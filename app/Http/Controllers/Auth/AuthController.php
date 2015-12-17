@@ -448,21 +448,21 @@ class AuthController extends BaseController
     }
     ///////////////End Thongtin nhan vat
 
-    public function getNangcapvip(){
+    public function getGoitanthu(){
         $weeks = Week::all();
-        return view('frontend.user.nangcapvip')->with(compact('weeks'));
+        return view('frontend.user.goitanthu')->with(compact('weeks'));
     }
-    public function postNangcapvip(Request $request){
+    public function postGoitanthu(Request $request){
         $data = $request()->except('_token');
         $gift = Gift::where('gift_code', $data['gift_code'])->first();
         if(is_null($gift)){
-            return redirect()->route('user.nangcapvip.get')->with('message', 'Gift code sai!');
+            return redirect()->route('user.goitanthu.get')->with('message', 'Gift code sai!');
         }
         $user_gift = new GiftUser();
         $user_gift->gift_id = $gift->id;
         $user_gift->user_id = Auth::user()->id;
         $user_gift->save();
-        return redirect()->route('user.nangcapvip.get')->with('message', 'Nhận quà thành công!');
+        return redirect()->route('user.goitanthu.get')->with('message', 'Nhận quà thành công!');
     }
 
     ///////////////End Nangcapvip

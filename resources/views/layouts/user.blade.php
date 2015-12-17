@@ -98,7 +98,7 @@
                         <a href="{{ route('user.thongtinnhanvat.get') }}">Thông tin nhân vật</a>
                         </div>
                         <div class="secur_inf4">
-                            <a href="{{ route('user.nangcapvip.get') }}">Nâng cấp vip</a>
+                            <a href="{{ route('user.goitanthu.get') }}">Gói tân thủ</a>
                         </div>
                         <div class="secur_inf5">
                             <a href="{{ route('user.thuongdatmoc.get') }}">Nhận thưởng đạt mốc</a>

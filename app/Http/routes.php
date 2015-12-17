@@ -60,11 +60,11 @@ Route::group(["middleware" => "auth"], function(){
 
 	/////end thong tin nhan vat
 
-	////Nang cap vip
-	Route::get('/user/nangcapvip',						['as'=>'user.nangcapvip.get', 'uses'=>'Auth\AuthController@getNangcapvip']);
-	Route::post('/user/nangcapvip',						['as'=>'user.nangcapvip.post', 'uses'=>'Auth\AuthController@postNangcapvip']);
+	////Goi tan thu
+	Route::get('/user/goitanthu',						['as'=>'user.goitanthu.get', 'uses'=>'Auth\AuthController@getGoitanthu']);
+	Route::post('/user/goitanthu',						['as'=>'user.goitanthu.post', 'uses'=>'Auth\AuthController@postGoitanthu']);
 
-	/////end Nang cap vip
+	/////end Goi tan thu
 });
 
 Route::group(["prefix" => "admin", "namespace" => "admin", "middleware" => "isStaff"], function(){

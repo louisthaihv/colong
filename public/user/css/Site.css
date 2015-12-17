@@ -164,7 +164,7 @@ body
 }
 #main_container {
 	background-color: white;
-	width: 976px;
+	width: 980px;
 	height: auto;
 	float: left;
 	border: solid 2px #fff;
@@ -566,7 +566,7 @@ td.gray
 	background-repeat: no-repeat;
 	background-position: left top;
 	width: 300px;
-	height: 70px;
+	height: 75px;
 	margin-top: 5px;
 	margin-right: auto;
 	margin-left: auto;
@@ -583,7 +583,7 @@ td.gray
 	background-repeat: no-repeat;
 	background-position: left top;
 	width: 300px;
-	height: 70px;
+	height: 75px;
 	margin-top: 5px;
 	margin-right: auto;
 	margin-left: auto;
@@ -600,7 +600,7 @@ td.gray
 	background-repeat: no-repeat;
 	background-position: left top;
 	width: 300px;
-	height: 70px;
+	height: 75px;
 	margin-top: 5px;
 	margin-right: auto;
 	margin-left: auto;
@@ -613,15 +613,15 @@ td.gray
 	color: #175e83;
 	font-size: 18px;
 	font-weight: bold;
-	background-image: url(../../images/nangcapvip.jpg)/*tpa=http://taikhoan.colongonline.com/Content/images/info.gif*/;
+	background-image: url(../../images/goitanthu.jpg)/*tpa=http://taikhoan.colongonline.com/Content/images/info.gif*/;
 	background-repeat: no-repeat;
 	background-position: left top;
 	width: 300px;
-	height: 70px;
+	height: 75px;
 	margin-top: 5px;
 	margin-right: auto;
 	margin-left: auto;
-	padding-top: 15px;
+	padding-top: 20px;
 	padding-left: 89px;
 }
 
@@ -634,7 +634,7 @@ td.gray
 	background-repeat: no-repeat;
 	background-position: left top;
 	width: 300px;
-	height: 70px;
+	height: 75px;
 	margin-top: 5px;
 	margin-right: auto;
 	margin-left: auto;
@@ -918,10 +918,10 @@ td.gray
 .notice {
     background-color: #cbebfa;
     text-align: left;
-    padding-top:30px;
-    padding-left: 110px;
+    padding-top:20px;
+    padding-left: 00px;
     border: 1px;
-    width: 500px;
+    width: 580px;
     height: 92px;
     color: #000000;
 }
