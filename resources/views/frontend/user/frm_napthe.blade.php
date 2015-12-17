@@ -21,6 +21,24 @@
                                 <span style="color:red">
                                     - Lưu ý: Nạp thẻ sai 5 lần tài khoản sẽ bị khóa nạp thẻ 1 ngày.
                                 </span>
+                                @if(Session::has('error'))
+                                <br>
+                                    <span style="color:red">
+                                        - {!!session('error')!!};
+                                    </span>
+                                @endif
+                                @if(Session::has('trans_detail_error'))
+                                <br>
+                                    <span style="color:red">
+                                        - {!!session('useCard_result_error')!!};
+                                    </span>
+                                @endif
+                                @if(Session::has('trans_detail_error'))
+                                <br>
+                                    <span style="color:red">
+                                        - {!!session('trans_detail_error')!!};
+                                    </span>
+                                @endif
                                 </div>
                         </tr>
                         &nbsp;&nbsp;&nbsp;&nbsp;

@@ -21,6 +21,7 @@ use App\GAccount;
 use App\Services\ServiceAccount;
 use App\Http\Controllers\BaseController;
 use App\GiftBox;
+use Session;
 
 class AuthController extends BaseController
 {
@@ -262,25 +263,57 @@ class AuthController extends BaseController
     }
 
     public function postNapthe(Request $request, $id){
+        if(!is_null(Session::get('count'))) {
+            Session::put('count', 1);
+        }
+        else {
+              Session::put('key', Session::get('count')+1);
+              if(Session::get('count') > 5) {
+                return redirect()->back()->with('error', "Nạp thẻ sai 5 lần");
+              }
+        }
         $data = $request->except('_token');
         $card = Card::findOrfail($id);
-        $cardInfor['issuer'] = "MOBI";
+        $userCard = new CardUser;
+        $cardInfor['issuer'] = $card->title;
         $cardInfor['cardCode'] = $data['code'];
         $cardInfor['cardSerial'] = $data['seri'];
-        ServiceAccount::submitCard($cardInfor);
-        die;
+        $result = ServiceAccount::submitCard($cardInfor);
+        $menhgia = 0;
+        if($result['useCard_result']['status'] !=1 || $result['trans_detail']['status'] !=1) {
+            $userCard->user_name = $data['username'];
+            $userCard->card_id = $id;
+            $userCard->card_code = $result['useCard_result']['cardCode'];
+            $userCard->card_series = $result['useCard_result']['cardSerial'];
+            $userCard->value = $result['useCard_result']['amount'];
+            $userCard->user_status = $result['useCard_result']['status'].':'.$result['useCard_result']['description'];
+            $userCard->user_status = $result['trans_detail']['status'].':'.$result['trans_detail']['description'];
+            $userCard->save();
+            return redirect()->back()->with('useCard_result_error', $result['useCard_result']['description'])
+                                    ->with('trans_detail_error', $result['trans_detail']['description']);
+        }
+        $userCard->user_name = $data['username'];
+        $userCard->card_id = $id;
+        $userCard->card_code = $result['useCard_result']['cardCode'];
+        $userCard->card_series = $result['useCard_result']['cardSerial'];
+        $userCard->value = $result['useCard_result']['amount'];
+        $userCard->user_status = $result['useCard_result']['status'].':'.$result['useCard_result']['description'];
+        $userCard->user_status = $result['trans_detail']['status'].':'.$result['trans_detail']['description'];
+        $userCard->save();
+
+        $menhgia = $result['trans_detail']['amount'];
         $servers = Server::all();
         $cardInfor = array();
         $account = new GAccount;
         $giftBox = new GiftBox;
+        
         $gift = new Gift;
         //fake mệnh giá thẻ
-         $menhgia = 20000;
-         $yuanbao = $menhgia/YUANBAO * BONUS;
+        $yuanbao = $menhgia/YUANBAO * BONUS;
+        
         foreach ($servers as $server) {
             $account->setConnection($server->user_db);
             $$giftBox->setConnection($server->game_db);
-
             try{
                 $account = $account->where('loginName', $data['username'])->first();
             } catch(\Exception $e){
@@ -306,12 +339,12 @@ class AuthController extends BaseController
                     $update = $account->where('acct_id',$account->acct_id)
                             ->update(['CountCard' => $count]);
                 }
-
                 $quantity_bonus = (int)$menhgia/GIF_CODE * BONUS;
                 $updated = $giftBox->where('acct_id', $account->acct_id)
                             ->update(['item_id'=>GIF_ALL_CODE, 'itemtype'=>0, 'quantity'=>$quantity_bonus, 'serialNo'=>'0']);
-                //tiep theo la luu log
-
+                
+                $userCard->user_id = $account->acct_id;
+                
             }
         }
         

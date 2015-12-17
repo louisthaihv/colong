@@ -14,15 +14,14 @@ class CreateTableCardUsers extends Migration
     {
         Schema::create('card_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('user_name');
             $table->integer('card_id')->unsigned();
             $table->foreign('card_id')->references('id')->on('cards')->onDelete('cascade');
-            $table->integer('server_id')->unsigned();
-            $table->foreign('server_id')->references('id')->on('servers')->onDelete('cascade');
             $table->integer('card_code')->unsigned();
             $table->integer('card_series')->unsigned();
             $table->integer('value')->default(0)->unsigned();
+            $table->string('user_Status')->default(null);
+            $table->string('trans_Status')->default(null);
             $table->timestamps();
         });
     }

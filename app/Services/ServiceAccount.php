@@ -34,16 +34,18 @@ class ServiceAccount {
 
 	public static function submitCard($cardInfor) {
 		$partnerCode = PARTNER_CODE;
-		$password= PARTNER_PASS;
-		$secretKey= SCRECT_KEY;
+		$password=PARTNER_PASS;
+		$secretKey=SCRECT_KEY;
 		$issuer = $cardInfor['issuer'];
 		$cardCode =$cardInfor['cardCode'];
 		$cardSerial=$cardInfor['cardSerial'];
 		$serviceCode=SERVICE_CODE;	
 
 		// useCard
+
+
 		$amount = AMOUNT;
-		$service_url = "http://125.212.219.11/voucher/rest/useCard";
+		$service_url = SERVICE_URL;
 		$transRef = ServiceAccount::generateRandomString(17) . rand(100,500);
 
         $curl_post_data = array(
@@ -57,16 +59,27 @@ class ServiceAccount {
         "accountId" => 'accountId'.rand(1,99),
         "serviceCode" => $serviceCode,
         "signature" => md5("$issuer$cardCode$transRef".$partnerCode.$password.$secretKey),
+        //"requestFromIp" => $requestFromIp,
         );
+        // $curl_post_data['requestFromIp'] = $requestFromIp;	            
+        //unset($curl_post_data['requestFromIp']);	            
 
+    	//{"status":"00","description":"Ma so nap tien khong ton tai hoac da duoc su dung",
+   		// "cardSerial":"75938609351","cardCode":"6775393622280","amount":"0","transRef":"1234567823"} 
        	$xml =  ServiceAccount::curl_rest($service_url,$curl_post_data);
-		echo "<pre> useCard result"; dump($xml);
+       	$result = [];
+       	$result['useCard_result'] = $xml;
 		// getTransactionDetail
 		$data = array('partnerCode'=>$partnerCode,'password'=>$password);
+
+
 		$data['transRef'] = $transRef;
-		$data['signature'] = md5($transRef.$partnerCode.$password.$secretKey);
-		$json = ServiceAccount::curl_check_tran($data);
-		echo "<pre> checkTransaction result"; dump($json);
+						$data['signature'] = md5($transRef.$partnerCode.$password.$secretKey);
+						$json = ServiceAccount::curl_check_tran($data);
+		//echo "checkTransaction===".$json;
+		$result['trans_detail'] = $json;
+
+		return $result;
 	}
 
 	public static function curl_rest($url, $data){
@@ -101,7 +114,7 @@ class ServiceAccount {
 	}
 
 	public static function curl_check_tran($data){		
-		$url = "http://125.212.219.11/voucher/rest/getTransactionDetail";
+		$url = CURL_CHECK_TRANS_URL;
 		$curl = curl_init($url);
 		$transRef = $data['transRef'];
 		//$ext = 'issuer:'.$data['issuer'].'; cardCode:'.$data['cardCode'].'; cardSerial:'.$data['cardSerial'];

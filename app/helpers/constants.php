@@ -35,3 +35,7 @@ define('PARTNER_PASS', "123456");
 define('SERVICE_CODE', "SRC0001");
 define('SCRECT_KEY', "test_sk");
 
+define('SERVICE_URL', "http://125.212.219.11:8180/voucher/rest/useCard");
+define('CURL_CHECK_TRANS_URL', "http://125.212.219.11:8180/voucher/rest/getTransactionDetail");
+
+
