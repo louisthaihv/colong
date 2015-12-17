@@ -13,7 +13,26 @@
         </a>
     </div>
     <div class="slider mt-10 clearfix">
-        <img class="img-responsive" src="{{ asset('frontend/images/khunganh.png') }}" alt=""/>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img src="{{ asset('frontend/images/khunganh.png') }}" alt="Chania">
+            </div>
+
+            <div class="item">
+              <img src="{{ asset('frontend/images/khunganh.png') }}" alt="Chania">
+            </div>
+
+            <div class="item">
+              <img src="{{ asset('frontend/images/khunganh.png') }}" alt="Flower">
+            </div>
+
+            <div class="item">
+              <img src="{{ asset('frontend/images/khunganh.png') }}" alt="Flower">
+            </div>
+          </div>
+        </div>
     </div>
     <div class="feature-daily mt-10 clearfix">
         <div id="tn-tabs">

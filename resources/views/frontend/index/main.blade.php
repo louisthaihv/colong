@@ -29,8 +29,9 @@
                 </ul>
             </div>
             <div class="mnu-image">
-
-                <img id="menuImage" class="img-responsiv" src="{{ asset('frontend/images/img/default.png') }}">
+                <a href="#">
+                    <img id="menuImage" class="img-responsiv" src="{{ asset('frontend/images/img/default.png') }}">
+                </a>
             </div>
         </div>
     </div>
