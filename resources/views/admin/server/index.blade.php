@@ -14,6 +14,13 @@
                     <tr>
                         <th> ID </th>
                         <th> TÊN </th>
+                        <th> ẢNH </th>
+                        <th> USERNAME </th>
+                        <th> PASSWORD </th>
+                        <th> DRIVER </th>
+                        <th> HOST </th>
+                        <th> USER_DB </th>
+                        <th> GAME_DB </th>
                         <th class="text-right">LƯẠ CHỌN</th>
                     </tr>
                 </thead>
@@ -23,6 +30,13 @@
                 <tr>
                     <td> {{ $server->id }} </td>
                     <td> {!! $server->name !!} </td>
+                    <td> <img src="{{ asset($server->image) }}"  style="width:70px; height:70px;"/> </td>
+                    <td> {!! $server->username !!} </td>
+                    <td> {!! $server->password !!} </td>
+                    <td> {!! $server->driver !!} </td>
+                    <td> {!! $server->host !!} </td>
+                    <td> {!! $server->user_db !!} </td>
+                    <td> {!! $server->game_db !!} </td>
                     <td class="text-right">
                         <a class="btn btn-warning " href="{{ route('admin.server.edit', $server->id) }}">Sửa</a>
                         <form action="{{ route('admin.server.destroy', $server->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };"><input type="hidden" name="_method" value="DELETE">

@@ -148,18 +148,13 @@
 @section('end_script')
 <script src="{{ asset('frontend/js/menuImageModule.js') }}"></script>
 <script type="text/javascript">
-
     $(document).ready(function(){
-
-
-
       $('.bxslider').bxSlider(
            {
                 auto: true,
                 pager: false
             }
         );
-
     });
 
     serverList = (function($) {
@@ -185,12 +180,9 @@
             var btnOption = '#btnServerList',
                 inputOption = '#inputServerList',
                 optionList = '#optionList';
-
                 checkList(btnOption, optionList);
                 checkList(inputOption, optionList);
-
                 var servers = getServers();
-
                 $.each(servers, function(index, element) {
                     $(servers[index]).on('click', function() {
                         var $this = $(this);

@@ -16,17 +16,17 @@ class CategoryTableSeeder extends Seeder
             [
                 "name" => "Tin tức",
                 "type"=>2,
-                "image_url"=>"frontend/images/title-news.png"
+                "image_url"=>"frontend/images/title-news.png",
             ],
             [
                 "name" => "Hướng dẫn",
                 "type" => 1,
-                "image_url" =>"frontend/images/navbar/huong-dan.png"
+                "image_url" =>"frontend/images/navbar/huong-dan.png",
             ],
             [
                 "name" => "Đặc trưng",
                 "type" => 1,
-                "image_url" =>"frontend/images/navbar/dac-trung.png"
+                "image_url" =>"frontend/images/navbar/dac-trung.png",
             ],
             [
                 "name" => "Hoạt động",
@@ -36,12 +36,12 @@ class CategoryTableSeeder extends Seeder
             [
                 "name" => "Cộng đồng",
                 "type"=>1,
-                "image_url"=>"frontend/images/navbar/cong-dong.png"
+                "image_url"=>"frontend/images/navbar/cong-dong.png",
             ],
             [
                 "name" => "Clip games",
                 "type" =>3,
-                "image_url"=>"frontend/images/images/clip-game.png"
+                "image_url"=>"frontend/images/images/clip-game.png",
             ],
             [
                 "name" => "Wall paper",
@@ -51,27 +51,27 @@ class CategoryTableSeeder extends Seeder
             [
                 "name" => "Screenshot",
                 "type" =>3,
-                "image_url"=>"frontend/images/images/screenshot.png"
+                "image_url"=>"frontend/images/images/screenshot.png",
             ],[
                 "name" => "gift code",
                 "type" =>0,
-                "image_url"=>"frontend/images/button/gift-code.png"
+                "image_url"=>"frontend/images/button/gift-code.png",
             ],[
                 "name" => "the vip",
                 "type" =>0,
-                "image_url"=>"frontend/images/button/the-vip.png"
+                "image_url"=>"frontend/images/button/the-vip.png",
             ],[
                 "name" => "tru thu",
                 "type" =>0,
-                "image_url"=>"frontend/images/button/tro-thu.png"
+                "image_url"=>"frontend/images/button/tro-thu.png",
             ],[
                 "name" => "Thu cuuoi",
                 "type" =>0,
-                "image_url"=>"frontend/images/button/thu-cuoi.png"
+                "image_url"=>"frontend/images/button/thu-cuoi.png",
             ],[
                 "name" => "trang bi",
                 "type" =>0,
-                "image_url"=>"frontend/images/button/trang-bi.png"
+                "image_url"=>"frontend/images/button/trang-bi.png",
             ]
          ];
 

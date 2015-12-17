@@ -36,6 +36,6 @@
             
             <a class="btn btn-success" href="{{ route('admin.cards.create') }}">Tạo mới</a>
         </div>
-        <center>{{ $cards->appends(Request::except('page'))->render() }}</center>
+        <center>{!! $cards->appends(Request::except('page'))->render() !!}</center>
     </div>
 @endsection

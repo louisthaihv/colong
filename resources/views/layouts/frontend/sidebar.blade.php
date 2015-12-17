@@ -43,7 +43,7 @@
                     @foreach($week->dailyEvents as $event)
                         <li>
                         <p class="text-left">
-                            <span class="time">{{ $event->start_time }} - {{ $event->end_time }}</span>
+                            <span class="time">{{ $event->start_time }} : {{ $event->end_time }}</span>
                             <span>{!! $event->name !!}</span>
                             </p>
                         </li>

@@ -79,6 +79,6 @@
 	      </tr>
 		@endforeach
 	</table>
-    <center>{{ $articles->appends(Request::except('page'))->render() }}</center>
+    <center>{!! $articles->appends(Request::except('page'))->render() !!}</center>
 </div>
 @stop
