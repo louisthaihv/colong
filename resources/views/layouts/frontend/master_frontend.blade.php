@@ -83,27 +83,11 @@
                 var tab_id = $(ui.newPanel).attr('id');//alert(tab_id);
                 if(tab_id == "tabs-2" && slider2_initialized == false)
                 {
-                    $('.bxslider2').bxSlider({
-                        controls: true,
-                        slideWidth: 140,
-                        pager: false,
-                        slideMargin: 50,
-                        minSlides: 3,
-                        maxSlides: 3
-                    });
                     //update initialization flag to true
                     slider2_initialized = true;
                 }
                 else if(tab_id == "tabs-3" && slider3_initialized == false)
                 {
-                    $('.bxslider3').bxSlider({
-                        controls: true,
-                        slideWidth: 140,
-                        pager: false,
-                        slideMargin: 50,
-                        minSlides: 3,
-                        maxSlides: 3
-                    });
                     //update initialization flag to true
                     slider3_initialized = true;
                 }
@@ -117,17 +101,6 @@
 
     $(function() {
         $( "#tn-tabs" ).tabs();
-    });
-
-    $(document).ready(function(){
-        $('.bxslider1').bxSlider({
-            controls: true,
-            slideWidth: 140,
-            pager: false,
-            slideMargin: 50,
-            minSlides: 3,
-            maxSlides: 3
-        });
     });
 </script>
 <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>

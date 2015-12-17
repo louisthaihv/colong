@@ -634,7 +634,7 @@ a.logo {
     clear: both;
     border-bottom: solid 1px #1e2a3a;
     box-shadow: 0 1px 0 0 rgba(17, 29, 45, 0.8);
-    margin: 10px 10px 20px 10px;
+    margin: 10px 10px 13px 10px;
     padding-bottom: 10px;
 }
 
@@ -714,6 +714,62 @@ ul.server-options li a:hover,
 ul.server-options li a:focus {
     text-decoration: none;
 }
+
+/* =================== paging ======================= */
+
+.pagination {
+    margin: 5px 0 !important;
+}
+
+.pagination>li>a, .pagination>li>span,
+.pagination>.disabled>span,
+.pagination>.disabled>span:hover,
+.pagination>.disabled>span:focus,
+.pagination>.disabled>a,
+.pagination>.disabled>a:hover,
+.pagination>.disabled>a:focus {
+    background-color: transparent;
+}
+
+.pagination>.disabled>span,
+.pagination>.disabled>span:hover,
+.pagination>.disabled>span:focus,
+.pagination>.disabled>a,
+.pagination>.disabled>a:hover,
+.pagination>.disabled>a:focus,
+.pagination>li>a,
+.pagination>li>span {
+    border-color: transparent;
+}
+
+.pagination>.active>a,
+.pagination>.active>span,
+.pagination>.active>a:hover,
+.pagination>.active>span:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span:focus,
+.pagination>li>a:hover,
+.pagination>li>span:hover,
+.pagination>li>a:focus,
+.pagination>li>span:focus {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.pagination>li>a:hover,
+.pagination>li>span:hover,
+.pagination>li>a:focus,
+.pagination>li>span:focus {
+    color: #fff;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+    color: #f0c55f;
+}
+
+
+
 
 /************************************************************************
 *********************       STYLE       *********************************

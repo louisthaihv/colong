@@ -116,28 +116,31 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row mt-15">
     <div id="lib-game" class="col-sm-12">
         <div id="tabs">
             <ul class="tab-lib">
             @foreach($bottom_cats as $key => $category)
-                <li><a class="text-lib tab-{{ $key + 1 }}" href="#tabs-{{ $key }}">
+                <li><a class="text-lib tab-{{ $key + 1 }}" href="#tabs-{{ $key + 1 }}">
                     </a>
                 </li>
             @endforeach
             </ul>
             <div class="tab-content clearfix">
                 @foreach($bottom_cats as $key => $category)
-                <div id="tabs-{{ $key }}" class="tab-slider">
-                    <ul class="bxslider1">
-                    @foreach($category->articles as $article)
+                <div id="tabs-{{ $key + 1 }}" class="tab-slider">
+                    <div class="slider{{ $key + 1 }}">
+                        @foreach($category->articles as $article)
+                          <div class="slide"><img src="{{ asset($article->image_url) }}"></div>
+                        @endforeach
+                    </div>
+                    <!-- <ul class="bxslider-{{ $key + 1 }}">
                         <li>
                             <a href="{{ route('frontend.article.show', $article->id) }}">
                                 <img src="{{ asset($article->image_url) }}" />
                             </a>
                         </li>
-                    @endforeach
-                    </ul>
+                    </ul> -->
                 </div>
                 @endforeach
             </div>
@@ -147,69 +150,39 @@
 @stop
 @section('end_script')
 <script src="{{ asset('frontend/js/menuImageModule.js') }}"></script>
+<script src="{{ asset('frontend/js/serverListModule.js') }}"></script>
 <script type="text/javascript">
 
     $(document).ready(function(){
+        $('.slider1').bxSlider({
+            slideWidth: 140,
+            minSlides: 3,
+            maxSlides: 3,
+            pager: false,
+            slideMargin: 50
+        });
 
+        $('.slider2').bxSlider({
+            slideWidth: 140,
+            minSlides: 3,
+            maxSlides: 3,
+            pager: false,
+            slideMargin: 50
+        });
 
-
-      $('.bxslider').bxSlider(
-           {
-                auto: true,
-                pager: false
-            }
-        );
-
+        $('.slider3').bxSlider({
+            slideWidth: 140,
+            minSlides: 3,
+            maxSlides: 3,
+            pager: false,
+            slideMargin: 50
+        });
     });
 
-    serverList = (function($) {
-        var checkList = function(elementId, listId) {
-            $(elementId).on('click', function(){
-                var isHidden = $(listId).is(':hidden');
-
-                if(isHidden) {
-                    $(listId).show();
-                } else {
-                    $(listId).hide();
-                }
-            });
-        };
-
-        var getServers = function() {
-            var servers = [];
-            servers = $('a[id^="bx-tabs-"]');
-            return servers;
-        };
-
-        var init = function () {
-            var btnOption = '#btnServerList',
-                inputOption = '#inputServerList',
-                optionList = '#optionList';
-
-                checkList(btnOption, optionList);
-                checkList(inputOption, optionList);
-
-                var servers = getServers();
-
-                $.each(servers, function(index, element) {
-                    $(servers[index]).on('click', function() {
-                        var $this = $(this);
-                        var text = $this.text();
-                        $(inputOption).val(text);
-                        $(optionList).hide();
-                    });
-                });
-        };
-
-        return {
-            init: init
-        };
-    })(jQuery);
-
-    $(function () {
+    (function ($) {
         menuImageModule.init();
         serverList.init();
-    });
+    })(jQuery);
 
 </script>
 @stop
