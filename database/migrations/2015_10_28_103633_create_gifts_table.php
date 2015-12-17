@@ -12,7 +12,7 @@ class CreateGiftsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gifts', function (Blueprint $table) {
+        Schema::create('GiftCode', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('item_id')->unsigned();
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
@@ -30,6 +30,6 @@ class CreateGiftsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('gifts');
+        Schema::drop('GiftCode');
     }
 }

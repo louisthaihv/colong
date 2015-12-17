@@ -14,6 +14,7 @@ class GiftTableSeeder extends Seeder
     {
         Gift::truncate();
         $data=[
+        
         	['code'=>"asdfsdaf3svwe33r", 'description'=>"Skill"],
 
         ];
