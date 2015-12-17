@@ -24,6 +24,6 @@ class Category extends Model
     }
 
     public static function getPostAvaiable(Category $category){
-       return $category->articles()->where('status', 1)->paginate(PAGINATE);
+       return $category->articles()->where('status', 1)->paginate(5);
     }
 }

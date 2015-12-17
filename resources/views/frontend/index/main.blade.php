@@ -59,6 +59,7 @@
                 </section>
             </article>
             @endforeach
+            <center>{!! $news_articles->render() !!}</center>
         </div>
     </div>
     <div class="col-sm-4 pl-0">
