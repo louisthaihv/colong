@@ -14,7 +14,7 @@
                         <tr>
                             <td style="width: 150px;"></td>
                                 <div class="notice" id="infoText">
-                                    - Bạn đã tích lũy được: 5000 điểm
+                                    - Bạn đã tích lũy được: {{ Auth::user()->point }} điểm
                                 </div>
                         </tr>
                         &nbsp;&nbsp;
@@ -25,31 +25,20 @@
                                 <th>VẬT PHẨM</th>
                                 <th>THAO TÁC</th>
                             </tr>
+                            @foreach($GiftBoxs as $GiftBox )
                             <tr>
-                                <td>20000</td>
-                                <td>Chìa khóa hòm kho báu</td>
-                                <td>NHẬN THƯỞNG</td>
+                                <td> {!! $GiftBox->Point !!} </td>
+                                <td> {!! $GiftBox->GiftName !!} </td>
+                                <td> 
+                                    <!--@if(is_null($character->Changed) && $character->level <10)
+                                    {{ route('user.get.changeCharacter',[$server->game_db, $account->acct_id, $character->char_id])}}-->
+                                        <a href="#">Nhận thưởng</a>
+                                    <!--@else
+                                        {{"Đổi tên"}}
+                                    @endif-->
+                                </td>
                             </tr>
-                            <tr>
-                                <td>50000</td>
-                                <td>Chìa khóa hòm kho báu</td>
-                                <td>NHẬN THƯỞNG</td>
-                            </tr><tr>
-                                <td>100000</td>
-                                <td>Chìa khóa hòm kho báu</td>
-                                <td>NHẬN THƯỞNG</td>
-                            </tr><tr>
-                                <td>200000</td>
-                                <td>Chìa khóa hòm kho báu</td>
-                                <td>NHẬN THƯỞNG</td>
-                            </tr><tr>
-                                <td>200000</td>
-                                <td>Chìa khóa hòm kho báu</td>
-                                <td>NHẬN THƯỞNG</td>
-                            </tr><tr>
-                                <td>200000</td>
-                                <td>Tuyệt học bảo hạp</td>
-                                <td>NHẬN THƯỞNG</td>
+                            @endforeach
                         </table>
                     </tbody>
                 </table>

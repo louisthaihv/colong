@@ -393,23 +393,27 @@ class AuthController extends BaseController
         }
         return redirect()->route('user.gift.get')->with('message', 'Nhận quà thành công!');
     }
+    
     //Thuong dat moc-->
 
     public function getThuongdatmoc(){
-        $weeks = Week::all();
-        return view('frontend.user.thuongdatmoc')->with(compact('weeks'));
+        $GiftBoxs =GiftBox::all();
+        return view('frontend.user.thuongdatmoc')->with(compact('sGiftBoxs'));
     }
     public function postThuongdatmoc(Request $request){
-        $data = $request()->except('_token');
-        $gift = Gift::where('gift_code', $data['gift_code'])->first();
-        if(is_null($gift)){
-            return redirect()->route('user.thuongdatmoc.get')->with('message', 'Gift code sai!');
+        $GiftBox = new GiftBox;
+        $GiftBox->setConnection($server->game_db);
+        try {
+
+            $GiftBoxs = $GiftBox->where('gift_id', $GiftBox->gift_id)->get();
+            return view('frontend.user.nhanvat')->with(compact('GiftBoxs', 'server', 'GiftBox'));
+            
+        } catch (\Exception $e) {
+            dump($e->getMessage());
+            dd('lỗi giftbox db');
         }
-        $user_gift = new GiftUser();
-        $user_gift->gift_id = $gift->id;
-        $user_gift->user_id = Auth::user()->id;
-        $user_gift->save();
-        return redirect()->route('user.thuongdatmoc.get')->with('message', 'Nhận quà thành công!');
+
+        return redirect()->back()->with('error', 'có lỗi xảy ra');
     }
 
     //Thongtinnhanvat-->
