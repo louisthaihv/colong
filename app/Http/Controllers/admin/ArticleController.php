@@ -5,10 +5,10 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Article;
 use App\Category;
 use Auth;
+use App\Http\Controllers\BaseController;
 
 class ArticleController extends BaseController
 {
@@ -17,6 +17,11 @@ class ArticleController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     public function index()
     {

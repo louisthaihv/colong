@@ -92,10 +92,10 @@
                         <a href="{{ route('admin.popups.index') }}">
                         <i class="fa fa-fw fa-dashboard"></i>Quản lý Popups</a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('admin.sliders.index') }}">
                         <i class="fa fa-fw fa-dashboard"></i>Quản lý slide nhỏ</a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="{{ route('admin.clans.index') }}">
                         <i class="fa fa-fw fa-dashboard"></i>Quản lý môn phái</a>

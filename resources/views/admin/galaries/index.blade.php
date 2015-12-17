@@ -61,6 +61,6 @@
             
             <a class="btn btn-success" href="{{ route('admin.galaries.create') }}">Tạo mới</a>
         </div>
-        <center>{{ $galaries->appends(Request::except('page'))->render() }}</center>
+        <center>{!! $galaries->appends(Request::except('page'))->render() !!}</center>
     </div>
 @endsection

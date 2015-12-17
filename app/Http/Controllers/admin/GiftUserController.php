@@ -4,13 +4,16 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BaseController;
 use App\User;
 use App\GiftUser;
 use App\Gift;
 
-class GiftUserController extends Controller
+class GiftUserController extends BaseController
 {
+    public function __construct(){
+        parent::__construct();
+    }
     /**
      * Display a listing of the resource.
      *

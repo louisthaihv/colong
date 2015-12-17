@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="page-header">
-        <h1>Ảnh môn phái</h1>
+        <h1>Ảnh slider dưới</h1>
     </div>
     <div class="row">
     @include('admin.error-message')

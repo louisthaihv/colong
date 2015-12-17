@@ -152,7 +152,6 @@
 <script src="{{ asset('frontend/js/menuImageModule.js') }}"></script>
 <script src="{{ asset('frontend/js/serverListModule.js') }}"></script>
 <script type="text/javascript">
-
     $(document).ready(function(){
         $('.slider1').bxSlider({
             slideWidth: 140,

@@ -51,6 +51,6 @@
             
             <a class="btn btn-success" href="{{ route('admin.users.create') }}">Tạo mới</a>
         </div>
-        <center>{{ $users->appends(Request::except('page'))->render() }}</center>
+        <center>{!! $users->appends(Request::except('page'))->render() !!}</center>
     </div>
 @endsection

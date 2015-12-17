@@ -4,11 +4,14 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BaseController;
 use App\Server;
 
-class ServerController extends Controller
+class ServerController extends BaseController
 {
+    public function __construct(){
+        parent::__construct();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +44,21 @@ class ServerController extends Controller
         $name = $request->get('name');
         if(!empty($name)){
             $server = new Server;
-            $server->name = $name;
+            $data = $request->except('_token');
+            $server->name = $data['name'];
+            $server->username = $data['username'];
+            $server->password = $data['password'];
+            $server->driver = $data['driver'];
+            $server->host = $data['host'];
+            $server->user_db = $data['user_db'];
+            $server->game_db = $data['game_db'];
+            $path = 'images/servers/';
+            $destinationPath = public_path($path);
+            if($request->hasFile('image')){
+                $name = $request->file('image')->getClientOriginalName();
+                $request->file('image')->move($destinationPath, $name);
+                $server->image = $path.$name;
+            }
             $server->save();
             return redirect()->route('admin.server.index')->with('message', 'Thêm mới thành công');
         }
@@ -67,7 +84,7 @@ class ServerController extends Controller
      */
     public function edit($id)
     {
-         $server = Server::findOrFail($id);
+        $server = Server::findOrFail($id);
         return view('admin.server.edit')->with('server', $server);
     }
 
@@ -83,6 +100,19 @@ class ServerController extends Controller
         $data = $request->except('_token');
         $server = Server::findOrFail($id);
         $server->name = $data['name'];
+        $server->username = $data['username'];
+        $server->password = $data['password'];
+        $server->driver = $data['driver'];
+        $server->host = $data['host'];
+        $server->user_db = $data['user_db'];
+        $server->game_db = $data['game_db'];
+        $path = 'images/servers/';
+        $destinationPath = public_path($path);
+        if($request->hasFile('image')){
+            $name = $request->file('image')->getClientOriginalName();
+            $request->file('image')->move($destinationPath, $name);
+            $server->image = $path.$name;
+        }
         $server->save();
         return redirect()->route('admin.server.index')->with('message', 'Update xong!');
     }

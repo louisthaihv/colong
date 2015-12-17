@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Ảnh môn phái / Sửa </h1>
+        <h1>Ảnh slider dưới / Sửa </h1>
     </div>
     <div class="row">
     @include('admin.error-message')

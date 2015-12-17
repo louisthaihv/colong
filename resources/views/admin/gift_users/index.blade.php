@@ -40,6 +40,6 @@
             
             <a class="btn btn-success" href="{{ route('admin.giftUser.create') }}">Tạo mới</a>
         </div>
-        <center>{{ $gift_users->appends(Request::except('page'))->render() }}</center>
+        <center>{!! $gift_users->appends(Request::except('page'))->render() !!}</center>
     </div>
 @endsection
