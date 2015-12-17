@@ -489,7 +489,7 @@ class AuthController extends BaseController
     }
     public function getAcGoitanthu($server_id, $gift_type){
         $user = session('user');
-        if($user->fresher) {
+        if(User::findOrfail(Auth::user()->id)->fresher) {
             $server = Server::findOrfail($server_id);
             $giftFresher = GiftFresher::findOrfail($gift_type);
             $account = Session::get('account');
