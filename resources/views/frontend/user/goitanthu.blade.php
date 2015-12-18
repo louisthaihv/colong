@@ -20,7 +20,7 @@
                                     <br>
                                         {{Session::get('message')}}
                                     @endif
-                                    @if(!empty($user->fresher))
+                                    @if(empty($user->fresher))
                                     <br>
                                         <span style="color:red">
                                             Quà chỉ dành cho tân Thủ!!
@@ -42,7 +42,7 @@
             </form>
             <div class="imgcenter">
             @foreach($gift_freshers as $gift_fresher)
-                @if(!empty($user->fresher))
+                @if(empty($user->fresher))
                 <div class="imgvip">
                     <img src="{{ asset($gift_fresher->image)}}" width="251" height="253">
                 </div>
