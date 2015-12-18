@@ -83,6 +83,31 @@ var menuImageModule = (function() {
 
         var image = '#menuImage';
 
+        setTimeout(function() {
+                autoRun('menu_image_0', menuList, image);
+            }, 2000);
+
+            setTimeout(function() {
+                autoRun('menu_image_1', menuList, image);
+            }, 4000);
+
+            setTimeout(function() {
+                autoRun('menu_image_2', menuList, image);
+            }, 6000);
+
+            setTimeout(function() {
+                autoRun('menu_image_3', menuList, image);
+            }, 8000);
+
+            setTimeout(function() {
+                autoRun('menu_image_4', menuList, image);
+            }, 10000);
+
+            setTimeout(function() {
+                autoRun('menu_image_5', menuList, image);
+            }, 12000);
+
+
         setInterval(function() {
             setTimeout(function() {
                 autoRun('menu_image_0', menuList, image);

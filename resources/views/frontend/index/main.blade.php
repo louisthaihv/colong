@@ -30,7 +30,7 @@
             </div>
             <div class="mnu-image">
                 <a href="#">
-                    <img id="menuImage" class="img-responsiv" src="{{ asset('frontend/images/img/default.png') }}">
+                    <img id="menuImage" class="img-responsiv" src="{{ $galaries[0]->image_url }}">
                 </a>
             </div>
         </div>
