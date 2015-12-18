@@ -22,7 +22,8 @@ use App\Services\ServiceAccount;
 use App\Http\Controllers\BaseController;
 use App\GiftBox;
 use Session;
-
+use App\GiftFresher;
+use App\QuaDatMoc;
 class AuthController extends BaseController
 {
     /*
@@ -102,6 +103,14 @@ class AuthController extends BaseController
         
         $username_credentials=['username'=>$request->get('username'), 'password'=>$request->get('password')];
         if(Auth::attempt($username_credentials, $request->has('remember'))){
+
+            $server = Server::where('id', '>', 0)->first();
+            $account = new GAccount;
+            $account->setConnection($server->user_db);
+            $account = $account->where('loginName', Auth::user()->username)->first();
+            if(!is_null($account)) {
+                session(['account' => $account]);
+            }
             if($request->ajax()){
                 $message = ["success"=>"success", "massage"=>"login success"];
                 return response()->json($message);
@@ -268,8 +277,8 @@ class AuthController extends BaseController
         }
         else {
               Session::put('key', Session::get('count')+1);
-              if(Session::get('count') > 5) {
-                return redirect()->back()->with('error', "Nạp thẻ sai 5 lần");
+              if(Session::get('count') == 5) {
+                    return redirect()->back()->with('error', "Nạp thẻ sai 5 lần");
               }
         }
         $data = $request->except('_token');
@@ -393,30 +402,82 @@ class AuthController extends BaseController
         }
         return redirect()->route('user.gift.get')->with('message', 'Nhận quà thành công!');
     }
+    
     //Thuong dat moc-->
-
-    public function getThuongdatmoc(){
-        $weeks = Week::all();
-        return view('frontend.user.thuongdatmoc')->with(compact('weeks'));
-    }
-    public function postThuongdatmoc(Request $request){
-        $data = $request()->except('_token');
-        $gift = Gift::where('gift_code', $data['gift_code'])->first();
-        if(is_null($gift)){
-            return redirect()->route('user.thuongdatmoc.get')->with('message', 'Gift code sai!');
+    public function showThuongdatmoc($server_id){
+        $show_gift = true;
+        $gifts =QuaDatMoc::all();
+        $server_key = 'server'.$server_id;
+        if(!Session::has($server_key)) {
+            $server = Server::findOrfail($server_id);
+            Session::put($server_key, $server);
         }
-        $user_gift = new GiftUser();
-        $user_gift->gift_id = $gift->id;
-        $user_gift->user_id = Auth::user()->id;
-        $user_gift->save();
-        return redirect()->route('user.thuongdatmoc.get')->with('message', 'Nhận quà thành công!');
+        $account = new GAccount;
+        $account->setConnection(session($server_key)->user_db);
+        $account = $account->where('acct_id', session('account')->acct_id)->first();
+        Session::forget('account');
+        Session::put('account', $account);
+        return view('frontend.user.thuongdatmoc')->with(compact('gifts', 'server_id', 'account','show_gift'));
+    }
+
+    public function getAcThuongdatmoc($server_id, $gift_id){
+        $user = session('user');
+            $server_key = 'server'.$server_id;
+            $server = session($server_key);
+            $gift = QuaDatMoc::findOrfail($gift_id);
+            $account = new GAccount;
+            $account->setConnection($server->user_db);
+            $account = $account->findOrfail(session('account')->acct_id);
+            $oldPoint = $account->point;
+            if($oldPoint >= $gift->point){
+                $giftBox = new GiftBox;
+                $giftBox->setConnection($server->user_db);
+                $giftBox->acct_id = session('account')->acct_id;
+                $giftBox->item_id = $gift->item_id;
+                $giftBox->itemtype = 0;
+                $giftBox->quantity = 1;
+                $giftBox->serialNo = 0;
+                try{
+                    $update = $giftBox->save();
+                }catch(\Exception $e) {
+                    return redirect()->back()->with('error', 'Thao tác xảy ra lỗi');
+                }
+                if($update) {
+                    try{
+                        $newPoint = $oldPoint - $gift->point;
+                        $account->point=$newPoint;
+                        $account->save();
+                        Session::forget('account');
+                        Session::put('account', $account);
+                        return redirect()->back()->with('message', 'Nhận quà thành công!');
+                    } catch (\Exception $e) {
+                        return redirect()->back()->with('error', 'Thao tác xảy ra lỗi');
+                    }
+                }
+            } else {
+                return redirect()->back()->with('error', 'Không đủ điểm tích lũy');
+            }
     }
 
     //Thongtinnhanvat-->
 
-    public function getThongtinnhanvat(){
+    public function selectServer(){
         $servers = Server::all();
-        return view('frontend.user.thongtinnhanvat')->with(compact('servers'));
+        $curent_route = \Request::route()->getName();
+        if( $curent_route == 'user.thongtinnhanvat.get'){
+            $title = "THÔNG TIN NHÂN VẬT";
+            $next = 'user.thongtinnhanvat.show';
+        }
+        if( $curent_route  == 'user.goitanthu'){
+            $title = "GÓI QUÀ TÂN THỦ";
+            $next = 'user.goitanthu.select';
+        }
+        if( $curent_route  == 'user.thuongdatmoc.get'){
+            $title = "NHẬN THƯỞNG ĐẠT MỐC";
+            $next = 'user.thuongdatmoc.show';
+        }
+        $show_gift=true;
+        return view('frontend.user.select_server')->with(compact('servers', 'title', 'next', 'show_gift'));
     }    
     public function showThongtinnhanvat($id){
         $server = Server::findOrFail($id);
@@ -448,21 +509,67 @@ class AuthController extends BaseController
     }
     ///////////////End Thongtin nhan vat
 
-    public function getGoitanthu(){
-        $weeks = Week::all();
-        return view('frontend.user.goitanthu')->with(compact('weeks'));
-    }
-    public function postGoitanthu(Request $request){
-        $data = $request()->except('_token');
-        $gift = Gift::where('gift_code', $data['gift_code'])->first();
-        if(is_null($gift)){
-            return redirect()->route('user.goitanthu.get')->with('message', 'Gift code sai!');
+    public function getGoitanthu($server_id){
+        $server_key = 'server'.$server_id;
+        if(!Session::has($server_key)) {
+            $server = Server::findOrfail($server_id);
+            Session::put($server_key, $server);
         }
-        $user_gift = new GiftUser();
-        $user_gift->gift_id = $gift->id;
-        $user_gift->user_id = Auth::user()->id;
-        $user_gift->save();
-        return redirect()->route('user.goitanthu.get')->with('message', 'Nhận quà thành công!');
+        $gift_freshers = GiftFresher::all();
+        $account = new GAccount;
+        $account->setConnection(session($server_key)->user_db);
+        $account = $account->where('acct_id', session('account')->acct_id)->first();
+        $user = User::findOrfail(Auth::user()->id);
+        Session::forget('user');
+        Session::put('user', $user);
+        Session::forget('account');
+        Session::put('account', $account);
+        return view('frontend.user.goitanthu')->with(compact('server_id', 'gift_freshers', 'user'));
+    }   
+    
+    public function getAcGoitanthu($server_id, $gift_type){
+        $user = session('user');
+        if(User::findOrfail(Auth::user()->id)->fresher) {
+            $server = Server::findOrfail($server_id);
+            $giftFresher = GiftFresher::findOrfail($gift_type);
+            $account = Session::get('account');
+            $oldKNB = $account->yuanbao;
+            $oldPoint = $account->point;
+            if($oldKNB >= $giftFresher->KNB && $oldPoint >= $giftFresher->point){
+                $user = User::findOrfail(Auth::user()->id);
+                $giftBox = new GiftBox;
+                $giftBox->setConnection($server->user_db);
+                $giftBox->acct_id = session('account')->acct_id;
+                $giftBox->item_id = $giftFresher->item_id;
+                $giftBox->itemtype = 0;
+                $giftBox->quantity = 1;
+                $giftBox->serialNo = 0;
+                try{
+                    $update = $giftBox->save();
+                }catch(\Exception $e) {
+                    return redirect()->back()->with('error', 'Thao tác xảy ra lỗi');
+                }
+                if($update) {
+                    try{
+                        $newKNB = $oldKNB - $giftFresher->KNB;
+                        $newPoint = $oldPoint - $giftFresher->point;
+                        $account->yuanbao=$newKNB;
+                        $account->point=$newPoint;
+                        $account->save();
+                        $user->update(['fresher'=>false]);
+                        Session::forget('account');
+                        Session::put('account', $account);
+                        return redirect()->back()->with('message', 'Nhận quà thành công!');
+                    } catch (\Exception $e) {
+                        return redirect()->back()->with('error', 'Thao tác xảy ra lỗi');
+                    }
+                }
+            } else {
+                return redirect()->back()->with('error', 'Không đủ KNB hoặc điểm tích lũy');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Quà chỉ dành cho tân game thủ');
+        }
     }
 
     ///////////////End Nangcapvip

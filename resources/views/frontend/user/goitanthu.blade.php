@@ -10,13 +10,28 @@
             <form action="" autocomplete="off" id="mainForm" method="post">            
                 <table class="tableform">
                     <tbody>
-                        
                         <tr>
                             <td style="width: 150px;"></td>
                                 <div class="notice" id="infoText" style="text-align:center">
                                     Mỗi tài khoản chỉ được mua một gói tân thủ<br>
-                                    Số KNB hiện tại: 5000 KNB<br>
-                                    Số tiền tích lũy: 100 000 VNĐ<br>
+                                    Số KNB hiện tại: {{session('account')->yuanbao}} KNB<br>
+                                    Số tiền tích lũy: {{session('account')->point}} VNĐ<br>
+                                    @if(Session::has('message'))
+                                    <br>
+                                        {{Session::get('message')}}
+                                    @endif
+                                    @if(empty($user->fresher))
+                                    <br>
+                                        <span style="color:red">
+                                            Quà chỉ dành cho tân Thủ!!
+                                        </span>
+                                    @endif
+                                    @if(Session::has('error'))
+                                    <br>
+                                        <span style="color:red">
+                                            {{Session::get('error')}}
+                                        </span>
+                                    @endif
                                 </div>
                         </tr>
                         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -26,29 +41,23 @@
                 </table>
             </form>
             <div class="imgcenter">
+            @foreach($gift_freshers as $gift_fresher)
+                @if(empty($user->fresher))
                 <div class="imgvip">
-                    <a target="_blank" href="img_fjords.jpg">
-                        <img src="{{ asset('images/goi1.png')}}" width="251" height="253">
-                    </a>
+                    <img src="{{ asset($gift_fresher->image)}}" width="251" height="253">
                 </div>
-
-                <div class="imgvip">
-                    <a target="_blank" href="img_forest.jpg">
-                        <img src="{{asset('images/goi2.png')}}" width="251" height="253">
-                    </a>
-                </div>
-
-                <div class="imgvip">
-                    <a target="_blank" href="img_fjords.jpg">
-                        <img src="{{ asset('images/goi3.png')}}" width="251" height="253">
-                    </a>
-                </div>
-
-                <div class="imgvip">
-                    <a target="_blank" href="img_forest.jpg">
-                        <img src="{{asset('images/goi4.png')}}" width="251" height="253">
-                    </a>
-                </div>
+                @else
+                    <div class="imgvip">
+                        @if(session('account')->yuanbao >= $gift_fresher->KNB && session('account')->point >= $gift_fresher->point)
+                            <a href="{{route('user.goitanthu.update', ['server_id'=>$server_id,'gift_type'=>$gift_fresher->id])}}">
+                                <img src="{{ asset($gift_fresher->image)}}" width="251" height="253">
+                            </a>
+                        @else
+                            <img src="{{ asset($gift_fresher->image)}}" width="251" height="253">
+                        @endif
+                    </div>
+                @endif
+            @endforeach
             </div>  
         </div>
     </div>

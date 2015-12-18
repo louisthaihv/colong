@@ -4,12 +4,17 @@
 @stop
 
 @section('content')
-<div id="content_news">THÔNG TIN NHÂN VẬT<br><br>
+<div id="content_news">
+        @if(isset($title))
+            {{$title}}
+        @endif
+        <br><br>
     <div style="text-align: center; color: #b8b8b8"> SERVER </div>
         <div class="imgcenter">
         @foreach($servers as $server )
             <div class="imgvip">
-                <a target="_blank" href="{{ route ('user.thongtinnhanvat.show', $server->id)}}">
+                <a href="
+                {{ route($next,$server->id) }}">
                     <img src="{{ asset($server->image)}}" width="300" height="200">
                 </a>
             </div>

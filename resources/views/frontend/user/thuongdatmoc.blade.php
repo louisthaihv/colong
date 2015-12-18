@@ -10,46 +10,41 @@
             <form action="" autocomplete="off" id="mainForm" method="post">            
                 <table class="tableform">
                     <tbody>
-                        
                         <tr>
                             <td style="width: 150px;"></td>
                                 <div class="notice" id="infoText">
-                                    - Bạn đã tích lũy được: 5000 điểm
+                                    - Bạn đã tích lũy được: 
+                                    {{ $account->point }} điểm<br/>
+                                    @if(Session::has('message'))
+                                    <br /> {{Session::get('message')}}
+                                    @endif
+                                    @if(Session::has('error'))
+                                        <span style="color:red">
+                                        {{Session::get('error')}}
+                                        </span>
+                                    @endif
                                 </div>
                         </tr>
                         &nbsp;&nbsp;
-                        
                         <table class="tableform1">
                             <tr>
                                 <th>MỐC VNĐ</th>
                                 <th>VẬT PHẨM</th>
                                 <th>THAO TÁC</th>
                             </tr>
+                            @foreach($gifts as $gift )
                             <tr>
-                                <td>20000</td>
-                                <td>Chìa khóa hòm kho báu</td>
-                                <td>NHẬN THƯỞNG</td>
+                                <td> {!! $gift->point !!} </td>
+                                <td> {!! $gift->name !!} </td>
+                                <td> 
+                                @if($account->point >= $gift->point)
+                                    <a href="{{route('user.thuongdatmoc.do', ['server_id'=>$server_id, 'gift_id'=>$gift->id])}}">Nhận thưởng</a>
+                                @else
+                                    Nhận thưởng
+                                @endif
+                                </td>
                             </tr>
-                            <tr>
-                                <td>50000</td>
-                                <td>Chìa khóa hòm kho báu</td>
-                                <td>NHẬN THƯỞNG</td>
-                            </tr><tr>
-                                <td>100000</td>
-                                <td>Chìa khóa hòm kho báu</td>
-                                <td>NHẬN THƯỞNG</td>
-                            </tr><tr>
-                                <td>200000</td>
-                                <td>Chìa khóa hòm kho báu</td>
-                                <td>NHẬN THƯỞNG</td>
-                            </tr><tr>
-                                <td>200000</td>
-                                <td>Chìa khóa hòm kho báu</td>
-                                <td>NHẬN THƯỞNG</td>
-                            </tr><tr>
-                                <td>200000</td>
-                                <td>Tuyệt học bảo hạp</td>
-                                <td>NHẬN THƯỞNG</td>
+                            @endforeach
                         </table>
                     </tbody>
                 </table>

@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->integer('vip_level')->unsigned()->default(0);
             $table->integer('point')->unsigned()->default(0);
             $table->float('coints')->unsigned()->default(0);
+            $table->boolean('fresher')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });

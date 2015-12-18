@@ -10,7 +10,7 @@
         <meta name="author" content="">
         <link rel="shortcut icon" href="#" type="image/x-icon" />
         <link rel="icon" href="#" type="image/x-icon" />
-        <title>Kiếm thế 2</title>
+        <title>Cổ Long</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="{{ asset('user/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -41,7 +41,7 @@
             <div id="top_bar_container">
                 <div id="top_bar_menu">
                     <a href="{{ route('frontend.index') }}" title="Trang chủ Cổ Long Online hiện đang được xây dựng!">Trang chủ</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <a target="_blank" href="#" title="Tham gia thảo luận cùng các game thủ Cổ Long Online" rel="nofollow">Facebook</a>
+                    <a target="_blank" href="https://www.facebook.com/colong2.vn/" title="Tham gia thảo luận cùng các game thủ Cổ Long Online" rel="nofollow">Facebook</a>
                 </div>
                     @if(!Auth::check())
                 <div id="top_bar_userdisplay">
@@ -95,10 +95,10 @@
                             <a href="{{ route('user.profile') }}">Thông tin tài khoản<br></a>
                         </div>
                         <div class="secur_inf3">
-                        <a href="{{ route('user.thongtinnhanvat.get') }}">Thông tin nhân vật</a>
+                        <a href="{{ route('user.thongtinnhanvat.show') }}">Thông tin nhân vật</a>
                         </div>
                         <div class="secur_inf4">
-                            <a href="{{ route('user.goitanthu.get') }}">Gói tân thủ</a>
+                            <a href="{{ route('user.goitanthu') }}">Gói tân thủ</a>
                         </div>
                         <div class="secur_inf5">
                             <a href="{{ route('user.thuongdatmoc.get') }}">Nhận thưởng đạt mốc</a>

@@ -35,8 +35,10 @@ Route::group(["middleware" => "auth"], function(){
 	Route::get('/ac_napthe/{id}',			['as'=>'user.ac_napthe.get', 'uses'=>'Auth\AuthController@getAcNapthe']);
 	Route::post('/napthe/{id}',				['as'=>'user.napthe.post', 'uses'=>'Auth\AuthController@postNapthe']);
 
-	Route::get('/user/thuongdatmoc',		['as'=>'user.thuongdatmoc.get', 'uses'=>'Auth\AuthController@getThuongdatmoc']);
-	Route::post('/user/thuongdatmoc',		['as'=>'user.thuongdatmoc.post', 'uses'=>'Auth\AuthController@postThuongdatmoc']);
+	Route::get('/user/thuongdatmoc/{server_id}/{gift_id}',		['as'=>'user.thuongdatmoc.do', 'uses'=>'Auth\AuthController@getAcThuongdatmoc']);
+	Route::get('/user/thuongdatmoc/{server_id}',		['as'=>'user.thuongdatmoc.show', 'uses'=>'Auth\AuthController@showThuongdatmoc']);
+	Route::get('/user/thuongdatmoc',		['as'=>'user.thuongdatmoc.get', 'uses'=>'Auth\AuthController@selectServer']);
+
 	Route::get('/user/changePassword', 		['as'=>'user.get.changePassword',	'uses'=>'Auth\AuthController@getChangePassword']);
 	Route::post('/user/changePassword', 	['as'=>'user.post.changePassword',	'uses'=>'Auth\AuthController@postChangePassword']);
 
@@ -54,15 +56,16 @@ Route::group(["middleware" => "auth"], function(){
 	Route::get('/auth/confirm/{id}', 		['as'=>'user.confirm',	'uses'=>'Auth\AuthController@confirm']);
 
 	////Thong tin nhan vat
-	Route::get('/user/thongtinnhanvat',						['as'=>'user.thongtinnhanvat.get', 'uses'=>'Auth\AuthController@getThongtinnhanvat']);
 	Route::get('/user/thongtinnhanvat/{server_id}',			['as'=>'user.thongtinnhanvat.show', 'uses'=>'Auth\AuthController@showThongtinnhanvat']);
-	Route::post('/user/thongtinnhanvat/{id}',					['as'=>'user.thongtinnhanvat.post', 'uses'=>'Auth\AuthController@postThongtinnhanvat']);
+	Route::get('/user/thongtinnhanvat',						['as'=>'user.thongtinnhanvat.get', 'uses'=>'Auth\AuthController@selectServer']);
+	Route::post('/user/thongtinnhanvat/{id}',				['as'=>'user.thongtinnhanvat.post', 'uses'=>'Auth\AuthController@postThongtinnhanvat']);
 
 	/////end thong tin nhan vat
 
 	////Goi tan thu
-	Route::get('/user/goitanthu',						['as'=>'user.goitanthu.get', 'uses'=>'Auth\AuthController@getGoitanthu']);
-	Route::post('/user/goitanthu',						['as'=>'user.goitanthu.post', 'uses'=>'Auth\AuthController@postGoitanthu']);
+	Route::get('/user/goitanthu/{server_id}/{gift_type}',			['as'=>'user.goitanthu.update', 'uses'=>'Auth\AuthController@getAcGoitanthu']);
+	Route::get('/user/goiquatanthu/{server_id}',					['as'=>'user.goitanthu.select', 'uses'=>'Auth\AuthController@getGoitanthu']);
+	Route::get('/user/goiquatanthu',								['as'=>'user.goitanthu', 'uses'=>'Auth\AuthController@selectServer']);
 
 	/////end Goi tan thu
 });
