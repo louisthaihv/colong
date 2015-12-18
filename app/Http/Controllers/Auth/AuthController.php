@@ -574,39 +574,48 @@ class AuthController extends BaseController
 
     ///////////////End Nangcapvip
 
-    public function postResetPassword(Request $request) {
+    public function postForgotPassword(Request $request) {
         $data = $request->except('_token');
-        $user = User::where('email', $data['email'])->first();
-        if(is_null($user)){
-            $message = ["error"=>"error", "massage"=>"Email không tồn tại!"];
-            return response()->json($message);
-        }
-        $url = route('user.update.password').'?parram=';
-        $parram = json_encode($data);
-        $encoded =( urlencode(base64_encode($parram)));
-        $url.=$encoded;
-        $mailData = ['url'=>$url];
-        \Mail::send('emails.changepass', $mailData, function($message) use ($user,$data) {
-            $message->to($data['email'], 'Hello'.$user->name)->subject('NCC Game');
-        });
-        if(\Mail::failures()){
-            $message = ["error"=>"error", "massage"=>"Không gửi được mail"];
-            return response()->json($message);
+        if(ServiceAccount::checkCaptcha($data)){
+            $user = User::where('email', $data['email'])->where('username', $data['username'])->first();
+            if(is_null($user)){
+                $message = ["error"=>"error", "massage"=>"Email không tồn tại!"];
+                return response()->json($message);
+            }
+            $url = route('user.update.password').'?parram=';
+            $parram = json_encode($data);
+            $encoded =( urlencode(base64_encode($parram)));
+            $url.=$encoded;
+            dd($url);
+            $mailData = ['url'=>$url];
+            \Mail::send('emails.changepass', $mailData, function($message) use ($user,$data) {
+                $message->to($data['email'], 'Hello'.$user->name)->subject('Colong Game');
+            });
+            if(\Mail::failures()){
+                $message = ["error"=>"error", "massage"=>"Không gửi được mail"];
+                return response()->json($message);
+            }
+
+            return redirect()->back()->with('message','Thông tin đã gửi vào email của bạn');
         }
 
-        return redirect()->back()->with('message','Thông tin đã gửi vào email của bạn');
+        else{
+            dd($data);
+            return redirect()->back()->with('error','Captcha không đúng');
+        }
     }
 
-    public function getResetPassword(){
-        $weeks = Week::all();
-        return view('frontend.user.reset_password')->with(compact('weeks'));
+    public function getForgotPassword(){
+        
+        return view('frontend.user.user_forgotpass');
     }
 
     public function getUpdatePassword(Request $request){
         $encode = $request->get('parram');
         $decoded = base64_decode(urldecode( $encode ));
         $data = json_decode($decoded);
-        $user = User::where('email', $data->email)->first();
+        $user = User::where('username', $data->username)->first();
+        dd($user);
         if(is_null($user)){
             return redirect()->route('frontend.index')->with('update_pass', 'Thông tin sai!');
         }else{

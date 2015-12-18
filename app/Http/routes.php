@@ -24,8 +24,9 @@ Route::get('/user/register', 		['as'=>'user.register',	'uses'=>'Auth\AuthControl
 Route::post('/user/register', 		['as'=>'user.register',	'uses'=>'Auth\AuthController@postRegister']);
 
 Route::get('/user/update_password', ['as'=>'user.update.password',	'uses'=>'Auth\AuthController@getUpdatePassword']);
-Route::get('/user/resetPassword', 	['as'=>'user.get.resetPassword',	'uses'=>'Auth\AuthController@getResetPassword']);
-Route::post('/user/resetPassword', 	['as'=>'user.post.resetPassword',	'uses'=>'Auth\AuthController@postResetPassword']);
+Route::get('/user/forgotPassword', 	['as'=>'user.get.ForgotPassword',	'uses'=>'Auth\AuthController@getForgotPassword']);
+Route::post('/user/forgotPassword', 	['as'=>'user.post.ForgotPassword',	'uses'=>'Auth\AuthController@postForgotPassword']);
+
 Route::get('/user/giftcode',	['as'=>'user.gift.get', 'uses'=>'Auth\AuthController@getGift']);
 Route::post('/user/giftcode',	['as'=>'user.gift.post', 'uses'=>'Auth\AuthController@postGift']);
 

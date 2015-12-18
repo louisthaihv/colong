@@ -11,16 +11,13 @@
         <form action="{{ route('authLogin') }}" autocomplete="off" id="mainForm" method="post">            
             <table class="tableform">
                 <tbody>
-                    
                     <tr>
-                        <td style="width: 150px;"></td>
-                            <div class="notice" id="infoText">
-                                - Mật khẩu được lưu trong hệ thống không phân biệt chữ hoa, chữ thường<br><br>
-                                - Hãy bảo vệ mật khẩu cẩn thận, đề phòng bị hack, đánh cắp tài khoản
-                            </div>
-                    </tr>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <td style="width: 150px;"></td>
+                    <td colspan="2" class="formtx">Chào đón Bạn đăng nhập Cổ Long Online</td>
+                </tr>
                     <tr>
                         <td style="text-align: right;">
                             <label for="username">Tên đăng nhập</label>
@@ -54,12 +51,19 @@
                     <tr>
                         <td></td>
                         <td>
-                            <input type="image" id="submitbtn" alt="Xác nhận" src="{{asset('images/confirm.gif')}}" tppabs="">
-                            <input type="image" id="resetbtn" alt="Nhập lại" src="{{asset('images/retry.gif')}}" tppabs="" onclick="mainForm.reset();
-                                    return false;">
+                            <input type="image" id="submitbtn" alt="Xác nhận" src="{{asset('images/login.gif')}}" tppabs="">
                         </td>
                         <td></td>
                     </tr>
+                    <tr>
+                    <td>
+                    </td>
+                    <td style="text-align: left">
+                        <a href="{{route('user.get.ForgotPassword')}}" tppabs="http://taikhoan.colongonline.com/Account/ForgotPassword">Qu&#234;n mật khẩu</a>
+                        |
+                        <a href="{{ route('user.register') }}" tppabs="{{ route('user.register') }}">Đăng k&#237;</a>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </form>    
